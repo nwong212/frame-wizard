@@ -360,6 +360,12 @@ main {
   max-height: 100vh;
   box-sizing: border-box;
 }
+@media screen and (max-width: 45em) {
+  main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 
 svg {
   width: 70%;
