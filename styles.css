@@ -484,6 +484,7 @@ form .helptext {
   text-align: left;
 }
 form input, form select {
+  -webkit-appearance: none;
   display: block;
   font-size: 1em;
   padding: 10px 0;
@@ -509,6 +510,7 @@ form .bottom {
   padding-left: 0.25em;
 }
 form input[disabled] {
+  -webkit-appearance: none;
   background: #dddddd;
   opacity: 1;
   border-radius: 5px;
