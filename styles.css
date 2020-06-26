@@ -348,8 +348,8 @@ body {
 
 @media screen and (max-width: 45em) {
   .form, .diagram {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
   }
 }
 
