@@ -1,6 +1,9 @@
 # framing-calculator
 A Visual Framing Calculator
+
 For those moments when you want to add up your frame package and determine if your profile has enough space or to determine how much other material to add in.
+
+Measurements are in inches.
 
 Measurements should be in this format with a space between whole number and fraction:
 
