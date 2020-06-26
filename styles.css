@@ -485,6 +485,7 @@ form .helptext {
 }
 form input, form select {
   -webkit-appearance: none;
+  border-radius: 0;
   display: block;
   font-size: 1em;
   padding: 10px 0;
