@@ -361,7 +361,7 @@ main {
 }
 
 svg {
-  width: 70%;
+  width: 80%;
   height: auto;
 }
 svg #svg-rabbet {
@@ -372,6 +372,38 @@ svg [id^=measurement-] {
 }
 svg #remainder-title, svg #measurement-remainder {
   font-size: 3.5pt;
+}
+
+.diagram {
+  width: 60%;
+  height: 100vh;
+  overflow: hidden;
+}
+@media screen and (max-width: 45em) {
+  .diagram {
+    width: 100%;
+    height: auto;
+    min-height: 40vh;
+  }
+  .diagram svg {
+    width: 100%;
+    max-height: 100%;
+  }
+}
+
+.form {
+  height: 100vh;
+  overflow: auto;
+  width: 40%;
+  border-left: 1px solid #9da1ac;
+  align-items: flex-start;
+}
+@media screen and (max-width: 45em) {
+  .form {
+    width: 100%;
+    height: auto;
+    border-left: none;
+  }
 }
 
 section {
@@ -385,26 +417,6 @@ section {
   section {
     width: 100%;
     height: auto;
-  }
-}
-
-.diagram {
-  width: 75%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.form {
-  height: 100vh;
-  overflow: auto;
-  width: 25%;
-  border-left: 1px solid #9da1ac;
-}
-@media screen and (max-width: 45em) {
-  .form {
-    width: 100%;
-    height: auto;
-    align-items: flex-start;
   }
 }
 
