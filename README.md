@@ -7,6 +7,7 @@ Measurements should be in this format with a space between whole number and frac
 
 1 1/16, 2 1/4, 1/8, 1 1/2
 
+This calculator will not work if you input a decimal.
 
 Copyright 2020 Nathan Wong
 
