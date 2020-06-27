@@ -52,6 +52,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<meta property="twitter:image" content="frame-screenshot.png">
 
 	<script type="text/javascript" src="wizard.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@0;1&display=swap" rel="stylesheet">
 
 </head>
 
@@ -66,39 +67,42 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				.st4{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
 			</style>
 			<g id="frame-group">
-				<g id="spacer-group">
-					<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#ffb890" width="12.8" height="20.8"/>
+				<g id="notGlazing">
+					<g id="spacer-group">
+						<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#ffb890" width="12.8" height="20.8"/>
 
-					<text x="150" y="53" id="measurement-spacer" text-anchor="left">5/8"</text>
-				</g>
+						<text x="150" y="53" id="measurement-spacer" text-anchor="left">5/8"</text>
+					</g> <!-- Spacer Group -->
 
-				<g id="notSpacer">
-					<g id="top-group">
-						<polygon id="svg-top" class="st2" points="103.5,61.3 40.7,61.3 40.7,65.3 109.2,65.3 "/>
-						<text x="150" y="64.5" id="measurement-top" text-anchor="left">1/16"</text>
-					</g>
-					<g id="notTop">
-						<rect x="40.7" y="65.3" id="svg-bottom" class="st2" width="100" height="4"/>
-						<text x="150" y="69" id="measurement-bottom" text-anchor="left">1/16"</text>
-						<g id="notBottom">
-							<rect x="40.7" y="69.3" id="svg-board" class="st1" width="100" height="8"/>
-							<text x="150" y="75" id="measurement-backing" text-anchor="left">1/8"</text>
+					<g id="notSpacer">
+						<g id="top-group">
+							<polygon id="svg-top" class="st2" points="103.5,61.3 40.7,61.3 40.7,65.3 109.2,65.3 "/>
+							<text x="150" y="64.5" id="measurement-top" text-anchor="left">1/16"</text>
+						</g><!-- Top Group -->
+						<g id="notTop">
+							<rect x="40.7" y="65.3" id="svg-bottom" class="st2" width="100" height="4"/>
+							<text x="150" y="69" id="measurement-bottom" text-anchor="left">1/16"</text>
+							<g id="notBottom">
+								<rect x="40.7" y="69.3" id="svg-board" class="st1" width="100" height="8"/>
+								<text x="150" y="75" id="measurement-backing" text-anchor="left">1/8"</text>
 
-							<g id="notBacking">
-								<g id="additional-group" style="display:none;">
-									<rect x="40.7" y="77.3" fill="rgb(252, 127, 127)" width="100" height="8" id="svg-additional" />
-									<text x="150" y="83" id="measurement-additional" text-anchor="left">0"</text>
-								</g>
-								<polygon id="svg-strainer" class="st0" points="48.1,77.3 40.7,77.3 40.7,127.3 90.7,127.3 "/>
-								<text x="150" y="110" id="measurement-strainer" text-anchor="left">1/2"</text>
-							</g>
-						</g>
-					</g>
-				</g>
-				<rect x="26.4" y="22.7" width="30" height="9.8" fill="rgb(133, 61, 15)" />
+								<g id="notBacking">
+									<g id="additional-group" style="display:none;">
+										<rect x="40.7" y="77.3" fill="rgb(252, 127, 127)" width="100" height="8" id="svg-additional" />
+										<text x="150" y="83" id="measurement-additional" text-anchor="left">0"</text>
+									</g><!-- Additional Group -->
+									<polygon id="svg-strainer" class="st0" points="48.1,77.3 40.7,77.3 40.7,127.3 90.7,127.3 "/>
+									<text x="150" y="110" id="measurement-strainer" text-anchor="left">1/2"</text>
+								</g><!-- Not backing Group -->
+							</g><!-- Not Bottom Group -->
+						</g><!-- Not Top Group -->
+					</g> <!-- Not Spacer Group -->
+				</g><!-- not Glazing -->
 
 					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing"/>
 					<text x="150" y="38" id="measurement-glazing" text-anchor="left">1/8"</text>
+					
+					<rect x="26.4" y="22.7" width="30" height="9.8" fill="rgb(133, 61, 15)" id="frame-cap" />
 
 			</g>
 			<rect x="26.4" y="22.7" width="14.5" height="104.60000610351562" fill="rgb(133, 61, 15)" id="frameside" />
@@ -109,7 +113,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95"/>
 				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52"/>
 
-				<text x="13.4" y="84" id="svg-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
+				<text x="13.4" y="84" id="measurement-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
 			</g>
 			<text x="145" y="135" id="remainder-title" text-anchor="end">Recess:</text>
 			<text x="150" y="135" id="measurement-remainder" text-anchor="left">0"</text>
@@ -148,6 +152,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						<select class="bottomMat" name="bottomMat" id="bottomMat">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
+							<option value="0">None</option>
 						</select>
 					</div>
 				</section>
@@ -169,6 +174,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<button class="print" onClick="window.print()">Print</button>
 				<button class="reset" onClick="document.getElementById("frameCalc").reset()">Reset</button>
 			</form>
+			<p class="footer">
+				<a href="https://github.com/nwong212/frame-wizard">Github</a>
+			</p>
 
 		</section>
 	</main>

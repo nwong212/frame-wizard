@@ -339,7 +339,9 @@ template {
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Anonymous Pro", monospace;
+  font-size: 100%;
+  font-size: 18px;
 }
 
 body {
@@ -365,11 +367,9 @@ svg {
   width: 80%;
   height: auto;
 }
-svg #svg-rabbet {
-  font-size: 5pt;
-}
 svg [id^=measurement-] {
   font-size: 3pt;
+  word-spacing: 0.5em;
 }
 svg #remainder-title, svg #measurement-remainder {
   font-size: 3.5pt;
@@ -378,6 +378,9 @@ svg #diagram-note {
   font-size: 2.25pt;
   fill: #9da1ac;
   font-style: italic;
+}
+svg #measurement-rabbet {
+  font-size: 5pt;
 }
 
 .diagram {
@@ -416,6 +419,7 @@ svg #diagram-note {
 section {
   padding: 2em;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -453,7 +457,7 @@ form section.frame:before {
   background: #853d0f;
 }
 form section.glazing:before {
-  background: rgba(95, 224, 135, 0.4);
+  background: rgba(95, 224, 135, 0.25);
   box-sizing: border-box;
 }
 form section.spacer:before {
@@ -495,7 +499,6 @@ form .helptext {
   text-align: left;
 }
 form input, form select {
-  -webkit-appearance: none;
   border-radius: 0;
   display: block;
   font-size: 1em;
@@ -506,6 +509,10 @@ form input, form select {
   margin: auto;
   width: 100%;
   background: transparent;
+}
+form input {
+  word-spacing: 0.5em;
+  -webkit-appearance: none;
 }
 form .top, form .bottom {
   text-align: left;
@@ -550,7 +557,7 @@ button:hover {
 }
 
 #svg-glazing {
-  fill: rgba(95, 224, 135, 0.4);
+  fill: rgba(95, 224, 135, 0.25);
 }
 
 #svg-top,
@@ -575,6 +582,14 @@ button:hover {
 
 #svg-strainer {
   fill: #ffe34e;
+}
+
+.footer {
+  font-size: 90%;
+}
+
+a {
+  color: #fc7f7f;
 }
 
 @media print {

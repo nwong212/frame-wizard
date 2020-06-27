@@ -35,7 +35,7 @@ function frameDesign() {
 	rabbet.addEventListener("input", rabbetChanged);
 
   function rabbetChanged() {
-    document.getElementById("svg-rabbet").textContent = rabbet.value + "\42";
+    document.getElementById("measurement-rabbet").textContent = rabbet.value + "\42";
   }
 
   var spacer = document.getElementById("spacer");
@@ -98,22 +98,52 @@ function frameDesign() {
     document.getElementById("measurement-bottom").textContent = bottomSelect.options[bottomSelect.selectedIndex].value + "\42";
 
     if (bottomSelect.value == "1/16") {
+
       document.getElementById("svg-bottom").setAttribute("height", "4");
 
+	      document.getElementById("svg-bottom").style.display = "inline";
+				document.getElementById("measurement-bottom").style.display = "inline";
+
       document.getElementById("notBottom").setAttribute("transform", "translate(0 0)");
+
     } else if (bottomSelect.value == "1/8") {
+
       document.getElementById("svg-bottom").setAttribute("height", "8");
 
+	      document.getElementById("svg-bottom").style.display = "inline";
+				document.getElementById("measurement-bottom").style.display = "inline";
+
       document.getElementById("notBottom").setAttribute("transform", "translate(0 4)");
+
+    } else if (bottomSelect.value == "0") {
+      document.getElementById("svg-bottom").style.display = "none";
+			document.getElementById("measurement-bottom").style.display = "none";
+
+      document.getElementById("notBottom").setAttribute("transform", "translate(0 -4)");
     }
   }
 
   //Backing Board
   var backingBoard = document.getElementById("backing");
+
   backingBoard.addEventListener("input", backingChanged);
 
   function backingChanged() {
     document.getElementById("measurement-backing").textContent = backingBoard.value + "\42";
+
+		if (backingBoard.value == "0") {
+			document.getElementById("svg-board").style.display = "none";
+			document.getElementById("measurement-backing").style.display = "none";
+
+			document.getElementById("notBacking").setAttribute("transform", "translate(0 -8)");
+
+		} else {
+			document.getElementById("svg-board").style.display = "inline";
+			document.getElementById("measurement-backing").style.display = "inline";
+
+			document.getElementById("notBacking").setAttribute("transform", "translate(0 0)");
+		}
+
   }
 
 	// Additional Space
@@ -144,6 +174,15 @@ function frameDesign() {
 
   function strainerChanged() {
     document.getElementById("measurement-strainer").textContent = strainer.value + "\42";
+
+		if (strainer.value == "0") {
+			document.getElementById("svg-strainer").style.display = "none";
+			document.getElementById("measurement-strainer").style.display = "none";
+		} else {
+			document.getElementById("svg-strainer").style.display = "inline";
+			document.getElementById("measurement-strainer").style.display = "inline";
+		}
+
   }
 
   //Glazing
@@ -152,6 +191,20 @@ function frameDesign() {
 
   function glazingChanged() {
     document.getElementById("measurement-glazing").textContent = glazing.value + "\42";
+
+		if (glazing.value == "0") {
+			document.getElementById("svg-glazing").style.display = "none";
+			document.getElementById("measurement-glazing").style.display = "none";
+
+			document.getElementById("notGlazing").setAttribute("transform", "translate(0 -8)");
+		} else {
+			document.getElementById("svg-glazing").style.display = "inline";
+			document.getElementById("measurement-glazing").style.display = "inline";
+
+			document.getElementById("notGlazing").setAttribute("transform", "translate(0 0)");
+		}
+
+
 
   }
 
