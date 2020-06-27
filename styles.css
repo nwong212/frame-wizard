@@ -373,9 +373,14 @@ svg [id^=measurement-] {
 svg #remainder-title, svg #measurement-remainder {
   font-size: 3.5pt;
 }
+svg #diagram-note {
+  font-size: 2.25pt;
+  fill: #9da1ac;
+  font-style: italic;
+}
 
 .diagram {
-  width: 60%;
+  width: 75%;
   height: 100vh;
   overflow: hidden;
 }
@@ -395,7 +400,7 @@ svg #remainder-title, svg #measurement-remainder {
 .form {
   height: 100vh;
   overflow: auto;
-  width: 40%;
+  width: 25%;
   border-left: 1px solid #9da1ac;
   align-items: flex-start;
 }
@@ -423,7 +428,7 @@ section {
 
 form {
   text-align: right;
-  padding: 0 0 1em 2em;
+  padding: 0;
   white-space: nowrap;
 }
 form section {
@@ -441,17 +446,20 @@ form section:before {
   background-color: yellow;
   position: absolute;
   top: 1.75em;
-  left: -2em;
+  left: 0.25em;
 }
 form section.frame:before {
   background: #853d0f;
 }
 form section.glazing:before {
-  background: rgba(163, 255, 203, 0.5);
+  background: rgba(95, 224, 135, 0.4);
   box-sizing: border-box;
 }
 form section.spacer:before {
-  background: #ffb890;
+  background: #f6a654;
+}
+form section.matting {
+  padding-left: 2em;
 }
 form section.matting:before {
   background: #d1d1d1;
@@ -463,7 +471,7 @@ form section.additional:before {
   background: #fc7f7f;
 }
 form section.strainer:before {
-  background: #ffe08e;
+  background: #ffe34e;
 }
 form label {
   display: block;
@@ -521,8 +529,9 @@ form input[disabled] {
   padding: 10px;
   box-sizing: border-box;
 }
-form button {
-  background: #fffad9;
+
+button {
+  background: #f7d700;
   margin: 0.5em 0;
   text-align: center;
   width: 100%;
@@ -530,7 +539,7 @@ form button {
   border: none;
   display: block;
 }
-form button:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -540,7 +549,7 @@ form button:hover {
 }
 
 #svg-glazing {
-  fill: rgba(163, 255, 203, 0.5);
+  fill: rgba(95, 224, 135, 0.4);
 }
 
 #svg-top,
@@ -552,7 +561,7 @@ form button:hover {
 }
 
 #svg-spacer {
-  fill: #ffb890;
+  fill: #f6a654;
 }
 
 #svg-board {
@@ -564,7 +573,7 @@ form button:hover {
 }
 
 #svg-strainer {
-  fill: #ffe08e;
+  fill: #ffe34e;
 }
 
 @media print {
