@@ -20,11 +20,8 @@
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				 viewBox="0 0 175 150" style="enable-background:new 0 0 150 150;" xml:space="preserve">
 			<style type="text/css">
-				.st0 {fill:#ffe08e;}
-				.st1{fill:#77D1F4;}
-				.st2{fill:#d1d1d1;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
 				.st3{stroke:#000000;stroke-miterlimit:10;}
-				.st4{fill:none;stroke:#000000;stroke-miterlimit:10;}
+				.st4{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
 			</style>
 			<g id="frame-group">
 				<g id="spacer-group">
@@ -44,26 +41,31 @@
 						<g id="notBottom">
 							<rect x="40.7" y="69.3" id="svg-board" class="st1" width="100" height="8"/>
 							<text x="150" y="75" id="measurement-backing" text-anchor="left">1/8"</text>
+
 							<g id="notBacking">
+								<g id="additional-group" style="display:none;">
+									<rect x="40.7" y="77.3" fill="rgb(252, 127, 127)" width="100" height="8" id="svg-additional" />
+									<text x="150" y="83" id="measurement-additional" text-anchor="left">0"</text>
+								</g>
 								<polygon id="svg-strainer" class="st0" points="48.1,77.3 40.7,77.3 40.7,127.3 90.7,127.3 "/>
-								<text x="150" y="100" id="measurement-strainer" text-anchor="left">1/2"</text>
+								<text x="150" y="110" id="measurement-strainer" text-anchor="left">1/2"</text>
 							</g>
 						</g>
 					</g>
 				</g>
-				<rect x="26.4" y="22.7" width="14.5" height="115" fill="rgb(133, 61, 15)" />
 				<rect x="26.4" y="22.7" width="30" height="9.8" fill="rgb(133, 61, 15)" />
 
-					<rect x="40.7" y="32.5" class="st4" width="100" height="8"/>
+					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing"/>
 					<text x="150" y="38" id="measurement-glazing" text-anchor="left">1/8"</text>
 
 			</g>
+			<rect x="26.4" y="22.7" width="14.5" height="104.60000610351562" fill="rgb(133, 61, 15)" id="frameside" />
 			<!-- <polygon id="svg-frame" class="st3" points="60.9,22.7 60.9,32.5 40.7,32.5 40.7,127.3 26.4,127.3 26.4,22.7 "/> -->
 			<g>
-				<line class="st4" x1="17.5" y1="32.5" x2="9.3" y2="32.5"/>
-				<line class="st4" x1="17.5" y1="137.7" x2="9.3" y2="137.7"/>
-				<line class="st4" x1="13.4" y1="137.7" x2="13.4" y2="95"/>
-				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="32.5"/>
+				<!-- <line class="st4" x1="17.5" y1="32.5" x2="9.3" y2="32.5"/>
+				<line class="st4" x1="17.5" y1="137.7" x2="9.3" y2="137.7"/> -->
+				<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95"/>
+				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52"/>
 
 				<text x="13.4" y="84" id="svg-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
 			</g>
@@ -115,6 +117,10 @@
 				<section class="strainer">
 					<label for="strainer">Strainer</label>
 					<input type="text" id="strainer" value="1/2"></input>
+				</section>
+				<section class="additional">
+					<label for="additional">Additional Material</label>
+					<input type="text" id="additional" value="0"></input>
 				</section>
 
 				<label for="remaining">Remaining Space</label>

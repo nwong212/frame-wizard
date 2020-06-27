@@ -447,8 +447,7 @@ form section.frame:before {
   background: #853d0f;
 }
 form section.glazing:before {
-  background: transparent;
-  border: 2px solid #000;
+  background: rgba(163, 255, 203, 0.5);
   box-sizing: border-box;
 }
 form section.spacer:before {
@@ -459,6 +458,9 @@ form section.matting:before {
 }
 form section.backing:before {
   background: #77D1F4;
+}
+form section.additional:before {
+  background: #fc7f7f;
 }
 form section.strainer:before {
   background: #ffe08e;
@@ -535,6 +537,34 @@ form button:hover {
 .negative {
   color: #ff5d5d;
   fill: #ff5d5d;
+}
+
+#svg-glazing {
+  fill: rgba(163, 255, 203, 0.5);
+}
+
+#svg-top,
+#svg-bottom {
+  fill: #d1d1d1;
+  stroke: #FFF;
+  stroke-width: 0.5;
+  stroke-miterlimit: 10;
+}
+
+#svg-spacer {
+  fill: #ffb890;
+}
+
+#svg-board {
+  fill: #77D1F4;
+}
+
+#svg-additional {
+  fill: #fc7f7f;
+}
+
+#svg-strainer {
+  fill: #ffe08e;
 }
 
 @media print {
