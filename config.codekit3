@@ -13,15 +13,34 @@
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "/build/.gitattributes",
-		"oF": 0
+		"oF": 1
 		},
 	"/build": {
 		"ft": 65536,
 		"oA": 1,
 		"oAP": "/build/build",
 		"oF": 0
+		},
+	"/README.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/build/README.html",
+		"oF": 1,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
 		},
 	"/source/frame-8.svg": {
 		"ft": 2097152,
@@ -72,25 +91,6 @@
 		"oAP": "/build/index.html",
 		"oF": 0
 		},
-	"/source/README.md": {
-		"cB": 0,
-		"cS": 0,
-		"eF": 1,
-		"eL": 1,
-		"ema": 1,
-		"eSQ": 1,
-		"ft": 4096,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/README.md",
-		"oF": 1,
-		"oFM": 0,
-		"oS": 0,
-		"pHT": 0,
-		"pME": 1,
-		"rFN": 0,
-		"uCM": 0
-		},
 	"/source/styles.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -110,7 +110,7 @@
 		"ma": 0,
 		"mi": 0,
 		"oA": 0,
-		"oAP": "/build/frame-wizard/wizard.js",
+		"oAP": "/build/wizard.js",
 		"oF": 3,
 		"sC": 3,
 		"tS": 0
@@ -126,7 +126,7 @@
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "brackets-koamaru",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 614920305.56015694
+	"lastBuiltDate": 615076588.11658001
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
