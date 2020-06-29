@@ -31,46 +31,48 @@ function eventWindowLoaded() {
 function frameDesign() {
 
 	var rabbet = document.getElementById("rabbet");
+	var rabbetEl = document.getElementById('frameside');
+	var spacer = document.getElementById("spacer");
+	var spacerEl = document.getElementById("svg-spacer");
 	var topSelect = document.getElementById("topMat");
+	var topEl = document.getElementById('svg-top');
 	var bottomSelect = document.getElementById("bottomMat");
+	var bottomEl = document.getElementById('svg-bottom');
 	var backingBoard = document.getElementById("backing");
+	var backingEl = document.getElementById('svg-board');
 	var additional = document.getElementById("additional");
+	var additionalEl = document.getElementById('svg-additional');
 	var strainer = document.getElementById("strainer");
+	var strainerEl = document.getElementById('svg-strainer');
+	var strainerX = document.getElementById('svg-x')
 	var glazing = document.getElementById("glazing");
+	var glazingEl = document.getElementById('svg-glazing');
 	var form = document.getElementById('frameCalc');
 	var remainder = document.getElementById('remaining');
 	var svgRemainder = document.getElementById('measurement-remainder');
 
-
-
-
-
-
+//When Rabbet Changes
 	rabbet.addEventListener("input", rabbetChanged);
 
 	function rabbetChanged() {
 		document.getElementById("measurement-rabbet").textContent = rabbet.value + "\42";
 	}
 
-	var spacer = document.getElementById("spacer");
-
+//When Spacer Changes
 	spacer.addEventListener("input", spacerd);
-
 
 	function spacerd() {
 
 		document.getElementById("measurement-spacer").textContent = spacer.value + "\42";
 
-		if (spacer.value.length != 0 && spacer.value > 0) {
-			document.getElementById("notSpacer").setAttribute("transform", "translate(0 0)");
+		if (spacer.value.length == 0 || spacer.value == 0) {
 
-			document.getElementById("spacer-group").style.display = "inline";
-
-
-		} else if (spacer.value.length == 0 || spacer.value == 0) {
-			document.getElementById("notSpacer").setAttribute("transform", "translate(0 -20.8)");
+			spacer.value = 0
 
 			document.getElementById("spacer-group").style.display = "none";
+		} else {
+
+			document.getElementById("spacer-group").style.display = "inline";
 		}
 	}
 
@@ -84,20 +86,16 @@ function frameDesign() {
 
 		if (topSelect.value == "1/16") {
 			document.getElementById("top-group").style.display = "inline";
-			document.getElementById("notTop").setAttribute("transform", "translate(0 0)");
 
 			document.getElementById("svg-top").setAttribute("points", "103.5,61.3 40.7,61.3 40.7,65.3 109.2,65.3 ");
 
 		} else if (topSelect.value == "1/8") {
 			document.getElementById("top-group").style.display = "inline";
-			document.getElementById("notTop").setAttribute("transform", "translate(0 4)");
 
 			document.getElementById("svg-top").setAttribute("points", "103.5,61.3 40.7,61.3 40.7,69.3 109.2,69.3");
 
 		} else if (topSelect.value == "0") {
 			document.getElementById("top-group").style.display = "none";
-
-			document.getElementById("notTop").setAttribute("transform", "translate(0 -4)");
 		}
 	}
 
@@ -116,8 +114,6 @@ function frameDesign() {
 			document.getElementById("svg-bottom").style.display = "inline";
 			document.getElementById("measurement-bottom").style.display = "inline";
 
-			document.getElementById("notBottom").setAttribute("transform", "translate(0 0)");
-
 		} else if (bottomSelect.value == "1/8") {
 
 			document.getElementById("svg-bottom").setAttribute("height", "8");
@@ -125,13 +121,9 @@ function frameDesign() {
 			document.getElementById("svg-bottom").style.display = "inline";
 			document.getElementById("measurement-bottom").style.display = "inline";
 
-			document.getElementById("notBottom").setAttribute("transform", "translate(0 4)");
-
 		} else if (bottomSelect.value == "0") {
 			document.getElementById("svg-bottom").style.display = "none";
 			document.getElementById("measurement-bottom").style.display = "none";
-
-			document.getElementById("notBottom").setAttribute("transform", "translate(0 -4)");
 		}
 	}
 
@@ -142,17 +134,15 @@ function frameDesign() {
 	function backingChanged() {
 		document.getElementById("measurement-backing").textContent = backingBoard.value + "\42";
 
-		if (backingBoard.value == "0") {
+		if (backingBoard.value.length == 0 || backingBoard.value == "0") {
 			document.getElementById("svg-board").style.display = "none";
 			document.getElementById("measurement-backing").style.display = "none";
 
-			document.getElementById("notBacking").setAttribute("transform", "translate(0 -8)");
+			backingBoard.value = 0
 
 		} else {
 			document.getElementById("svg-board").style.display = "inline";
 			document.getElementById("measurement-backing").style.display = "inline";
-
-			document.getElementById("notBacking").setAttribute("transform", "translate(0 0)");
 		}
 
 	}
@@ -163,17 +153,12 @@ function frameDesign() {
 	function moreAdded() {
 		document.getElementById("measurement-additional").textContent = additional.value + "\42";
 
-
-		if (additional.value.length != 0 && additional.value > 0) {
-			document.getElementById("svg-strainer").setAttribute("transform", "translate(0 8)");
-
-			document.getElementById("additional-group").style.display = "inline";
-
-
-		} else if (additional.value.length == 0 || additional.value == 0) {
-			document.getElementById("svg-strainer").setAttribute("transform", "translate(0 0)");
-
+		if (additional.value.length == 0 || additional.value == 0) {
 			document.getElementById("additional-group").style.display = "none";
+			additional.value = 0
+		} else {
+
+		document.getElementById("additional-group").style.display = "inline";
 		}
 	}
 
@@ -184,9 +169,10 @@ function frameDesign() {
 	function strainerChanged() {
 		document.getElementById("measurement-strainer").textContent = strainer.value + "\42";
 
-		if (strainer.value == "0") {
+		if (strainer.value.length == 0 || strainer.value == "0") {
 			document.getElementById("svg-strainer").style.display = "none";
 			document.getElementById("measurement-strainer").style.display = "none";
+			strainer.value = 0
 		} else {
 			document.getElementById("svg-strainer").style.display = "inline";
 			document.getElementById("measurement-strainer").style.display = "inline";
@@ -200,16 +186,13 @@ function frameDesign() {
 	function glazingChanged() {
 		document.getElementById("measurement-glazing").textContent = glazing.value + "\42";
 
-		if (glazing.value == "0") {
+		if (glazing.value == "0" || glazing.length == 0) {
 			document.getElementById("svg-glazing").style.display = "none";
 			document.getElementById("measurement-glazing").style.display = "none";
-
-			document.getElementById("notGlazing").setAttribute("transform", "translate(0 -8)");
+			glazing.value = 0;
 		} else {
 			document.getElementById("svg-glazing").style.display = "inline";
 			document.getElementById("measurement-glazing").style.display = "inline";
-
-			document.getElementById("notGlazing").setAttribute("transform", "translate(0 0)");
 		}
 
 
@@ -226,14 +209,14 @@ function frameDesign() {
 		//defining our values list
 
 		var values = [
-			rabbet.value, //1
-			glazing.value, //2
-			spacer.value, //3
-			topSelect.value, //4
-			bottomSelect.value, //5
-			backingBoard.value, //6
-			strainer.value, //7
-			additional.value];//8
+			rabbet.value, //0
+			glazing.value, //1
+			spacer.value, //2
+			topSelect.value, //3
+			bottomSelect.value, //4
+			backingBoard.value, //5
+			strainer.value, //6
+			additional.value];//7
 
 
 		//taking those values and converting them from fractions to decimals
@@ -260,17 +243,84 @@ function frameDesign() {
 		//Subtracting the frame package from the rabbet depth.
 		var maths = values[0] - noRabbet.reduce((a, b) => a + b, 0)
 
-		//changing depths of elements based on input
+
+		//scale elements to size on screen
+
+		var scaledElements = values.map(function(x) { return x * 64; });
 
 		//Rabbet
+		var rabbetHeight = scaledElements[0]
 
-		var frameSide = document.getElementById('frameside')
+		rabbetEl.setAttribute("height", rabbetHeight + 10)
+
+		//Glazing : Standard height = 8
+		var glazingHeight = scaledElements[1]
+		var glazingDiff = glazingHeight - 8
+
+		glazingEl.setAttribute("height", glazingHeight)
+
+		document.getElementById("notGlazing").setAttribute("transform", "translate(0 " + glazingDiff + ")")
+
+		//Spacer
+		var spacerHeight = scaledElements[2]
+		var spacerDiff = spacerHeight - 40
+
+		spacerEl.setAttribute("height", spacerHeight)
+
+		document.getElementById("notSpacer").setAttribute("transform", "translate(0 " + spacerDiff + ")")
+
+		document.getElementById("measurement-spacer").setAttribute("y", spacerHeight / 2 + 40.5)
+
+		//Top Mat
+		var topHeight = scaledElements[3];
+		var topDiff = topHeight - 4;
+
+		topEl.setAttribute("height", topHeight);
+
+		document.getElementById("notTop").setAttribute("transform", "translate(0 " + topDiff + ")");
+
+
+
+		// topEl.setAttribute("height", spacerHeight)
+
+		//Bottom Mat
+		var bottomHeight = scaledElements[4];
+		var bottomDiff = bottomHeight - 4;
+
+		bottomEl.setAttribute("height", bottomHeight);
+
+		document.getElementById("notBottom").setAttribute("transform", "translate(0 " + bottomDiff + ")");
+
+		//Backing
+		var backingHeight = scaledElements[5];
+		var backingDiff = backingHeight - 8;
+
+		backingEl.setAttribute("height", backingHeight);
+
+		document.getElementById("notBacking").setAttribute("transform", "translate(0 " + backingDiff + ")");
+
+		//Strainer
+		var strainerHeight = scaledElements[6]
+		var strainerDiff = strainerHeight - 32
+		var strainerY = 128.5 + strainerDiff
+
+		strainerEl.setAttribute("height", strainerHeight);
+		strainerX.setAttribute("y2", strainerY)
+
+		// strainerEl.setAttribute("height", strainerHeight)
+
+		//Additional
+		var additionalHeight = scaledElements [7]
+
+		additionalEl.setAttribute("height", additionalHeight)
+
+		document.getElementById("strainer-group").setAttribute("transform", "translate(0 " + additionalHeight + ")");
 
 		// var frameHeight = document.getElementById('frame-group').getBBox().height
 
 		// console.log(values);
-		// remainder.value = numberToFraction(maths) + "\42"
-		// svgRemainder.textContent = numberToFraction(maths)  + "\42"
+		remainder.value = numberToFraction(maths) + "\42"
+		svgRemainder.textContent = numberToFraction(maths)  + "\42"
 
 		var fractioned;
 		var nonNeg;
