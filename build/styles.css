@@ -81,8 +81,7 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -398,9 +397,10 @@ svg .x-marks-thespot {
     width: 100%;
     overflow: visible;
     height: 40vh;
+    padding: 0;
   }
   .diagram svg {
-    width: 90%;
+    width: 100%;
     max-height: 100%;
   }
 }
