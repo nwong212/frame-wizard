@@ -180,8 +180,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 				<label for="remaining">Recess</label>
 				<input type="text" id="remaining" disabled value="0"></input>
-				<button class="print" onClick="window.print()">Print</button>
-				<button class="reset" onClick="document.getElementById("frameCalc").reset()">Reset</button>
+				<button id="print" class="print" onClick="window.print(); return false">Print</button>
+				<button id="reset" class="reset" onClick="document.getElementById("frameCalc").reset(); return false">Reset</button>
 			</form>
 			<p class="footer">
 				<a href="https://github.com/nwong212/frame-wizard">Github</a>
