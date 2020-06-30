@@ -22,6 +22,9 @@ html {
 	font-family: 'Anonymous Pro', monospace;
 	font-size:100%;
 	font-size: 18px;
+	@media screen and (max-width:45em) {
+		font-size: 14px;
+	}
 }
 body {
 	display: flex;
@@ -75,7 +78,6 @@ svg {
 	// }
 }
 section {
-	padding: 2em;
 	display:flex;
 	flex-direction: column;
 	align-items: center;
@@ -90,10 +92,13 @@ section {
 	width:75%;
 	height:100vh;
 	overflow:hidden;
+	@media screen and (max-width:70em) {
+		width:60%;
+	}
 	@media screen and (max-width:45em) {
 		width:100%;
 		overflow:visible;
-		height:40vh;
+		height:50vh;
 		padding:0;
 		svg {
 			width:100%;
@@ -106,35 +111,47 @@ section {
 	overflow:auto;
 	width:25%;
 	border-left:1px solid $gray;
-	align-items: flex-start;
-	justify-content: flex-start;
+	@media screen and (max-width:70em) {
+		width:40%;
+	}
 	@media screen and (max-width:45em) {
 		width:100%;
-		height:60vh;
+		height:50vh;
 		border-left:none;
 	}
 }
 
 form {
 	text-align:right;
-	padding: 0;
-	white-space: nowrap;
+	padding: 1.5em;
+	box-sizing: border-box;
+	width:100%;
+	max-height:100vh;
+	overflow:auto;
 	section {
+		// white-space: nowrap;
 		width:100%;
 		padding:0;
-		display:block;
-		margin:0.5em 0 0;
+		display:flex;
+		flex-direction: row;
+		// margin:0.5em 0;
 		position:relative;
+		align-items: center;
+		justify-content: center;
+		padding-left: 1.5em;
+		border-bottom:2px solid $gray;
 
 		&:before {
 			content:' ';
-			width:1em;
-			height:1em;
+			width:1rem;
+			height:1rem;
+			font-size:0;
 			border-radius:50%;
 			background-color:yellow;
-			position:absolute;
-			top:1.75em;
-			left:0.25em;
+			position:relative;
+			left:-1.5rem;
+			// top:50%;
+			// left:0.25em;
 		}
 
 		&.frame {
@@ -154,7 +171,7 @@ form {
 			}
 		}
 		&.matting {
-			padding-left:2em;
+			// padding-left:2em;
 			&:before {
 				background: rgb(190,190,190);
 				background: linear-gradient(180deg, rgba(190,190,190,1) 50%, rgba(209,209,209,1) 50%);
@@ -180,13 +197,30 @@ form {
 				background: rgb(36, 86, 122);
 			}
 		}
+		&.recess {
+			margin:0.5em 0;
+			border-bottom:0;
+			padding:0;
+			label {
+				flex-basis: 40%;
+				text-align:center;
+			}
+			input {
+				flex-basis: 60%
+			}
+			&:before {
+				content:'';
+				display:none;
+				visibility: hidden;
+			}
+		}
 	}
 	label {
-		display:block;
-		font-size: 0.85em;
-		margin:0;
-		margin-top: 1em;
-		margin-bottom: 0.25em;
+		display:inline-block;
+		flex-basis:60%;
+		font-size: 80%;
+		margin:0 0;
+		padding-right: 0.25em;
 		color:#000;
 		&:first-child {
 			margin-top:0;
@@ -208,14 +242,16 @@ form {
 		padding:10px 0;
 		text-align:right;
 		border:none;
-		border-bottom:2px solid $gray;
+		// border-bottom:2px solid $gray;
 		margin:auto;
 		width: 100%;
-		background:transparent;
+		background: color.scale($gray, $alpha: -80%);
 	}
 	input {
 		word-spacing: 0.5em;
 		-webkit-appearance: none;
+		flex-basis:40%;
+		display:inline-block;
 	}
 	.top, .bottom {
 		text-align:left;
@@ -234,9 +270,9 @@ form {
 	input[disabled] {
 		// border-bottom:none;
 		-webkit-appearance: none;
-		background:rgb(221, 221, 221);
+		// background:rgb(221, 221, 221);
 		opacity: 1;
-		border-radius: 5px;
+		// border-radius: 5px;
 		font-size:1.5rem;
 		padding:10px;
 		box-sizing:border-box;
@@ -245,12 +281,19 @@ form {
 
 button {
 	background: $primary;
-	margin: 0.5em 0;
+	// margin: 0.5em 0;
 	text-align:center;
 	width:100%;
 	padding:0.5em;
 	border:none;
 	display:block;
+	&#print, &#download {
+		width:50%;
+		float:left;
+	}
+	&#download {
+		background: color.scale($primary, $lightness: 25%);
+	}
 	&#reset {
 		background: color.scale($primary, $lightness: 60%)
 	}
