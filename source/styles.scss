@@ -49,6 +49,11 @@ main {
 svg {
 	width:80%;
 	height:auto;
+	margin-bottom:-10vh;
+	#key {
+		display:none;
+		visiblity:hidden;
+	}
 	// [id^="measurement-"] {
 	// 	font-size: 3pt;
 	// 	word-spacing: 0.5em;

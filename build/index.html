@@ -66,8 +66,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<main class="main-content">
 		<section class="diagram">
 			<!-- <canvas id="diagramA" width="400" height="400"></canvas> -->
-			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 viewBox="-10 10 180 180" style="enable-background:new 0 0 150 150;" xml:space="preserve">
+			<svg version="1.1" id="frame-diagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				 viewBox="-10 10 180 200" style="enable-background:new 0 0 150 150;" xml:space="preserve">
 				 <style type="text/css">
 				 	* {
 					 font-family:  'Anonymous Pro', monospace;
@@ -195,8 +195,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<text x="145" y="90%" id="remainder-title" text-anchor="end">Recess:</text>
 			<text x="150" y="90%" id="measurement-remainder" text-anchor="left">0"</text>
 
-			<text x="5%" y="98%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
+			<text x="0" y="90%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
+			<g id="key" transform="
+                translate(0 190)
+                scale(0.1)">
+				<g>
+					<circle cx="87.6" cy="100" r="27.4" fill="rgba(95, 224, 135, 0.25)"/>
+					<text transform="matrix(1 0 0 1 132.5023 105.7499)" class="st0 st1">Glazing</text>
+				</g>
+				<g>
+					<circle cx="271.2" cy="100" r="27.4" fill="#f6a654"/>
+					<text transform="matrix(1 0 0 1 316.1171 105.7499)" class="st0 st1">Spacer</text>
+				</g>
+				<g>
+					<path d="M470.4,100c0,15.1-12.3,27.4-27.4,27.4c-15.1,0-27.4-12.3-27.4-27.4H470.4z" fill="#d1d1d1"/>
+					<path d="M415.6,100c0-15.1,12.3-27.4,27.4-27.4c15.1,0,27.4,12.3,27.4,27.4H415.6z" fill="#bebebe"/>
+					<text transform="matrix(1 0 0 1 487.9762 105.7499)" class="st0 st1">Top/Bottom Mat</text>
+				</g>
+				<g>
+					<circle cx="892.6" cy="100" r="27.4" fill="#77D1F4"/>
+					<text transform="matrix(1 0 0 1 937.4925 105.7499)" class="st0 st1">Backing</text>
+				</g>
+				<g>
+					<circle cx="1400.8" cy="100" r="27.4" fill="#ffe34e"/>
+					<text transform="matrix(1 0 0 1 1445.7847 105.7499)" class="st0 st1">Strainer</text>
+				</g>
+				<g>
+					<circle cx="1076.2" cy="100" r="27.4" fill="rgb(252, 127, 127)"/>
+					<text transform="matrix(1 0 0 1 1121.1077 105.7499)" class="st0 st1">Additional Material</text>
+				</g>
+				<g>
+					<circle cx="708.9" cy="100" r="27.4" fill="rgb(36, 86, 122)"/>
+					<text transform="matrix(1 0 0 1 753.877 105.7499)" class="st0 st1">Artwork</text>
+				</g>
+			</g>
+
 			</svg>
+
 
 		</section>
 		<section class="form">
@@ -260,7 +295,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<a href="https://github.com/nwong212/frame-wizard">Github</a>
 			</p>
 
-			<canvas id="downloadable" width="1600" height = "1600"></canvas>
+			<canvas id="downloadable" width="1800" height = "2000"></canvas>
 
 		</section>
 	</main>

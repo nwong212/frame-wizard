@@ -465,8 +465,8 @@ function downloadSVG() {
 			var url = DOMURL.createObjectURL(svgBlob);
 
 			img.onload = function () {
-				ctx.clearRect(0, 0, 1600, 1600);
-			  ctx.drawImage(img, 0, 0, 1600, 1600);
+				ctx.clearRect(0, 0, 1800, 2000);
+			  ctx.drawImage(img, 0, 0, 1800, 2000);
 			  DOMURL.revokeObjectURL(url);
 
 			  var imgURI = canvas
