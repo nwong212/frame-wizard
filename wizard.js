@@ -26,6 +26,8 @@ window.addEventListener("load", eventWindowLoaded, false);
 
 function eventWindowLoaded() {
 	frameDesign();
+	downloadSVG();
+	setYPosition(); //Set the Y for all elements at start
 }
 
 function frameDesign() {
@@ -38,6 +40,8 @@ function frameDesign() {
 	var topEl = document.getElementById('svg-top');
 	var bottomSelect = document.getElementById("bottomMat");
 	var bottomEl = document.getElementById('svg-bottom');
+	var artwork = document.getElementById('artwork');
+	var artworkEl = document.getElementById('svg-artwork');
 	var backingBoard = document.getElementById("backing");
 	var backingEl = document.getElementById('svg-board');
 	var additional = document.getElementById("additional");
@@ -79,7 +83,9 @@ function frameDesign() {
 			bottomSelect.value, //4
 			backingBoard.value, //5
 			strainer.value, //6
-			additional.value];//7
+			additional.value, //7
+			artwork.value //8
+		];
 
 
 		//taking those values and converting them from fractions to decimals
@@ -132,8 +138,6 @@ function frameDesign() {
 
 		document.getElementById("notSpacer").setAttribute("transform", "translate(0 " + spacerDiff + ")")
 
-		document.getElementById("measurement-spacer").setAttribute("y", spacerHeight / 2 + 40.5)
-
 		//Top Mat
 		var topHeight = scaledElements[3];
 		var topDiff = topHeight - 4;
@@ -149,6 +153,14 @@ function frameDesign() {
 		bottomEl.setAttribute("height", bottomHeight);
 
 		document.getElementById("notBottom").setAttribute("transform", "translate(0 " + bottomDiff + ")");
+
+		//Artwork Depth
+		var artHeight = scaledElements[8]
+		var artDiff = artHeight
+
+		artworkEl.setAttribute("height", artHeight)
+
+		document.getElementById("notArtwork").setAttribute("transform", "translate(0 " + artDiff + ")")
 
 		//Backing
 		var backingHeight = scaledElements[5];
@@ -216,9 +228,8 @@ function frameDesign() {
 		// 	frameSide.setAttribute("height", frameHeight + 5)
 		//
 		// }
+		setYPosition();
 	}
-
-
 
 //When Rabbet Changes
 	rabbet.addEventListener("input", rabbetChanged);
@@ -244,7 +255,7 @@ function frameDesign() {
 		}
 	}
 
-	//Top Mat
+	//when Top Mat changes
 
 	topSelect.addEventListener("change", topChange, false);
 
@@ -267,7 +278,7 @@ function frameDesign() {
 		}
 	}
 
-	//Bottom Mat
+	//when Bottom Mat changes
 
 	bottomSelect.addEventListener("change", bottomChange, false);
 
@@ -295,7 +306,23 @@ function frameDesign() {
 		}
 	}
 
-	//Backing Board
+	//when art depth changes
+
+	artwork.addEventListener("input", artChanged);
+
+	function artChanged() {
+		document.getElementById("measurement-artwork").textContent = artwork.value + "\42";
+
+		if (artwork.value.length == 0 || artwork.value == "0" || artwork.value =="") {
+			document.getElementById("artwork-group").style.display = "none";
+
+		} else {
+			document.getElementById("artwork-group").style.display = "inline";
+		}
+
+	}
+
+	//when Backing Board changes
 
 	backingBoard.addEventListener("input", backingChanged);
 
@@ -338,7 +365,7 @@ function frameDesign() {
 			document.getElementById("svg-strainer").style.display = "none";
 			document.getElementById("measurement-strainer").style.display = "none";
 		} else {
-			document.getElementById("svg-strainer").style.display = "inline";
+			document.getElementById("svg-strainer").style.display = "inline"
 			document.getElementById("measurement-strainer").style.display = "inline";
 		}
 
@@ -403,4 +430,78 @@ function frameDesign() {
 		}
 		return amount;
 	};
+}
+
+//add art depth
+//add svg to png
+
+function downloadSVG() {
+	var btn = document.getElementById('download');
+	var svg = document.querySelector('svg');
+
+	function triggerDownload (imgURI) {
+		var evt = new MouseEvent('click', {
+		  view: window,
+		  bubbles: false,
+		  cancelable: true
+		});
+
+		var a = document.createElement('a');
+		a.setAttribute('download', 'frame-diagram.png');
+		a.setAttribute('href', imgURI);
+		a.setAttribute('target', '_blank');
+
+		a.dispatchEvent(evt);
+		}
+
+		btn.addEventListener('click', function () {
+			var canvas = document.getElementById('downloadable');
+			var ctx = canvas.getContext('2d');
+			var data = (new XMLSerializer()).serializeToString(svg);
+			var DOMURL = window.URL || window.webkitURL || window;
+
+			var img = new Image();
+			var svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
+			var url = DOMURL.createObjectURL(svgBlob);
+
+			img.onload = function () {
+				ctx.clearRect(0, 0, 1600, 1600);
+			  ctx.drawImage(img, 0, 0, 1600, 1600);
+			  DOMURL.revokeObjectURL(url);
+
+			  var imgURI = canvas
+			      .toDataURL('image/png')
+			      .replace('image/png', 'image/octet-stream');
+
+			  triggerDownload(imgURI);
+			};
+
+			img.src = url;
+		});
+}
+function setYPosition() {
+	var label = Array.from(document.getElementsByClassName("label"));
+	var sibling;
+	var height;
+	var y;
+
+	// console.log(document.getElementById("svg-strainer"))
+
+	label.forEach((el) => {
+			sibling = el.previousElementSibling;
+
+			y = parseFloat(sibling.getAttribute("y"))
+			height = parseFloat(sibling.getAttribute("height"));
+
+			var yPosition = height / 2 + y + 1;
+
+			el.setAttribute("y", yPosition);
+
+			// console.log(el.id + y + " " + height);
+
+
+	});
+
+
+
 }

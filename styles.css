@@ -367,24 +367,20 @@ svg {
   width: 80%;
   height: auto;
 }
-svg [id^=measurement-] {
-  font-size: 3pt;
-  word-spacing: 0.5em;
+
+section {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
-svg #remainder-title, svg #measurement-remainder {
-  font-size: 3.5pt;
-}
-svg #diagram-note {
-  font-size: 2.25pt;
-  fill: #9da1ac;
-  font-style: italic;
-}
-svg #measurement-rabbet {
-  font-size: 5pt;
-}
-svg .x-marks-thespot {
-  stroke-width: 0.5;
-  stroke: #FFF;
+@media screen and (max-width: 45em) {
+  section {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .diagram {
@@ -411,28 +407,13 @@ svg .x-marks-thespot {
   width: 25%;
   border-left: 1px solid #9da1ac;
   align-items: flex-start;
+  justify-content: flex-start;
 }
 @media screen and (max-width: 45em) {
   .form {
     width: 100%;
     height: 60vh;
     border-left: none;
-    justify-content: flex-start;
-  }
-}
-
-section {
-  padding: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 45em) {
-  section {
-    width: 100%;
-    height: auto;
   }
 }
 
@@ -472,7 +453,8 @@ form section.matting {
   padding-left: 2em;
 }
 form section.matting:before {
-  background: #d1d1d1;
+  background: #bebebe;
+  background: linear-gradient(180deg, #bebebe 50%, #d1d1d1 50%);
 }
 form section.backing:before {
   background: #77D1F4;
@@ -482,6 +464,9 @@ form section.additional:before {
 }
 form section.strainer:before {
   background: #ffe34e;
+}
+form section.artwork:before {
+  background: #24567a;
 }
 form label {
   display: block;
@@ -552,6 +537,9 @@ button {
   border: none;
   display: block;
 }
+button#reset {
+  background: #fff196;
+}
 button:hover {
   cursor: pointer;
 }
@@ -561,40 +549,17 @@ button:hover {
   fill: #ff5d5d;
 }
 
-#svg-glazing {
-  fill: rgba(95, 224, 135, 0.25);
-}
-
-#svg-top,
-#svg-bottom {
-  fill: #d1d1d1;
-  stroke: #FFF;
-  stroke-width: 0.5;
-  stroke-miterlimit: 10;
-}
-
-#svg-spacer {
-  fill: #f6a654;
-}
-
-#svg-board {
-  fill: #77D1F4;
-}
-
-#svg-additional {
-  fill: #fc7f7f;
-}
-
-#svg-strainer {
-  fill: #ffe34e;
-}
-
 .footer {
   font-size: 90%;
 }
 
 a {
   color: #fc7f7f;
+}
+
+canvas {
+  display: none;
+  visiblity: hidden;
 }
 
 @media print {

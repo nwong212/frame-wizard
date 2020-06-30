@@ -28,7 +28,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <head>
 	<meta charset="utf-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,">
 
 	<!--Apple Tags -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -67,49 +67,117 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<section class="diagram">
 			<!-- <canvas id="diagramA" width="400" height="400"></canvas> -->
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 viewBox="0 10 180 180" style="enable-background:new 0 0 150 150;" xml:space="preserve">
-			<style type="text/css">
-				.st3{stroke:#000000;stroke-miterlimit:10;}
-				.st4{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
-			</style>
+				 viewBox="-10 10 180 180" style="enable-background:new 0 0 150 150;" xml:space="preserve">
+				 <style type="text/css">
+				 	* {
+					 font-family:  'Anonymous Pro', monospace;
+					 font-size:100%;
+					 font-size: 18px;
+					}
+					 [id^=measurement-] {
+						 font-size: 3pt;
+						 word-spacing: 0.5em;
+					 }
+					 #remainder-title,
+					 #measurement-remainder {
+						 font-size: 3.5pt;
+					 }
+					 #diagram-note {
+						 font-size: 2.25pt;
+						 fill: #9da1ac;
+						 font-style: italic;
+					 }
+					 #measurement-rabbet {
+						 font-size: 5pt;
+					 }
+					 .x-marks-thespot {
+						 stroke-width: 0.5;
+						 stroke: #FFF;
+					 }
+
+					 #svg-glazing {
+						 fill: rgba(95, 224, 135, 0.25);
+					 }
+
+					 #svg-top {
+						 fill: #bebebe;
+					 }
+					 #svg-bottom {
+						 fill: #d1d1d1;
+					 }
+					 #svg-artwork {
+						 fill: rgb(36, 86, 122);
+					 }
+
+					 #svg-spacer {
+						 fill: #f6a654;
+					 }
+
+					 #svg-board {
+						 fill: #77D1F4;
+					 }
+
+					 #svg-additional {
+						 fill: #fc7f7f;
+					 }
+
+					 #svg-strainer {
+						 fill: #ffe34e;
+					 }
+					 .negative {
+					   color: #ff5d5d;
+					   fill: #ff5d5d;
+					 }
+
+				 </style>
 			<g id="frame-group">
 				<g id="notGlazing">
 					<g id="spacer-group">
-						<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#ffb890" width="8" height="40"/>
+						<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#f6a654" width="8" height="40"/>
 
-						<text x="150" y="50" id="measurement-spacer" text-anchor="left">5/8"</text>
+						<text x="150" y="50" id="measurement-spacer" text-anchor="left" class="label">5/8"</text>
 					</g> <!-- Spacer Group -->
 
 					<g id="notSpacer">
 						<g id="top-group">
-							<rect x="40.7" y="80.5" id="svg-top" class="st2" width="100" height="4"/>
-							<text x="150" y="83.7" id="measurement-top" text-anchor="left">1/16"</text>
+							<rect x="40.7" y="80.5" id="svg-top" class="st2" width="100" height="4" fill="#d1d1d1"/>
+							<text x="150" y="83.7" id="measurement-top" text-anchor="left" class="label">1/16"</text>
 						</g><!-- Top Group -->
-						<g id="notTop">
-							<rect x="40.7" y="84.5" id="svg-bottom" class="st2" width="100" height="4"/>
-							<text x="150" y="88.2" id="measurement-bottom" text-anchor="left">1/16"</text>
-							<g id="notBottom">
-								<rect x="40.7" y="88.5" id="svg-board" class="st1" width="100" height="8"/>
-								<text x="150" y="94.2" id="measurement-backing" text-anchor="left">1/8"</text>
 
-								<g id="notBacking">
-									<g id="additional-group" style="display:none;">
-										<rect x="40.7" y="96.5" fill="rgb(252, 127, 127)" width="100" height="8" id="svg-additional" />
-										<text x="150" y="102.2" id="measurement-additional" text-anchor="left">0"</text>
-									</g><!-- Additional Group -->
-									<g id="strainer-group">
-										<rect x="40.7" y="96.5" id="svg-strainer" class="st2" width="64" height="32"/>
-										<line x1="40.7" y1="96.5" x2="104.7" y2="128.5" class="x-marks-thespot" id="svg-x" />
-									<text x="150" y="110" id="measurement-strainer" text-anchor="left">1/2"</text>
-								</g><!-- Strainer-->
-								</g><!-- Not backing Group -->
-							</g><!-- Not Bottom Group -->
+						<g id="notTop">
+							<g id="artwork-group" style="display: none;" >
+								<rect x="40.7" y="84.5" id="svg-artwork" width="100" height="1"/>
+								<text x="150" y="88" id="measurement-artwork" text-anchor="left" class="label">1/32"</text>
+							</g> <!--- Artwork -->
+
+							<g id="notArtwork">
+								<rect x="40.7" y="84.5" id="svg-bottom" class="st2" width="100" height="4" fill="#d1d1d1"/>
+								<text x="150" y="88.2" id="measurement-bottom" text-anchor="left" class="label">1/16"</text>
+
+								<g id="notBottom">
+									<rect x="40.7" y="88.5" id="svg-board" class="st1" width="100" height="8" fill="#77D1F4"/>
+									<text x="150" y="94.2" id="measurement-backing" text-anchor="left" class="label">1/8"</text>
+
+									<g id="notBacking">
+										<g id="additional-group" style="display:none;">
+											<rect x="40.7" y="96.5" fill="rgb(252, 127, 127)" width="100" height="8" id="svg-additional" />
+											<text x="150" y="102.2" id="measurement-additional" text-anchor="left" class="label">0"</text>
+										</g><!-- Additional Group -->
+
+										<g id="strainer-group">
+											<rect x="40.7" y="96.5" id="svg-strainer" class="st2" width="64" height="32" fill="#ffe34e" />
+											<text x="150" y="110" id="measurement-strainer" text-anchor="left" class="label">1/2"</text>
+											<line x1="40.7" y1="96.5" x2="104.7" y2="128.5" class="x-marks-thespot" id="svg-x" stroke="#FFF" stroke-width="0.25"/>
+										</g><!-- Strainer-->
+									</g><!-- Not backing Group -->
+								</g><!-- Not Bottom Group -->
+							</g><!-- Not Artwork Group -->
 						</g><!-- Not Top Group -->
 					</g> <!-- Not Spacer Group -->
 				</g><!-- not Glazing -->
 
-					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing"/>
-					<text x="150" y="38" id="measurement-glazing" text-anchor="left">1/8"</text>
+					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing" fill="rgba(95, 224, 135, 0.25)" />
+					<text x="150" y="38" id="measurement-glazing" text-anchor="left" class="label">1/8"</text>
 
 					<rect x="26.4" y="22.7" width="25" height="10" fill="rgb(133, 61, 15)" id="frame-cap" />
 
@@ -119,13 +187,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<g>
 				<!-- <line class="st4" x1="17.5" y1="32.5" x2="9.3" y2="32.5"/>
 				<line class="st4" x1="17.5" y1="137.7" x2="9.3" y2="137.7"/> -->
-				<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95"/>
-				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52"/>
+				<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95" fill="none" stroke="#000000" stroke-width="0.25" />
+				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52" fill="none" stroke="#000000" stroke-width="0.25"/>
 
 				<text x="13.4" y="84" id="measurement-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
 			</g>
-			<text x="145" y="135" id="remainder-title" text-anchor="end">Recess:</text>
-			<text x="150" y="135" id="measurement-remainder" text-anchor="left">0"</text>
+			<text x="145" y="90%" id="remainder-title" text-anchor="end">Recess:</text>
+			<text x="150" y="90%" id="measurement-remainder" text-anchor="left">0"</text>
 
 			<text x="5%" y="98%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
 			</svg>
@@ -165,6 +233,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						</select>
 					</div>
 				</section>
+				<section class="artwork">
+					<label for="artwork">Art Depth</label>
+					<input type="text" id="artwork" value="0" class="values"></input>
+				</section>
 				<section class="backing">
 					<label for="backing">Backing</label>
 					<input type="text" id="backing" value="1/8" class="values"></input>
@@ -181,11 +253,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<label for="remaining">Recess</label>
 				<input type="text" id="remaining" disabled value="0"></input>
 				<button id="print" class="print" onClick="window.print(); return false">Print</button>
+				<button id="download" onClick="return false" class="download">Download</button>
 				<button id="reset" class="reset" onClick="document.getElementById("frameCalc").reset(); return false">Reset</button>
 			</form>
 			<p class="footer">
 				<a href="https://github.com/nwong212/frame-wizard">Github</a>
 			</p>
+
+			<canvas id="downloadable" width="1600" height = "1600"></canvas>
 
 		</section>
 	</main>
