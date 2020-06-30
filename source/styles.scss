@@ -343,7 +343,7 @@ canvas {
 }
 
 @media print{@page {size: landscape}
-.print, .reset {
+button {
 	display:none;
 }
 }
