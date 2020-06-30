@@ -342,6 +342,11 @@ html {
   font-size: 100%;
   font-size: 18px;
 }
+@media screen and (max-width: 45em) {
+  html {
+    font-size: 14px;
+  }
+}
 
 body {
   display: flex;
@@ -374,7 +379,6 @@ svg #key {
 }
 
 section {
-  padding: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -393,11 +397,16 @@ section {
   height: 100vh;
   overflow: hidden;
 }
+@media screen and (max-width: 70em) {
+  .diagram {
+    width: 60%;
+  }
+}
 @media screen and (max-width: 45em) {
   .diagram {
     width: 100%;
     overflow: visible;
-    height: 40vh;
+    height: 50vh;
     padding: 0;
   }
   .diagram svg {
@@ -411,38 +420,48 @@ section {
   overflow: auto;
   width: 25%;
   border-left: 1px solid #9da1ac;
-  align-items: flex-start;
-  justify-content: flex-start;
+}
+@media screen and (max-width: 70em) {
+  .form {
+    width: 40%;
+  }
 }
 @media screen and (max-width: 45em) {
   .form {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
     border-left: none;
   }
 }
 
 form {
   text-align: right;
-  padding: 0;
-  white-space: nowrap;
+  padding: 1.5em;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 100vh;
+  overflow: auto;
 }
 form section {
   width: 100%;
   padding: 0;
-  display: block;
-  margin: 0.5em 0 0;
+  display: flex;
+  flex-direction: row;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1.5em;
+  border-bottom: 2px solid #9da1ac;
 }
 form section:before {
   content: " ";
-  width: 1em;
-  height: 1em;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0;
   border-radius: 50%;
   background-color: yellow;
-  position: absolute;
-  top: 1.75em;
-  left: 0.25em;
+  position: relative;
+  left: -1.5rem;
 }
 form section.frame:before {
   background: #853d0f;
@@ -453,9 +472,6 @@ form section.glazing:before {
 }
 form section.spacer:before {
   background: #f6a654;
-}
-form section.matting {
-  padding-left: 2em;
 }
 form section.matting:before {
   background: #bebebe;
@@ -473,12 +489,29 @@ form section.strainer:before {
 form section.artwork:before {
   background: #24567a;
 }
+form section.recess {
+  margin: 0.5em 0;
+  border-bottom: 0;
+  padding: 0;
+}
+form section.recess label {
+  flex-basis: 40%;
+  text-align: center;
+}
+form section.recess input {
+  flex-basis: 60%;
+}
+form section.recess:before {
+  content: "";
+  display: none;
+  visibility: hidden;
+}
 form label {
-  display: block;
-  font-size: 0.85em;
-  margin: 0;
-  margin-top: 1em;
-  margin-bottom: 0.25em;
+  display: inline-block;
+  flex-basis: 60%;
+  font-size: 80%;
+  margin: 0 0;
+  padding-right: 0.25em;
   color: #000;
 }
 form label:first-child {
@@ -500,14 +533,15 @@ form input, form select {
   padding: 10px 0;
   text-align: right;
   border: none;
-  border-bottom: 2px solid #9da1ac;
   margin: auto;
   width: 100%;
-  background: transparent;
+  background: rgba(157, 161, 172, 0.2);
 }
 form input {
   word-spacing: 0.5em;
   -webkit-appearance: none;
+  flex-basis: 40%;
+  display: inline-block;
 }
 form .top, form .bottom {
   text-align: left;
@@ -525,9 +559,7 @@ form .bottom {
 }
 form input[disabled] {
   -webkit-appearance: none;
-  background: #dddddd;
   opacity: 1;
-  border-radius: 5px;
   font-size: 1.5rem;
   padding: 10px;
   box-sizing: border-box;
@@ -535,12 +567,18 @@ form input[disabled] {
 
 button {
   background: #f7d700;
-  margin: 0.5em 0;
   text-align: center;
   width: 100%;
   padding: 0.5em;
   border: none;
   display: block;
+}
+button#print, button#download {
+  width: 50%;
+  float: left;
+}
+button#download {
+  background: #ffe53a;
 }
 button#reset {
   background: #fff196;
