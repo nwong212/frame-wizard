@@ -366,6 +366,11 @@ main {
 svg {
   width: 80%;
   height: auto;
+  margin-bottom: -10vh;
+}
+svg #key {
+  display: none;
+  visiblity: hidden;
 }
 
 section {
