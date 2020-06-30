@@ -1,8 +1,10 @@
+@use "sass:color";
 @use "normalize";
 
 $gray: rgb(157, 161, 172);
 $background: #FFF;
 $dark: rgb(246, 171, 25);
+$primary: rgb(247, 215, 0);
 
 //Color coding:
 
@@ -13,6 +15,7 @@ $mats:#d1d1d1;
 $backing:#77D1F4;
 $additional:rgb(252, 127, 127);
 $strainer:#ffe34e;
+$artwork:rgb(36, 86, 122);
 
 
 html {
@@ -46,24 +49,36 @@ main {
 svg {
 	width:80%;
 	height:auto;
-	[id^="measurement-"] {
-		font-size: 3pt;
-		word-spacing: 0.5em;
-	}
-	#remainder-title, #measurement-remainder {
-		font-size: 3.5pt;
-	}
-	#diagram-note {
-		font-size: 2.25pt;
-		fill: $gray;
-		font-style:italic;
-	}
-	#measurement-rabbet {
-		font-size: 5pt;
-	}
-	.x-marks-thespot {
-		stroke-width:0.5;
-		stroke:#FFF;
+	// [id^="measurement-"] {
+	// 	font-size: 3pt;
+	// 	word-spacing: 0.5em;
+	// }
+	// #remainder-title, #measurement-remainder {
+	// 	font-size: 3.5pt;
+	// }
+	// #diagram-note {
+	// 	font-size: 2.25pt;
+	// 	fill: $gray;
+	// 	font-style:italic;
+	// }
+	// #measurement-rabbet {
+	// 	font-size: 5pt;
+	// }
+	// .x-marks-thespot {
+	// 	stroke-width:0.5;
+	// 	stroke:#FFF;
+	// }
+}
+section {
+	padding: 2em;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	@media screen and (max-width:45em) {
+		width:100%;
+		height:auto;
 	}
 }
 .diagram {
@@ -87,23 +102,11 @@ svg {
 	width:25%;
 	border-left:1px solid $gray;
 	align-items: flex-start;
+	justify-content: flex-start;
 	@media screen and (max-width:45em) {
 		width:100%;
 		height:60vh;
 		border-left:none;
-		justify-content: flex-start;
-	}
-}
-section {
-	padding: 2em;
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
-	@media screen and (max-width:45em) {
-		width:100%;
-		height:auto;
 	}
 }
 
@@ -148,8 +151,8 @@ form {
 		&.matting {
 			padding-left:2em;
 			&:before {
-				// left:0;
-				background:$mats;
+				background: rgb(190,190,190);
+				background: linear-gradient(180deg, rgba(190,190,190,1) 50%, rgba(209,209,209,1) 50%);
 			}
 		}
 		&.backing {
@@ -165,6 +168,11 @@ form {
 		&.strainer {
 			&:before {
 				background: $strainer;
+			}
+		}
+		&.artwork {
+			&:before {
+				background: rgb(36, 86, 122);
 			}
 		}
 	}
@@ -231,13 +239,16 @@ form {
 }
 
 button {
-	background: rgb(247, 215, 0);
+	background: $primary;
 	margin: 0.5em 0;
 	text-align:center;
 	width:100%;
 	padding:0.5em;
 	border:none;
 	display:block;
+	&#reset {
+		background: color.scale($primary, $lightness: 60%)
+	}
 	&:hover {
 		cursor: pointer;
 	}
@@ -247,35 +258,40 @@ button {
 	color: rgb(255, 93, 93);
 	fill:rgb(255, 93, 93);
 }
-
-#svg-glazing {
-	fill: $glazing;
-}
-#svg-top,
-#svg-bottom {
-	fill:$mats;
-	stroke: #FFF;
-	stroke-width: 0.5;
-	stroke-miterlimit:10;
-}
-#svg-spacer {
-	fill:$spacer;
-}
-#svg-board {
-	fill:$backing;
-}
-#svg-additional {
-	fill: $additional;
-}
-#svg-strainer {
-	fill: $strainer;
-}
+//
+// #svg-glazing {
+// 	fill: $glazing;
+// }
+// #svg-top,
+// #svg-bottom {
+// 	fill:$mats;
+// 	stroke: #FFF;
+// 	stroke-width: 0.5;
+// 	stroke-miterlimit:10;
+// }
+// #svg-spacer {
+// 	fill:$spacer;
+// }
+// #svg-board {
+// 	fill:$backing;
+// }
+// #svg-additional {
+// 	fill: $additional;
+// }
+// #svg-strainer {
+// 	fill: $strainer;
+// }
 
 .footer {
 	font-size: 90%;
 }
 a {
 	color: $additional;
+}
+
+canvas {
+	display:none;
+	visiblity:hidden;
 }
 
 @media print{@page {size: landscape}
