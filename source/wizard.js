@@ -455,28 +455,28 @@ function downloadSVG() {
 		}
 
 		btn.addEventListener('click', function () {
-			var canvas = document.getElementById('downloadable');
-			var ctx = canvas.getContext('2d');
-			var data = (new XMLSerializer()).serializeToString(svg);
-			var DOMURL = window.URL || window.webkitURL || window;
+				var canvas = document.getElementById('downloadable');
+				var ctx = canvas.getContext('2d');
+				var data = (new XMLSerializer()).serializeToString(svg);
+				var DOMURL = window.URL || window.webkitURL || window;
 
-			var img = new Image();
-			var svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
-			var url = DOMURL.createObjectURL(svgBlob);
+				var img = new Image();
+				var svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
+				var url = DOMURL.createObjectURL(svgBlob);
 
-			img.onload = function () {
-				ctx.clearRect(0, 0, 1800, 2000);
-			  ctx.drawImage(img, 0, 0, 1800, 2000);
-			  DOMURL.revokeObjectURL(url);
+				img.onload = function () {
+						ctx.clearRect(0, 0, 1800, 2000);
+						ctx.drawImage(img, 0, 0, 1800, 2000);
+				  DOMURL.revokeObjectURL(url);
 
-			  var imgURI = canvas
-			      .toDataURL('image/png')
-			      .replace('image/png', 'image/octet-stream');
+				  var imgURI = canvas
+				      .toDataURL('image/png')
+				      .replace('image/png', 'image/octet-stream');
 
-			  triggerDownload(imgURI);
-			};
+				  triggerDownload(imgURI);
+				};
 
-			img.src = url;
+				img.src = url;
 		});
 }
 function setYPosition() {
