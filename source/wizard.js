@@ -82,13 +82,13 @@ function frameDesign() {
 	function calculate() {
 
 		//Reset any blank fields to 0
-		//
-		// Array.from(fields, function(el){
-		//
-		// 	if (el.value.length == 0 || el.value == 0) {
-		// 		el.value = 0;
-		// 	}
-		// });
+		
+		Array.from(fields, function(el){
+
+			if (el.value.length == 0 || el.value == 0) {
+				el.value = 0;
+			}
+		});
 
 		// setting the height and positioning of everything based on the values given.
 		fieldArray.forEach((f) => {
