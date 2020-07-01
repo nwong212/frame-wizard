@@ -216,8 +216,8 @@ form {
 		}
 	}
 	label {
-		display:inline-block;
 		flex-basis:60%;
+		min-width:auto;
 		font-size: 80%;
 		margin:0 0;
 		padding-right: 0.25em;
@@ -242,6 +242,7 @@ form {
 		padding:10px 0;
 		text-align:right;
 		border:none;
+		min-width:4em;
 		// border-bottom:2px solid $gray;
 		margin:auto;
 		width: 100%;
@@ -251,7 +252,6 @@ form {
 		word-spacing: 0.5em;
 		-webkit-appearance: none;
 		flex-basis:40%;
-		display:inline-block;
 	}
 	.top, .bottom {
 		text-align:left;
@@ -271,11 +271,15 @@ form {
 		// border-bottom:none;
 		-webkit-appearance: none;
 		// background:rgb(221, 221, 221);
+		color: rgb(46, 46, 46);
 		opacity: 1;
 		// border-radius: 5px;
 		font-size:1.5rem;
 		padding:10px;
 		box-sizing:border-box;
+		&.negative {
+			color: rgb(255, 93, 93);
+		}
 	}
 }
 
@@ -302,10 +306,6 @@ button {
 	}
 }
 
-.negative {
-	color: rgb(255, 93, 93);
-	fill:rgb(255, 93, 93);
-}
 //
 // #svg-glazing {
 // 	fill: $glazing;
@@ -342,7 +342,35 @@ canvas {
 	visiblity:hidden;
 }
 
-@media print{@page {size: landscape}
+@media print{
+
+	@page {
+		size: landscape;
+	}
+	body {
+		background:none;
+	}
+section {
+	&.form {
+		width:30%;
+
+		form {
+			label {
+				flex-basis:50%;
+			}
+			input {
+				flex-basis: 50%;
+			}
+			select {
+				-webkit-appearance:none;
+				appearance:none;
+			}
+		}
+	}
+	&.diagram {
+		width:70%;
+	}
+}
 button {
 	display:none;
 }
