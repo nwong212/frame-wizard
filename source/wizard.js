@@ -66,13 +66,6 @@ function frameDesign() {
   var fields = document.getElementsByClassName("values");
   var fieldArray = Array.from(fields);
 
-  fieldArray.forEach((x) => {
-    var height = x.getAttribute('height');
-
-    x.setAttribute('data-height', height);
-  });
-
-
   //Reset the Form
   var resetbtn = document.getElementById("resetButton");
 

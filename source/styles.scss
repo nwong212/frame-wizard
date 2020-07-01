@@ -148,8 +148,10 @@ form {
 			font-size:0;
 			border-radius:50%;
 			background-color:yellow;
-			position:relative;
-			left:-1.5rem;
+			position:absolute;
+			left:0;
+			flex-shrink:0;
+			flex-grow:0;
 			// top:50%;
 			// left:0.25em;
 		}
@@ -216,7 +218,7 @@ form {
 		}
 	}
 	label {
-		flex-basis:60%;
+		flex-basis:50%;
 		min-width:auto;
 		font-size: 80%;
 		margin:0 0;
@@ -251,13 +253,13 @@ form {
 	input {
 		word-spacing: 0.5em;
 		-webkit-appearance: none;
-		flex-basis:40%;
+		flex-basis:50%;
+		padding-right: 10px;
 	}
 	.top, .bottom {
 		text-align:left;
 		width:50%;
 		display:inline-block;
-		margin-top:0.5em;
 		box-sizing:border-box;
 	}
 	.top {
@@ -294,12 +296,11 @@ button {
 	&#print, &#download {
 		width:50%;
 		float:left;
-	}
-	&#download {
 		background: color.scale($primary, $lightness: 25%);
+		border-bottom: 2px solid color.scale($primary, $lightness: 60%);
 	}
-	&#reset {
-		background: color.scale($primary, $lightness: 60%)
+	&#print {
+		border-right: 2px solid color.scale($primary, $lightness: 60%);
 	}
 	&:hover {
 		cursor: pointer;
