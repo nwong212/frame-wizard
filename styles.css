@@ -461,8 +461,10 @@ form section:before {
   font-size: 0;
   border-radius: 50%;
   background-color: yellow;
-  position: relative;
-  left: -1.5rem;
+  position: absolute;
+  left: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 form section.frame:before {
   background: #853d0f;
@@ -508,7 +510,7 @@ form section.recess:before {
   visibility: hidden;
 }
 form label {
-  flex-basis: 60%;
+  flex-basis: 50%;
   min-width: auto;
   font-size: 80%;
   margin: 0 0;
@@ -542,13 +544,13 @@ form input, form select {
 form input {
   word-spacing: 0.5em;
   -webkit-appearance: none;
-  flex-basis: 40%;
+  flex-basis: 50%;
+  padding-right: 10px;
 }
 form .top, form .bottom {
   text-align: left;
   width: 50%;
   display: inline-block;
-  margin-top: 0.5em;
   box-sizing: border-box;
 }
 form .top {
@@ -581,12 +583,11 @@ button {
 button#print, button#download {
   width: 50%;
   float: left;
-}
-button#download {
   background: #ffe53a;
+  border-bottom: 2px solid #fff196;
 }
-button#reset {
-  background: #fff196;
+button#print {
+  border-right: 2px solid #fff196;
 }
 button:hover {
   cursor: pointer;
