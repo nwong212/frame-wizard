@@ -32,16 +32,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 	<!--Apple Tags -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="apple-touch-icon" href="favicon.png?ckcachebust=686105efb87d3ea42276d26971a89b14">
+	<link rel="apple-touch-icon" href="favicon.png?ckcachebust=25913971e1b88c101f79cbe6e18bb5e8">
 	<meta name="apple-mobile-web-app-title" content="Frame Depth">
 
-	<link rel="stylesheet" href="styles.css?ckcachebust=bf1510bc6e2a051208d56bacdf0d6180">
+	<link rel="stylesheet" href="styles.css?ckcachebust=2f2fe9f297e30f7ef6ab9a28fea3f8fb">
 
 	<!-- Primary Meta Tags -->
 	<title>Frame Depth Calculator</title>
 	<meta name="title" content="Frame Depth Calculator">
 	<meta name="description" content="A picture frame rabbet depth calculator with matching diagram. Helpful for fine art picture framers.">
-	<link rel="icon" type="image/png" href="favicon.png?ckcachebust=94b690fd051b682a5e36311abcc9bad9">
+	<link rel="icon" type="image/png" href="favicon.png?ckcachebust=dc685859b46b2cdf4f9e3fe059b05a08">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
@@ -57,8 +57,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<meta property="twitter:description" content="A visual frame depth calculator for fine art framing. Subtract your frame package from your rabbet depth.">
 	<meta property="twitter:image" content="favicon.png">
 
-	<script type="text/javascript" src="wizard.js?ckcachebust=427646cf6b8e720357fbefe31a33f1cc"></script>
+	<script type="text/javascript" src="wizard.js?ckcachebust=6f4e66b527f66beb5cebfbf8862bb4b4"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@0;1&display=swap" rel="stylesheet">
+
+	<script type="text/javascript">
+
+
+	</script>
 
 </head>
 
@@ -131,58 +136,65 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 				 </style>
 			<g id="frame-group">
-				<g id="notGlazing">
+				<g id="not-glazing">
 					<g id="spacer-group">
 						<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#f6a654" width="8" height="40"/>
 
 						<text x="150" y="50" id="measurement-spacer" text-anchor="left" class="label">5/8"</text>
 					</g> <!-- Spacer Group -->
 
-					<g id="notSpacer">
+					<g id="not-spacer">
 						<g id="top-group">
 							<rect x="40.7" y="80.5" id="svg-top" class="st2" width="100" height="4" fill="#d1d1d1"/>
 							<text x="150" y="83.7" id="measurement-top" text-anchor="left" class="label">1/16"</text>
 						</g><!-- Top Group -->
 
-						<g id="notTop">
+						<g id="not-top">
 							<g id="artwork-group" style="display: none;" >
-								<rect x="40.7" y="84.5" id="svg-artwork" width="100" height="1"/>
+								<rect x="40.7" y="84.5" id="svg-artwork" width="100" height="0"/>
 								<text x="150" y="88" id="measurement-artwork" text-anchor="left" class="label">1/32"</text>
 							</g> <!--- Artwork -->
 
-							<g id="notArtwork">
-								<rect x="40.7" y="84.5" id="svg-bottom" class="st2" width="100" height="4" fill="#d1d1d1"/>
-								<text x="150" y="88.2" id="measurement-bottom" text-anchor="left" class="label">1/16"</text>
+							<g id="not-artwork">
+								<g id="bottom-group">
+									<rect x="40.7" y="84.5" id="svg-bottom" class="st2" width="100" height="4" fill="#d1d1d1"/>
+									<text x="150" y="88.2" id="measurement-bottom" text-anchor="left" class="label">1/16"</text>
+								</g>
 
-								<g id="notBottom">
-									<rect x="40.7" y="88.5" id="svg-board" class="st1" width="100" height="8" fill="#77D1F4"/>
-									<text x="150" y="94.2" id="measurement-backing" text-anchor="left" class="label">1/8"</text>
+								<g id="not-bottom">
+									<g id="backing-group">
+										<rect x="40.7" y="88.5" id="svg-backing" class="st1" width="100" height="8" fill="#77D1F4"/>
+										<text x="150" y="94.2" id="measurement-backing" text-anchor="left" class="label">1/8"</text>
+									</g>
 
-									<g id="notBacking">
+									<g id="not-backing">
 										<g id="additional-group" style="display:none;">
-											<rect x="40.7" y="96.5" fill="rgb(252, 127, 127)" width="100" height="8" id="svg-additional" />
+											<rect x="40.7" y="96.5" fill="rgb(252, 127, 127)" width="100" height="0" id="svg-additional" />
 											<text x="150" y="102.2" id="measurement-additional" text-anchor="left" class="label">0"</text>
 										</g><!-- Additional Group -->
-
-										<g id="strainer-group">
-											<rect x="40.7" y="96.5" id="svg-strainer" class="st2" width="64" height="32" fill="#ffe34e" />
-											<text x="150" y="110" id="measurement-strainer" text-anchor="left" class="label">1/2"</text>
-											<line x1="40.7" y1="96.5" x2="104.7" y2="128.5" class="x-marks-thespot" id="svg-x" stroke="#FFF" stroke-width="0.25"/>
-										</g><!-- Strainer-->
+										<g id="not-additional">
+											<g id="strainer-group">
+												<rect x="40.7" y="96.5" id="svg-strainer" class="st2" width="64" height="32" fill="#ffe34e" />
+												<text x="150" y="110" id="measurement-strainer" text-anchor="left" class="label">1/2"</text>
+												<line x1="40.7" y1="96.5" x2="104.7" y2="128.5" class="x-marks-thespot" id="svg-x" stroke="#FFF" stroke-width="0.25" data-y="128.5"/>
+											</g><!-- Strainer-->
+											<g id="not-strainer"></g>
+										</g><!-- Not Additional Group-->
 									</g><!-- Not backing Group -->
 								</g><!-- Not Bottom Group -->
 							</g><!-- Not Artwork Group -->
 						</g><!-- Not Top Group -->
 					</g> <!-- Not Spacer Group -->
 				</g><!-- not Glazing -->
-
+				<g id="glazing-group">
 					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing" fill="rgba(95, 224, 135, 0.25)" />
 					<text x="150" y="38" id="measurement-glazing" text-anchor="left" class="label">1/8"</text>
-
-					<rect x="26.4" y="22.7" width="25" height="10" fill="rgb(133, 61, 15)" id="frame-cap" />
-
+				</g>
+				<rect x="26.4" y="22.7" width="25" height="10" fill="rgb(133, 61, 15)" id="frame-cap" />
 			</g>
-			<rect x="26.4" y="22.7" width="14.5" height="106" fill="rgb(133, 61, 15)" id="frameside" />
+			<g id="rabbet-group">
+				<rect x="26.4" y="32.6" width="14.5" height="96" fill="rgb(133, 61, 15)" id="svg-rabbet" />
+			</g>
 			<!-- <polygon id="svg-frame" class="st3" points="60.9,22.7 60.9,32.5 40.7,32.5 40.7,127.3 26.4,127.3 26.4,22.7 "/> -->
 			<g>
 				<!-- <line class="st4" x1="17.5" y1="32.5" x2="9.3" y2="32.5"/>
@@ -196,6 +208,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<text x="150" y="90%" id="measurement-remainder" text-anchor="left">0"</text>
 
 			<text x="0" y="90%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
+
 			<g id="key" transform="
                 translate(0 190)
                 scale(0.1)">
@@ -253,7 +266,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<section class="matting">
 					<div class="top">
 						<label for="topMat">Top Mat</label>
-						<select class="topMat" name="topMat" id="topMat">
+						<select name="topMat" id="top" class="values">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
@@ -261,7 +274,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					</div><!--
 					--><div class="bottom">
 						<label for="bottomMat">Bottom Mat</label>
-						<select class="bottomMat" name="bottomMat" id="bottomMat">
+						<select name="bottomMat" id="bottom" class="values">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
@@ -291,7 +304,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 				<button id="print" class="print" onClick="window.print(); return false">Print</button>
 				<button id="download" class="download" onClick="return false" class="download">Download</button>
-				<button id="reset" class="reset" onClick="document.getElementById("frameCalc").reset(); return false">Reset</button>
+				<button id="resetButton" class="reset" onClick="return false">Reset</button>
 				<p class="footer">
 					<a href="https://github.com/nwong212/frame-wizard">Github</a>
 				</p>

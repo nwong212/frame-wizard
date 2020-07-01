@@ -507,8 +507,8 @@ form section.recess:before {
   visibility: hidden;
 }
 form label {
-  display: inline-block;
   flex-basis: 60%;
+  min-width: auto;
   font-size: 80%;
   margin: 0 0;
   padding-right: 0.25em;
@@ -533,6 +533,7 @@ form input, form select {
   padding: 10px 0;
   text-align: right;
   border: none;
+  min-width: 4em;
   margin: auto;
   width: 100%;
   background: rgba(157, 161, 172, 0.2);
@@ -541,7 +542,6 @@ form input {
   word-spacing: 0.5em;
   -webkit-appearance: none;
   flex-basis: 40%;
-  display: inline-block;
 }
 form .top, form .bottom {
   text-align: left;
@@ -559,10 +559,14 @@ form .bottom {
 }
 form input[disabled] {
   -webkit-appearance: none;
+  color: #2e2e2e;
   opacity: 1;
   font-size: 1.5rem;
   padding: 10px;
   box-sizing: border-box;
+}
+form input[disabled].negative {
+  color: #ff5d5d;
 }
 
 button {
@@ -587,11 +591,6 @@ button:hover {
   cursor: pointer;
 }
 
-.negative {
-  color: #ff5d5d;
-  fill: #ff5d5d;
-}
-
 .footer {
   font-size: 90%;
 }
@@ -609,7 +608,28 @@ canvas {
   @page {
     size: landscape;
   }
-  .print, .reset {
+  body {
+    background: none;
+  }
+
+  section.form {
+    width: 30%;
+  }
+  section.form form label {
+    flex-basis: 50%;
+  }
+  section.form form input {
+    flex-basis: 50%;
+  }
+  section.form form select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  section.diagram {
+    width: 70%;
+  }
+
+  button {
     display: none;
   }
 }
