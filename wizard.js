@@ -5,3 +5,19 @@ function setHref() {
   (new URL(window.location.href)).searchParams.forEach((x, y) =>
     document.getElementById(y).value = x);
 }
+
+var formchange = document.getElementById('frameCalc');
+
+formchange.addEventListener('change', getURL);
+
+function makeURL() {
+  var uri;
+  
+  var input = Array.from(document.getElementsByClassName('values'));
+  
+  input.forEach((x, i, input) => function () {
+    return x.name + "=" + x.value
+  });
+  
+  console.log('input');
+}
