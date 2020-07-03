@@ -216,6 +216,64 @@ form {
 				visibility: hidden;
 			}
 		}
+		&.url {
+			padding:0;
+			border:0;
+			&:before {
+				content:'';
+				display:none;
+				visibility: hidden;
+			}
+		}
+	}
+
+	#url-label {
+		width:3rem;
+		text-align:center;
+		display:flex;
+		align-self: stretch;
+		align-items: center;
+		justify-content: center;
+		background: color.scale($gray, $alpha: -80%);
+	}
+	#url {
+		width:auto;
+		flex:1;
+		min-width:0;
+		flex-basis:auto;
+		box-sizing:border-box;
+		transition:300ms ease;
+		font-size: 0.9rem;
+		&:focus {
+			outline:0;
+			background:color.scale($gray, $alpha:-80%, $lightness: 60%);
+			transition:300ms ease;
+		}
+	}
+	#url-label {
+		span {
+			opacity:1;
+			transition:opacity 300ms ease;
+		}
+		&:before {
+			content:'copied';
+			color: rgb(50, 231, 122);
+			text-transform:uppercase;
+			position:absolute;
+			opacity:0;
+			transition:opacity 500ms ease;
+		}
+	}
+	#url-label.copied {
+		span {
+			opacity:0;
+			transition:opacity 300ms ease;
+		}
+		&:before {
+			display:block;
+			opacity:1;
+			transition:opacity 500ms ease;
+		}
 	}
 	label {
 		flex-basis:50%;

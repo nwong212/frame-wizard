@@ -509,6 +509,59 @@ form section.recess:before {
   display: none;
   visibility: hidden;
 }
+form section.url {
+  padding: 0;
+  border: 0;
+}
+form section.url:before {
+  content: "";
+  display: none;
+  visibility: hidden;
+}
+form #url-label {
+  width: 3rem;
+  text-align: center;
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  background: rgba(157, 161, 172, 0.2);
+}
+form #url {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+  flex-basis: auto;
+  box-sizing: border-box;
+  transition: 300ms ease;
+  font-size: 0.9rem;
+}
+form #url:focus {
+  outline: 0;
+  background: rgba(216, 217, 222, 0.2);
+  transition: 300ms ease;
+}
+form #url-label span {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+form #url-label:before {
+  content: "copied";
+  color: #32e77a;
+  text-transform: uppercase;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+form #url-label.copied span {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+form #url-label.copied:before {
+  display: block;
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
 form label {
   flex-basis: 50%;
   min-width: auto;

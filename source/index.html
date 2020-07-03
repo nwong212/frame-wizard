@@ -60,11 +60,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<script type="text/javascript" src="wizard.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@0;1&display=swap" rel="stylesheet">
 
-	<script type="text/javascript">
-
-
-	</script>
-
 </head>
 
 <body>
@@ -299,11 +294,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				</section>
 				<section class="recess">
 					<label for="remaining">Recess</label>
-					<input type="text" id="remaining" disabled value="0"></input>
+					<input type="text" id="remaining" disabled value=""></input>
 				</section>
 
+				<section class="url">
+					<label for="url" id="url-label" class="">
+						<span class="url-label">URL</span></label>
+					<input id="url" class="url" type="text" placeholder="url"></input>
+				</section>
 				<button id="print" class="print" onClick="window.print(); return false">Print</button>
-				<button id="download" class="download" onClick="return false" class="download">Download</button>
+				<button id="download" class="download" onClick="return false">Download</button>
 				<button id="resetButton" class="reset" onClick="return false">Reset</button>
 				<p class="footer">
 					<a href="https://github.com/nwong212/frame-wizard">Github</a> <a href="https://github.com/nwong212/frame-wizard/issues">Report a Bug</a>
@@ -314,6 +314,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 		</section>
 	</main>
+
+
+	<script type="text/javascript">
+		document.getElementById("url").onclick = function() {
+			this.select();
+			document.execCommand('copy');
+
+			document.getElementById('url-label').setAttribute('class', 'copied');
+
+			this.blur();
+
+			setTimeout(function () {
+				document.getElementById('url-label').setAttribute('class', 'done');
+	    }, 4000);
+		}
+	</script>
 </body>
 
 </html>

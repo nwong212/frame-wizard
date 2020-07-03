@@ -34,13 +34,12 @@
 */
 
 window.addEventListener("load", eventWindowLoaded, false);
+window.addEventListener("change", calculator, false);
+window.addEventListener("change", makeURL, false);
 
 function eventWindowLoaded() {
-  frameDesign();
-  downloadSVG();
-  setYPosition(); //Set the Y for all elements at start
 
-  //Adding Data- attribute to SVG elements with their intial heights
+  // Adding Data- attribute to SVG elements with their intial heights
 
   var svgRect = Array.from(document.getElementsByTagName("rect"));
 
@@ -51,192 +50,163 @@ function eventWindowLoaded() {
     x.setAttribute('data-height', height);
 
   });
+  setFromHref();
+  calculator();
+  downloadSVG();
+  makeURL();
 
 }
 
-function frameDesign() {
-  var form = document.getElementById('frameCalc');
-  var remainder = document.getElementById('remaining');
-  var svgRemainder = document.getElementById('measurement-remainder');
-  var value;
+function setFromHref() {
+  if(window.location.href.includes("?rabbet")){
+    (new URL(window.location.href)).searchParams.forEach((x, y) =>
+      document.getElementById(y).value = decodeURIComponent(x));
+  }
+  calculator();
+}
 
-  form.addEventListener('change', calculate);
-  form.addEventListener('input', setVisibility);
+//Make a URL from the form elements
+function makeURL() {
+  var uri;
+  var uriField = document.getElementById('url');
 
-  var fields = document.getElementsByClassName("values");
-  var fieldArray = Array.from(fields);
+  var input = Array.from(document.getElementsByClassName('values'));
 
-  //Reset the Form
-  var resetbtn = document.getElementById("resetButton");
+  var inputVals = input.map(function(x) {
+    return x.id + "=" + encodeURIComponent(x.value);
+  });
 
-  resetbtn.addEventListener('click', function() {
+  uri =window.location.protocol + '//' + window.location.hostname + window.location.pathname + '?' + inputVals.join('&');
 
-    // console.log(fields);
+  uriField.value = uri;
 
-    Array.from(fields, function(el) {
-      el.value = 0;
-    });
+}
 
-    calculate();
-    setVisibility();
+
+
+/** Calculator
+ *** This function calculates the difference between the rabbet depth and the
+ *** package depth and outputs a user-friendly fraction.
+ **/
+
+function calculator() {
+
+  // var form = document.getElementById('frameCalc');
+  var remainder = document.getElementById('remaining'),
+  svgRemainder = document.getElementById('measurement-remainder'),
+  fields = Array.from(document.getElementsByClassName("values"));
+
+  //make key-value
+  let vals = new Map();
+
+  fields.forEach((f) => {
+    if (f.value == 0 || f.value.length == 0) {
+      f.value = 0;
+    }
+    vals.set(f.id, f.value);
+  });
+
+  //convert to decimals
+  let decimals = new Map();
+
+  vals.forEach((value, key) => {
+    var x = fractionToNumber(value);
+
+    decimals.set(key, x);
+
+    var label = 'measurement-' + key,
+        labelEl = document.getElementById(label);
+
+    labelEl.textContent = value + "\x22";
+
+  });
+
+  // find the difference
+  var rabbet = decimals.get('rabbet'),
+      sum = Array.from(decimals.values()).reduce(function(a, b) {
+        return a + b;
+      },0),
+      difference = (2 * rabbet) - sum;
+
+  //Insert the Number
+
+  var fractioned;
+  var nonNeg;
+
+  if (difference < 0) {
+    nonNeg = Math.abs(difference)
+
+    fractioned = numberToFraction(nonNeg)
+
+    remainder.value = "-" + fractioned + '\x22'
+    svgRemainder.textContent = "-" + fractioned + '\x22'
+
+    remainder.classList.add('negative')
+
+    svgRemainder.setAttribute("class", 'negative')
+
+  } else {
+
+    fractioned = numberToFraction(difference)
+
+    remainder.value = fractioned + '\x22'
+    svgRemainder.textContent = fractioned + '\x22'
+
+    remainder.classList.remove('negative')
+
+    svgRemainder.setAttribute("class", 'positive')
+  }
+
+  //take decimal number and convert to bits
+
+  var bits = new Map();
+  decimals.forEach((value, key) => {
+    bits.set(key, value * 64)
+  });
+
+  //Assign heights, visibility, and labels
+  bits.forEach((value, key) => {
+    var svg = 'svg-' + key,
+        not = 'not-' + key,
+        group = key + '-group',
+        label = 'measurement-' + key,
+        svgEl = document.getElementById(svg),
+        notEl = document.getElementById(not),
+        groupEl = document.getElementById(group),
+        labelEl = document.getElementById(label),
+        svgDiff = value - parseFloat(svgEl.dataset.height),
+        y = parseFloat(svgEl.getAttribute('y')),
+        yPosition = value / 2 + y + 1;
+
+    svgEl.setAttribute('height', value);
+
+    if (key != 'rabbet') {
+      notEl.setAttribute('transform', 'translate(0 ' + svgDiff + ')');
+
+      labelEl.setAttribute('y', yPosition);
+
+      if (value == 0) {
+        groupEl.style.display = 'none';
+      } else {
+        groupEl.style.display = 'inline';
+      }
+    }
+    if (key == 'strainer') {
+      var y1 = parseFloat(document.getElementById('svg-x').getAttribute('y1')),
+          y2 = y1 + value;
+      document.getElementById('svg-x').setAttribute('y2', y2);
+    }
+    // console.log(svgEl)
   });
 
 
-  /** Calculator
-   *** This function calculates the difference between the rabbet depth and the
-   *** package depth and outputs a user-friendly fraction.
-   **/
-
-  function calculate() {
-
-
-    /** Null Reset
-     *** Resets all empty fields to 0 before calculating.
-     **/
-
-    Array.from(fields, function(el) {
-
-      if (el.value.length == 0 || el.value == 0) {
-        el.value = 0;
-      }
-    });
-
-
-    /** Set height and position
-     *** Finds the decimal value for each input
-     *** Multiplies that input by 64 to translate to bits
-     *** Sets the matching element's height in bits
-     *** Transforms not- that matching element to
-     ****** translate based on difference between the initial positioning
-     ****** and new positioning.
-     **/
-    fieldArray.forEach((f) => {
-      value = f.value;
-
-      var newValue = fractionToNumber(value);
-
-      var svg = 'svg-' + f.id;
-      var group = 'not-' + f.id;
-      var elGroup = document.getElementById(group);
-      var el = document.getElementById(svg);
-      var height = parseFloat(el.getAttribute("data-height"));
-      var scaled = parseFloat(newValue) * 64;
-      var diff = scaled - height;
-
-      el.setAttribute("height", scaled);
-
-      if (f.id != "rabbet") { //ignore the rabbet when setting translation
-        elGroup.setAttribute("transform", "translate(0 " + diff + ")");
-      }
-
-      if (f.id == "strainer") { // change the dimensions of the cross in the strainer
-        var x = document.getElementById('svg-x');
-        var initY = parseFloat(x.getAttribute('data-y'));
-        var newY = initY + diff;
-
-        x.setAttribute('y2', newY);
-      }
-
-    });
-
-    /* Calculation
-     ** Converts all fractions to decimals
-     ** Takes the sum of all elements
-     ** Subtracts twice the value of Rabbet (first element in array)
-     **** from the sum of all elements
-     */
-
-    var fracs = Array.from(fields);
-
-    fracs.forEach((f, i, fracs) => {
-      var frac = f.value;
-
-      fracs[i] = fractionToNumber(frac);
-    });
-
-    var sum = fracs.reduce(function(a, b) {
-      return a + b;
-    }, 0);
-
-    var maths = (2 * fracs[0]) - sum;
-
-    remainder.value = numberToFraction(maths);
-    svgRemainder.textContent = remainder.value;
-
-
-    /* Handling Negative Numbers
-     ** If the number is negative:
-     ** Take the absolute value
-     ** turn back to a fraction
-     ** then return with negative fraction and negative class
-     ** This is probably dealt with in fraction.js
-     ** but I don't want to be dependent to an entirely different script.
-     */
-
-    var fractioned;
-    var nonNeg;
-
-    if (maths < 0) {
-      nonNeg = Math.abs(maths)
-
-      fractioned = numberToFraction(nonNeg)
-
-      remainder.value = "-" + fractioned + "\42"
-      svgRemainder.textContent = "-" + fractioned + "\42"
-
-      remainder.classList.add('negative')
-
-      svgRemainder.setAttribute("class", 'negative')
-
-    } else {
-
-      fractioned = numberToFraction(maths)
-
-      remainder.value = fractioned + "\42"
-      svgRemainder.textContent = fractioned + "\42"
-
-      remainder.classList.remove('negative')
-
-      svgRemainder.setAttribute("class", 'positive')
-    }
-
-    setYPosition();
-  }
-
-
-  /* Set Visibility
-   ** This function takes each field
-   ** sets the style to display: none
-   ** if value = 0
-   */
-
-  function setVisibility() {
-    fields = Array.from(fields);
-
-    fields.forEach((x) => {
-
-      var svgGroup = x.id + '-group';
-
-      // console.log(svgGroup);
-
-      var measurement = 'measurement-' + x.id;
-
-      document.getElementById(measurement).textContent = x.value + "\42";
-
-      if (x.value == 0 || x.value.length == 0) {
-        document.getElementById(svgGroup).style.display = "none";
-      } else {
-        document.getElementById(svgGroup).style.display = "inline";
-      }
-    });
-  }
 
   /**
    *
    * Convert Fraction to Number
    *
    **/
-  var fractionToNumber = function(amount) {
+  function fractionToNumber(amount) {
     if (amount.indexOf('/') != -1) {
       var parts = amount.split(" ")
       var decParts;
@@ -257,7 +227,7 @@ function frameDesign() {
    * - 1.25 to 1 1/4
    * - 2 to 2
    */
-  var numberToFraction = function(amount) {
+  function numberToFraction(amount) {
     // This is a whole number and doesn't need modification.
     if (parseFloat(amount) === parseInt(amount)) {
       return amount;
@@ -287,9 +257,9 @@ function frameDesign() {
       amount = base + ' ' + amount;
     }
     return amount;
-  };
-}
+  }
 
+}
 
 /* SVG to PNG and Download
  ** Converts the SVG to a PNG
@@ -341,28 +311,5 @@ function downloadSVG() {
     };
 
     img.src = url;
-  });
-}
-
-
-/* set Y Positioning
- ** Takes the height of the element
- ** Sets Y of label based on half of height of element
- */
-function setYPosition() {
-  var label = Array.from(document.getElementsByClassName("label"));
-  var sibling;
-  var height;
-  var y;
-
-  label.forEach((el) => {
-    sibling = el.previousElementSibling;
-
-    y = parseFloat(sibling.getAttribute("y"))
-    height = parseFloat(sibling.getAttribute("height"));
-
-    var yPosition = height / 2 + y + 1;
-
-    el.setAttribute("y", yPosition);
-  });
+  }, false);
 }
