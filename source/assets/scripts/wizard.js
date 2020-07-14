@@ -54,6 +54,7 @@ function eventWindowLoaded() {
   calculator();
   downloadSVG();
   makeURL();
+	chooseProfile();
 
 }
 
@@ -82,7 +83,50 @@ function makeURL() {
 
 }
 
+function chooseProfile() {
+	var proButton = document.getElementById('chooseProfile'),
+			picker = document.getElementById('overlay'),
+			xButton = document.getElementById('x-button'),
+			form = document.getElementById('frame-pick'),
+			rabbet = document.getElementById('rabbet'),
+			radios = document.getElementsByName('profile'),
+			label;
 
+			proButton.addEventListener('click', function() {
+				picker.classList.remove('hide');
+
+				setTimeout(function() {
+					picker.classList.add('show');
+				}, 50);
+			});
+			xButton.addEventListener('click', function() {
+				picker.classList.remove('show');
+
+				setTimeout(function() {
+					picker.classList.add('hide');
+				}, 300);
+			});
+
+			form.addEventListener('change', function() {
+				for (var i = 0, length = radios.length; i < length; i++) {
+					if (radios[i].checked) {
+						// do whatever you want with the checked radio
+
+						rabbet.value = radios[i].value;
+
+						label = radios[i].nextElementSibling.innerHTML;
+
+						proButton.innerHTML = label;
+
+						proButton.classList.add('profile-selected');
+
+						// only one radio can be logically checked, don't check the rest
+						break;
+					}
+				}
+			})
+
+}
 
 /** Calculator
  *** This function calculates the difference between the rabbet depth and the
@@ -127,6 +171,16 @@ function calculator() {
         return a + b;
       },0),
       difference = (2 * rabbet) - sum;
+
+	//find out if the rabbet is larger than 2 3/8 and then change svg based on it.
+
+	if(rabbet >= 2.375) {
+		document.getElementById('frame-diagram').setAttribute('viewBox', '-10 10 180 250');
+		document.getElementById('downloadable').setAttribute('height', '2500');
+	} else {
+		document.getElementById('frame-diagram').setAttribute('viewBox', '-10 10 180 200');
+		document.getElementById('downloadable').setAttribute('height', '2000');
+	}
 
   //Insert the Number
 
@@ -298,9 +352,15 @@ function downloadSVG() {
     });
     var url = DOMURL.createObjectURL(svgBlob);
 
+		var height = canvas.height;
+
     img.onload = function() {
-      ctx.clearRect(0, 0, 1800, 2000);
-      ctx.drawImage(img, 0, 0, 1800, 2000);
+      ctx.clearRect(0, 0, 1800, height);
+      ctx.rect(0, 0, 1800, height);
+			ctx.fillStyle ='white';
+			ctx.fill();
+
+      ctx.drawImage(img, 0, 0, 1800, height);
       DOMURL.revokeObjectURL(url);
 
       var imgURI = canvas
