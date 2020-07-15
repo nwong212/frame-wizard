@@ -121,6 +121,10 @@ function chooseProfile() {
 				buttons.classList.remove('show');
 				buttons.classList.add('hide');
 
+				proButton.innerHTML = "Find a Profile";
+
+				proButton.classList.remove('profile-selected');
+
 				for (var i = 0, length = radios.length; i < length; i++) {
 					if (radios[i].checked) {
 
