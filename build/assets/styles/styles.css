@@ -834,6 +834,7 @@ body .overlay form section {
   flex-wrap: wrap;
   flex: 1;
   flex-direction: row;
+  padding: 0;
 }
 body .overlay form section:before {
   display: none;
