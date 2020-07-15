@@ -616,6 +616,9 @@ body {
 				box-shadow: 0 0;
 				border: 1px solid transparent;
 				transition: box-shadow 100ms ease-in, border 100ms ease-in, border-radius 150ms ease-in, font-weight 300ms ease-out;
+				@media screen and (max-width:45em) {
+					flex-basis: calc(33% - 1em);
+				}
 				&:hover {
 					cursor: pointer;
 				}

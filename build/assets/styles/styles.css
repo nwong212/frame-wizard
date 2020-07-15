@@ -872,6 +872,11 @@ body .overlay form label {
   border: 1px solid transparent;
   transition: box-shadow 100ms ease-in, border 100ms ease-in, border-radius 150ms ease-in, font-weight 300ms ease-out;
 }
+@media screen and (max-width: 45em) {
+  body .overlay form label {
+    flex-basis: calc(33% - 1em);
+  }
+}
 body .overlay form label:hover {
   cursor: pointer;
 }
