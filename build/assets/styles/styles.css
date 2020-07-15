@@ -81,7 +81,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -695,7 +696,8 @@ canvas {
   }
   section.form form select {
     -webkit-appearance: none;
-    appearance: none;
+    -moz-appearance: none;
+         appearance: none;
   }
   section.diagram {
     width: 70%;
@@ -712,7 +714,8 @@ body .overlay {
   width: 75%;
   height: 100vh;
   background: rgba(200, 200, 200, 0.3);
-  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
   z-index: 99;
   transition: opacity 200ms ease-in-out;
 }
@@ -726,6 +729,7 @@ body .overlay {
     width: 100%;
     height: 100vh;
     background: white;
+    padding-top: 3.5em;
   }
 }
 body .overlay.show {
@@ -755,6 +759,7 @@ body .overlay #branding figure img {
 body .overlay #branding h2 {
   flex-basis: 66.66666%;
   margin: 0;
+  font-weight: 400;
 }
 body .overlay .close {
   width: 2em;
@@ -772,6 +777,7 @@ body .overlay .close svg#X line {
   stroke-width: 5;
 }
 body .overlay .instructions {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   text-align: center;
@@ -838,6 +844,7 @@ body .overlay form section:last-child {
 body .overlay form section h4 {
   flex-basis: 100%;
   text-align: center;
+  position: -webkit-sticky;
   position: sticky;
   top: 2em;
   background: rgba(255, 255, 255, 0.6);
@@ -898,3 +905,5 @@ body .overlay form .name {
   font-size: 1.25em;
   font-weight: 700;
 }
+
+/*# sourceMappingURL=styles.css.map */
