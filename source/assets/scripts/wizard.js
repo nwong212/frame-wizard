@@ -90,7 +90,10 @@ function chooseProfile() {
 			form = document.getElementById('frame-pick'),
 			rabbet = document.getElementById('rabbet'),
 			radios = document.getElementsByName('profile'),
-			label;
+			label,
+			clear = document.getElementById('clear'),
+			select = document.getElementById('select'),
+			buttons = document.getElementById('buttons');
 
 			proButton.addEventListener('click', function() {
 				picker.classList.remove('hide');
@@ -104,13 +107,38 @@ function chooseProfile() {
 
 				setTimeout(function() {
 					picker.classList.add('hide');
-				}, 300);
+				}, 100);
+			});
+			select.addEventListener('click', function () {
+				picker.classList.remove('show');
+
+				setTimeout(function() {
+					picker.classList.add('hide');
+				}, 100);
+			});
+			clear.addEventListener('click', function() {
+
+				buttons.classList.remove('show');
+				buttons.classList.add('hide');
+
+				for (var i = 0, length = radios.length; i < length; i++) {
+					if (radios[i].checked) {
+
+						radios[i].checked = false;
+
+						// only one radio can be logically checked, don't check the rest
+						break;
+					}
+				}
 			});
 
 			form.addEventListener('change', function() {
 				for (var i = 0, length = radios.length; i < length; i++) {
 					if (radios[i].checked) {
 						// do whatever you want with the checked radio
+
+						buttons.classList.remove('hide');
+						buttons.classList.add('show');
 
 						rabbet.value = radios[i].value;
 

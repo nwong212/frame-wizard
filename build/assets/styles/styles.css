@@ -769,6 +769,19 @@ body .overlay .close {
   top: 1em;
   right: 1em;
 }
+@media screen and (max-width: 70em) {
+  body .overlay .close {
+    top: 7vh;
+    right: 7%;
+  }
+}
+@media screen and (max-width: 45em) {
+  body .overlay .close {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+  }
+}
 body .overlay .close svg#X {
   margin: 0;
 }
@@ -782,26 +795,52 @@ body .overlay .instructions {
   top: 0;
   text-align: center;
   z-index: 99;
-  background: rgba(255, 255, 255, 0.6);
-  padding: 0.5em;
+  background: rgba(255, 255, 255, 0.8);
+  line-height: 1;
+  margin: 0;
 }
 body .overlay .instructions ul {
   list-style-type: none;
-  display: inline-block;
-  width: auto;
-  padding: 0;
+  display: block;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+  padding: 1em 0;
   margin: 0;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+body .overlay .instructions ul::-webkit-scrollbar {
+  display: none;
 }
 body .overlay .instructions ul li {
   display: inline-block;
 }
+body .overlay .instructions ul li a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #f7d700;
+  color: #000;
+  border-radius: 2em;
+}
 body .overlay .wrapper {
   overflow-y: scroll;
   height: 100%;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+body .overlay .wrapper::-webkit-scrollbar {
+  display: none;
 }
 body .overlay .frame-selector {
   width: 80%;
   height: 80vh;
+  position: relative;
   overflow: hidden;
   align-self: center;
   background: #FFF;
@@ -822,6 +861,33 @@ body .overlay .frame-selector {
     height: 100vh;
     background: none;
   }
+}
+body .overlay .frame-selector .buttons {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 9999;
+  padding: 1em 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+body .overlay .frame-selector .buttons.show {
+  display: block;
+}
+body .overlay .frame-selector .buttons.hide {
+  display: none;
+}
+body .overlay .frame-selector .buttons .button {
+  padding: 0.5em 1em;
+  display: inline-block;
+  text-decoration: none;
+  background: #f7d700;
+  color: #000;
 }
 body .overlay form {
   overflow: visible;
@@ -847,8 +913,8 @@ body .overlay form section h4 {
   text-align: center;
   position: -webkit-sticky;
   position: sticky;
-  top: 2em;
-  background: rgba(255, 255, 255, 0.6);
+  top: 3em;
+  background: rgba(255, 255, 255, 0.8);
   width: 100%;
 }
 body .overlay form input[type=radio] {
@@ -859,7 +925,7 @@ body .overlay form input[type=radio]:checked + label {
   border: 1px solid rgba(34, 176, 255, 0.5);
   box-shadow: 0 0 7px 1px rgba(34, 176, 255, 0.8);
   background: #FFF;
-  border-radius: 5px;
+  border-radius: 7px;
   transition: box-shadow 300ms ease-out, border 400ms ease-out, border-radius 150ms ease-out, font-weight 300ms ease-out;
   font-weight: 700;
 }
@@ -868,7 +934,7 @@ body .overlay form label {
   background: none;
   align-self: stretch;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -904,7 +970,6 @@ body .overlay form .name {
   flex-shrink: 0;
   padding: 0.5em 0;
   font-size: 1.25em;
-  font-weight: 700;
 }
 
 /*# sourceMappingURL=styles.css.map */
