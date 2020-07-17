@@ -20,9 +20,10 @@ $artwork:rgb(36, 86, 122);
 
 
 html {
-	font-family: 'Anonymous Pro', monospace;
+	font-family: 'Roboto Mono', monospace;
 	font-size:100%;
 	font-size: 18px;
+	font-weight: 350;
 	@media screen and (max-width:70em) {
 		font-size: 16px;
 	}
@@ -47,6 +48,9 @@ img {
 		width:100% !important;
 		height:auto !important;
 	}
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 430;
 }
 main {
 	width:100%;
@@ -363,6 +367,14 @@ button {
 	padding:0.5em;
 	border:none;
 	display:block;
+	transition: box-shadow 300ms ease-out;
+	&:hover {
+		box-shadow: 0 3px 10px -5px $gray;
+		transition: box-shadow 300ms ease-out;
+	}
+	& + section {
+		margin-top: 0.5em;
+	}
 	&.profile-selected {
 		background:none;
 		display:flex;
@@ -639,7 +651,8 @@ body {
 				&.hide {
 					display:none;
 				}
-				.button {
+				button.button {
+					width:auto;
 					padding:0.5em 1em;
 					display:inline-block;
 					text-decoration: none;
@@ -673,7 +686,7 @@ body {
 				}
 				&:last-child {
 					border-bottom:0;
-					padding-bottom:6em;
+					padding-bottom:7em;
 				}
 				h4 {
 					flex-basis:100%;
@@ -692,7 +705,7 @@ body {
 				display:none;
 				&:checked+label {
 					// border: 1px solid color.adjust($secondary, $alpha:-0.4);
-					box-shadow: 0 0 0px 2px $gray;
+					box-shadow: 0 0 0px 3px $gray;
 					background:#FFF;
 					transition: box-shadow 300ms ease-out, font-weight 300ms ease-out;
 					font-weight:700;
@@ -700,6 +713,7 @@ body {
 			}
 			label {
 				flex-basis: calc(20% - 1em);
+				min-width: 7em;
 				background:none;
 				align-self:stretch;
 				display:flex;
@@ -707,11 +721,11 @@ body {
 				justify-content: center;
 				align-items: center;
 				box-sizing: border-box;
-				padding:1.5em 1em 1em;
+				padding:1em;
 				margin:0.5em;
-				box-shadow: 0 0 transparent;
+				box-shadow: 0 0 -10px 0 $gray;
 				// border-radius:1rem;
-				transition: box-shadow 100ms ease-in, font-weight 300ms ease-out;
+				transition: box-shadow 300ms ease-in, font-weight 300ms ease-out;
 				@media screen and (max-width:70em) {
 					flex-basis: calc(25% - 1em);
 				}
@@ -737,6 +751,9 @@ body {
 			.name {
 				flex-grow: 0;
 				flex-shrink:0;
+				width:100%;
+				box-sizing: border-box;
+				text-align:center;
 				padding:0.5em 1em;
 				// font-weight:700;
 				background: $gray;
