@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!--
+)                )       )
+( /(   (  (      ( /(    ( /(   (
+)\())  )\))(   ' )\())   )\())  )\ )
+((_)\  ((_)()\ ) ((_)\   ((_)\  (()/(
+_((_) _(())\_)()  ((_)   _((_)  /(_))_
+| \| | \ \((_)/ / / _ \  | \| | (_)) __|
+| .` |  \ \/\/ / | (_) | | .` |   | (_ |
+|_|\_|   \_/\_/   \___/  |_|\_|    \___|
+
+Created by Nathan Wong
+https://nathanwong.studio
+
+Frame Depth Calculator v. 1.0
+Copyright 2020 Nathan Wong
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,">
+
+	<!--Apple Tags -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="apple-touch-icon" href="favicon.png?ckcachebust=616646670">
+	<meta name="apple-mobile-web-app-title" content="Frame Depth">
+
+	<link rel="stylesheet" href="assets/styles/styles.css?ckcachebust=fe79de7cc34dfb3849775ef5d7d205cc">
+
+	<!-- Primary Meta Tags -->
+	<title>Frame Depth Calculator</title>
+	<meta name="title" content="Frame Depth Calculator">
+	<meta name="description" content="A picture frame rabbet depth calculator with matching diagram. Helpful for fine art picture framers.">
+	<link rel="icon" type="image/png" href="assets/icons/favicon.png?ckcachebust=eea63cc46916aaebb7cdb85dedd44389">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://nwong212.github.io/frame-wizard/">
+	<meta property="og:title" content="Frame Depth Calculator">
+	<meta property="og:description" content="A visual frame depth calculator for fine art framing. Subtract your frame package from your rabbet depth.">
+	<meta property="og:image" content="assets/icons/favicon.png">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://nwong212.github.io/frame-wizard/">
+	<meta property="twitter:title" content="Frame Depth Calculator">
+	<meta property="twitter:description" content="A visual frame depth calculator for fine art framing. Subtract your frame package from your rabbet depth.">
+	<meta property="twitter:image" content="assets/icons/favicon.png">
+
+	<script type="text/javascript" src="assets/scripts/wizard.js?ckcachebust=18b6670bf64bf8c44f975a7724cf96e1"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@0;1&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	<main class="main-content">
+		<section class="diagram">
+			<!-- <canvas id="diagramA" width="400" height="400"></canvas> -->
+			<svg version="1.1" id="frame-diagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				 viewBox="-10 10 180 200" style="enable-background:new 0 0 150 150;" xml:space="preserve">
+				 <style type="text/css">
+				 	svg {
+					 font-family:  'Anonymous Pro', monospace;
+					 font-size:100%;
+					 font-size: 18px;
+					}
+					 [id^=measurement-] {
+						 font-size: 3pt;
+						 word-spacing: 0.5em;
+					 }
+					 #remainder-title,
+					 #measurement-remainder {
+						 font-size: 3.5pt;
+					 }
+					 #diagram-note {
+						 font-size: 2.25pt;
+						 fill: #9da1ac;
+						 font-style: italic;
+					 }
+					 #measurement-rabbet {
+						 font-size: 5pt;
+					 }
+					 .x-marks-thespot {
+						 stroke-width: 0.5;
+						 stroke: #FFF;
+					 }
+
+					 #svg-glazing {
+						 fill: rgba(95, 224, 135, 0.25);
+					 }
+
+					 #svg-top {
+						 fill: #bebebe;
+					 }
+					 #svg-bottom {
+						 fill: #d1d1d1;
+					 }
+					 #svg-artwork {
+						 fill: rgb(36, 86, 122);
+					 }
+
+					 #svg-spacer {
+						 fill: #f6a654;
+					 }
+
+					 #svg-board {
+						 fill: #77D1F4;
+					 }
+
+					 #svg-additional {
+						 fill: #fc7f7f;
+					 }
+
+					 #svg-strainer {
+						 fill: #ffe34e;
+					 }
+					 .negative {
+					   color: #ff5d5d;
+					   fill: #ff5d5d;
+					 }
+
+				 </style>
+			<g id="frame-group">
+				<g id="not-glazing">
+					<g id="spacer-group">
+						<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#f6a654" width="8" height="40"/>
+
+						<text x="150" y="50" id="measurement-spacer" text-anchor="left" class="label">5/8"</text>
+					</g> <!-- Spacer Group -->
+
+					<g id="not-spacer">
+						<g id="top-group">
+							<rect x="40.7" y="80.5" id="svg-top" class="st2" width="100" height="4" fill="#d1d1d1"/>
+							<text x="150" y="83.7" id="measurement-top" text-anchor="left" class="label">1/16"</text>
+						</g><!-- Top Group -->
+
+						<g id="not-top">
+							<g id="artwork-group" style="display: none;" >
+								<rect x="40.7" y="84.5" id="svg-artwork" width="100" height="0"/>
+								<text x="150" y="88" id="measurement-artwork" text-anchor="left" class="label">1/32"</text>
+							</g> <!--- Artwork -->
+
+							<g id="not-artwork">
+								<g id="bottom-group">
+									<rect x="40.7" y="84.5" id="svg-bottom" class="st2" width="100" height="4" fill="#d1d1d1"/>
+									<text x="150" y="88.2" id="measurement-bottom" text-anchor="left" class="label">1/16"</text>
+								</g>
+
+								<g id="not-bottom">
+									<g id="backing-group">
+										<rect x="40.7" y="88.5" id="svg-backing" class="st1" width="100" height="8" fill="#77D1F4"/>
+										<text x="150" y="94.2" id="measurement-backing" text-anchor="left" class="label">1/8"</text>
+									</g>
+
+									<g id="not-backing">
+										<g id="additional-group" style="display:none;">
+											<rect x="40.7" y="96.5" fill="rgb(252, 127, 127)" width="100" height="0" id="svg-additional" />
+											<text x="150" y="102.2" id="measurement-additional" text-anchor="left" class="label">0"</text>
+										</g><!-- Additional Group -->
+										<g id="not-additional">
+											<g id="strainer-group">
+												<rect x="40.7" y="96.5" id="svg-strainer" class="st2" width="64" height="32" fill="#ffe34e" />
+												<text x="150" y="110" id="measurement-strainer" text-anchor="left" class="label">1/2"</text>
+												<line x1="40.7" y1="96.5" x2="104.7" y2="128.5" class="x-marks-thespot" id="svg-x" stroke="#FFF" stroke-width="0.25" data-y="128.5"/>
+											</g><!-- Strainer-->
+											<g id="not-strainer"></g>
+										</g><!-- Not Additional Group-->
+									</g><!-- Not backing Group -->
+								</g><!-- Not Bottom Group -->
+							</g><!-- Not Artwork Group -->
+						</g><!-- Not Top Group -->
+					</g> <!-- Not Spacer Group -->
+				</g><!-- not Glazing -->
+				<g id="glazing-group">
+					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing" fill="rgba(95, 224, 135, 0.25)" />
+					<text x="150" y="38" id="measurement-glazing" text-anchor="left" class="label">1/8"</text>
+				</g>
+				<rect x="26.4" y="22.7" width="25" height="10" fill="rgb(133, 61, 15)" id="frame-cap" />
+			</g>
+			<g id="rabbet-group">
+				<rect x="26.4" y="32.6" width="14.5" height="96" fill="rgb(133, 61, 15)" id="svg-rabbet" />
+			</g>
+			<!-- <polygon id="svg-frame" class="st3" points="60.9,22.7 60.9,32.5 40.7,32.5 40.7,127.3 26.4,127.3 26.4,22.7 "/> -->
+			<g>
+				<!-- <line class="st4" x1="17.5" y1="32.5" x2="9.3" y2="32.5"/>
+				<line class="st4" x1="17.5" y1="137.7" x2="9.3" y2="137.7"/> -->
+				<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95" fill="none" stroke="#000000" stroke-width="0.25" />
+				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52" fill="none" stroke="#000000" stroke-width="0.25"/>
+
+				<text x="13.4" y="84" id="measurement-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
+			</g>
+			<text x="145" y="90%" id="remainder-title" text-anchor="end">Recess:</text>
+			<text x="150" y="90%" id="measurement-remainder" text-anchor="left">0"</text>
+
+			<text x="0" y="90%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
+
+			<g id="key" transform="
+                translate(0 190)
+                scale(0.1)">
+				<g>
+					<circle cx="87.6" cy="100" r="27.4" fill="rgba(95, 224, 135, 0.25)"/>
+					<text transform="matrix(1 0 0 1 132.5023 105.7499)" class="st0 st1">Glazing</text>
+				</g>
+				<g>
+					<circle cx="271.2" cy="100" r="27.4" fill="#f6a654"/>
+					<text transform="matrix(1 0 0 1 316.1171 105.7499)" class="st0 st1">Spacer</text>
+				</g>
+				<g>
+					<path d="M470.4,100c0,15.1-12.3,27.4-27.4,27.4c-15.1,0-27.4-12.3-27.4-27.4H470.4z" fill="#d1d1d1"/>
+					<path d="M415.6,100c0-15.1,12.3-27.4,27.4-27.4c15.1,0,27.4,12.3,27.4,27.4H415.6z" fill="#bebebe"/>
+					<text transform="matrix(1 0 0 1 487.9762 105.7499)" class="st0 st1">Top/Bottom Mat</text>
+				</g>
+				<g>
+					<circle cx="892.6" cy="100" r="27.4" fill="#77D1F4"/>
+					<text transform="matrix(1 0 0 1 937.4925 105.7499)" class="st0 st1">Backing</text>
+				</g>
+				<g>
+					<circle cx="1400.8" cy="100" r="27.4" fill="#ffe34e"/>
+					<text transform="matrix(1 0 0 1 1445.7847 105.7499)" class="st0 st1">Strainer</text>
+				</g>
+				<g>
+					<circle cx="1076.2" cy="100" r="27.4" fill="rgb(252, 127, 127)"/>
+					<text transform="matrix(1 0 0 1 1121.1077 105.7499)" class="st0 st1">Additional Material</text>
+				</g>
+				<g>
+					<circle cx="708.9" cy="100" r="27.4" fill="rgb(36, 86, 122)"/>
+					<text transform="matrix(1 0 0 1 753.877 105.7499)" class="st0 st1">Artwork</text>
+				</g>
+			</g>
+
+			</svg>
+
+
+		</section>
+		<section class="form">
+			<form name="framedepth" id="frameCalc">
+				<section class="frame">
+					<label for="rabbet">Rabbet Depth</label>
+					<input type="text" id="rabbet" value="1 1/2" class="values">
+					</input>
+				</section>
+				<section class="glazing">
+					<label for="glazing">Glazing</label>
+					<input type="text" id="glazing" value="1/8" class="values">
+					</input>
+				</section>
+				<section class="spacer">
+					<label for="spacer">Spacer Depth</label>
+					<input type="text" id="spacer" value="5/8" class="values"></input>
+				</section>
+				<section class="matting">
+					<div class="top">
+						<label for="topMat">Top Mat</label>
+						<select name="topMat" id="top" class="values">
+							<option value="1/16">4-Ply</option>
+							<option value="1/8">8-Ply</option>
+							<option value="0">None</option>
+						</select>
+					</div><!--
+					--><div class="bottom">
+						<label for="bottomMat">Bottom Mat</label>
+						<select name="bottomMat" id="bottom" class="values">
+							<option value="1/16">4-Ply</option>
+							<option value="1/8">8-Ply</option>
+							<option value="0">None</option>
+						</select>
+					</div>
+				</section>
+				<section class="artwork">
+					<label for="artwork">Art Depth</label>
+					<input type="text" id="artwork" value="0" class="values"></input>
+				</section>
+				<section class="backing">
+					<label for="backing">Backing</label>
+					<input type="text" id="backing" value="1/8" class="values"></input>
+				</section>
+				<section class="strainer">
+					<label for="strainer">Strainer</label>
+					<input type="text" id="strainer" value="1/2" class="values"></input>
+				</section>
+				<section class="additional">
+					<label for="additional">Additional Material</label>
+					<input type="text" id="additional" value="0" class="values"></input>
+				</section>
+				<section class="recess">
+					<label for="remaining">Recess</label>
+					<input type="text" id="remaining" disabled value=""></input>
+				</section>
+
+				<section class="url">
+					<label for="url" id="url-label" class="">
+						<span class="url-label">URL</span></label>
+					<input id="url" class="url" type="text" placeholder="url"></input>
+				</section>
+				<button id="print" class="print" onClick="window.print(); return false">Print</button>
+				<button id="download" class="download" onClick="return false">Download</button>
+				<button id="resetButton" class="reset" onClick="return false">Reset</button>
+				<p class="footer">
+					<a href="https://github.com/nwong212/frame-wizard">Github</a> <a href="https://github.com/nwong212/frame-wizard/issues">Report a Bug</a>
+				</p>
+			</form>
+
+			<canvas id="downloadable" width="1800" height = "2000"></canvas>
+
+		</section>
+	</main>
+
+
+	<script type="text/javascript">
+		document.getElementById("url").onclick = function() {
+			this.select();
+			document.execCommand('copy');
+
+			document.getElementById('url-label').setAttribute('class', 'copied');
+
+			this.blur();
+
+			setTimeout(function () {
+				document.getElementById('url-label').setAttribute('class', 'done');
+	    }, 4000);
+		}
+	</script>
+</body>
+
+</html>
