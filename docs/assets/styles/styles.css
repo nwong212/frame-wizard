@@ -732,6 +732,8 @@ form #url-label.copied:before {
 
 .buttonGroup {
   margin-bottom: 0.5em;
+  display: block;
+  overflow: hidden;
 }
 
 button {
