@@ -11,7 +11,7 @@
 * Created by Nathan Wong
 * https://nathanwong.studio
 *
-* Frame Depth Calculator v. 2.0
+* Frame Depth Calculator v. 2.1
 * Copyright 2020 Nathan Wong
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of
