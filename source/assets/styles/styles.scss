@@ -2,6 +2,7 @@
 @use "normalize";
 
 $gray: rgb(157, 161, 172);
+$black: rgb(71, 86, 98);
 $background: #FFF;
 $dark: rgb(246, 171, 25);
 $primary: rgb(247, 215, 0);
@@ -25,6 +26,7 @@ html {
 	font-size:100%;
 	font-size: 18px;
 	font-weight: 350;
+	color:$black;
 	@media screen and (max-width:70em) {
 		font-size: 16px;
 	}
@@ -167,7 +169,7 @@ form {
 		align-items: center;
 		justify-content: center;
 		// padding-left: 1.5em;
-		border-bottom:1px solid $gray;
+		border-bottom:1px solid $black;
 
 		// &:before {
 		// 	content:' ';
@@ -260,7 +262,7 @@ form {
 		font-size: 80%;
 		margin:0 0;
 		padding-right: 0.25em;
-		color:#000;
+		color:$black;
 		&:first-child {
 			margin-top:0;
 		}
@@ -320,7 +322,7 @@ form {
 			transition-duration: 100ms;
 		}
 
-		&.url {
+		&#url {
 			width:auto;
 			flex:1;
 			font-size: 0.7rem;
@@ -328,6 +330,8 @@ form {
 			flex-basis:auto;
 			box-sizing:border-box;
 			transition:300ms ease;
+			background:transparent;
+			border:1px solid $black;
 			box-shadow:inset 10px 0 10px -10px color.scale($gray, $alpha:-10%),
 			inset -10px 0 10px -10px color.scale($gray, $alpha:-10%);
 			padding-right:0!important;
@@ -379,7 +383,7 @@ form {
 		box-sizing:border-box;
 	}
 	.top {
-		border-right:1px solid $gray;
+		border-right:1px solid $black;
 		padding-right:0.25em;
 	}
 	.bottom {
@@ -410,10 +414,19 @@ form {
 		align-self: stretch;
 		align-items: center;
 		justify-content: center;
-		background: color.scale($gray, $alpha: -80%);
-		border-right:1px solid color.scale($gray, $lightness: 95%);
+		border:1px solid $black;
+		border-right:0;
 	}
-
+	.url {
+		margin-top:0.5em;
+		margin-bottom:-1px;
+		font-weight:300;
+		transition: font-weight 150ms ease-in;
+		&:hover {
+			font-weight:700;
+			transition: font-weight 150ms ease-in;
+		}
+	}
 	#url-label {
 		&:hover,
 		& + input:hover {
@@ -449,17 +462,22 @@ form {
 }
 
 button {
-	background: $primary;
+	background: none;
 	// margin: 0.5em 0;
 	text-align:center;
 	width:100%;
+	font-weight: 200;
 	padding:0.5em;
-	border:none;
+	border:1px solid $black;
 	display:block;
-	transition: box-shadow 300ms ease-out;
+	transition-property: box-shadow, font-weight;
+	transition-duration: 150ms;
+	transition-timing-function: ease-in;
 	&:hover {
 		box-shadow: 0 3px 10px -5px $gray;
-		transition: box-shadow 300ms ease-out;
+		transition-property: box-shadow, font-weight;
+		transition-duration: 150ms;
+		transition-timing-function: ease-in;
 	}
 	& + section {
 		margin-top: 0.5em;
@@ -480,14 +498,15 @@ button {
 	&#print, &#download {
 		width:50%;
 		float:left;
-		background: color.scale($primary, $lightness: 25%);
-		border-bottom: 2px solid color.scale($primary, $lightness: 60%);
+		margin-bottom:-1px;
 	}
 	&#print {
-		border-right: 2px solid color.scale($primary, $lightness: 60%);
+		border-right:0;
+		// border-right: 2px solid color.scale($primary, $lightness: 60%);
 	}
 	&:hover {
 		cursor: pointer;
+		font-weight: 700;
 	}
 }
 
@@ -519,7 +538,7 @@ button {
 	font-size: 90%;
 }
 a {
-	color: $additional;
+	color: $gray;
 }
 
 canvas {
@@ -622,7 +641,7 @@ body {
 		.close {
 			width:100%;
 			z-index: 999;
-			border-bottom:6px double black;
+			border-bottom:6px double $black;
 			display:block;
 			overflow:hidden;
 			// padding: 0.25em;
@@ -636,7 +655,7 @@ body {
 			backdrop-filter:blur(4px);
 			a {
 				display:inline-block;
-				border-left: 2px solid black;
+				border-left: 2px solid $black;
 				padding: 0.3em 0.25em 0.25em;
 				height:calc(2rem - 6px);
 				line-height:1;
@@ -649,7 +668,7 @@ body {
 				box-sizing: border-box;
 				display:inline-block;
 				line {
-					stroke: black;
+					stroke: $black;
 					stroke-width: 10;
 				}
 			}
@@ -661,7 +680,7 @@ body {
 			z-index: 99;
 			background:rgba(255, 255, 255, 0.75);
 			backdrop-filter:blur(4px);
-			border-bottom:2px solid black;
+			border-bottom:2px solid $black;
 			line-height:1;
 			margin:0;
 			overflow-x:scroll;
@@ -686,7 +705,7 @@ body {
 						padding:0.5em 1em;
 						text-decoration: none;
 						background:$primary;
-						color:#000;
+						color:$black;
 						border-radius:2em;
 						transition: box-shadow 300ms ease-out;
 						&:hover {
@@ -718,7 +737,7 @@ body {
 			background:#FFF;
 			box-sizing: border-box;
 			// box-shadow: 0 0 40px -10px rgba(156, 156, 156, 0.8);
-			border: 2px solid black;
+			border: 2px solid $black;
 			@media screen and (max-width:70em) {
 				width:90%;
 				height:90vh;
@@ -735,7 +754,7 @@ body {
 				text-align:center;
 				padding:1em 0;
 				box-sizing: border-box;
-				border-top: 2px solid black;
+				border-top: 2px solid $black;
 				z-index: 9999;
 				bottom:0;
 				left:0;
@@ -752,14 +771,14 @@ body {
 					padding:0.5em 1em;
 					display:inline-block;
 					text-decoration: none;
-					background:black;
+					background:$black;
 					color:white;
 					box-sizing: border-box;
 					// border-radius:2em;
 				}
 				#clear {
 					background:transparent;
-					color: black;
+					color: $black;
 					border: 2px solid;
 					font-weight:bold;
 				}
@@ -776,7 +795,7 @@ body {
 				flex:1;
 				flex-direction: row;
 				padding:1em;
-				border-bottom:2px solid black;
+				border-bottom:2px solid $black;
 				&:before {
 					display:none;
 				}
@@ -793,7 +812,7 @@ body {
 					backdrop-filter:blur(4px);
 					padding:0.5em 0;
 					width:100%;
-					border-bottom:1px solid black;
+					border-bottom:1px solid $black;
 				}
 			}
 			input[type="radio"] {

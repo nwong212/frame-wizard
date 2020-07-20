@@ -343,6 +343,7 @@ html {
   font-size: 100%;
   font-size: 18px;
   font-weight: 350;
+  color: #475662;
 }
 @media screen and (max-width: 70em) {
   html {
@@ -476,7 +477,7 @@ form section {
   position: relative;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #9da1ac;
+  border-bottom: 1px solid #475662;
 }
 form section.frame:before {
   background: #853d0f;
@@ -536,7 +537,7 @@ form label {
   font-size: 80%;
   margin: 0 0;
   padding-right: 0.25em;
-  color: #000;
+  color: #475662;
 }
 form label:first-child {
   margin-top: 0;
@@ -593,7 +594,7 @@ form input + .helper {
   transition-timing-function: ease-in-out;
   transition-duration: 100ms;
 }
-form input.url {
+form input#url {
   width: auto;
   flex: 1;
   font-size: 0.7rem;
@@ -601,10 +602,12 @@ form input.url {
   flex-basis: auto;
   box-sizing: border-box;
   transition: 300ms ease;
+  background: transparent;
+  border: 1px solid #475662;
   box-shadow: inset 10px 0 10px -10px rgba(157, 161, 172, 0.9), inset -10px 0 10px -10px rgba(157, 161, 172, 0.9);
   padding-right: 0 !important;
 }
-form input.url:focus {
+form input#url:focus {
   outline: 0;
   background: rgba(216, 217, 222, 0.2);
   transition: 300ms ease;
@@ -642,7 +645,7 @@ form .top, form .bottom {
   box-sizing: border-box;
 }
 form .top {
-  border-right: 1px solid #9da1ac;
+  border-right: 1px solid #475662;
   padding-right: 0.25em;
 }
 form .bottom {
@@ -668,8 +671,18 @@ form #url-label {
   align-self: stretch;
   align-items: center;
   justify-content: center;
-  background: rgba(157, 161, 172, 0.2);
-  border-right: 1px solid #fafafb;
+  border: 1px solid #475662;
+  border-right: 0;
+}
+form .url {
+  margin-top: 0.5em;
+  margin-bottom: -1px;
+  font-weight: 300;
+  transition: font-weight 150ms ease-in;
+}
+form .url:hover {
+  font-weight: 700;
+  transition: font-weight 150ms ease-in;
 }
 form #url-label:hover, form #url-label + input:hover {
   cursor: pointer;
@@ -700,17 +713,22 @@ form #url-label.copied:before {
 }
 
 button {
-  background: #f7d700;
+  background: none;
   text-align: center;
   width: 100%;
+  font-weight: 200;
   padding: 0.5em;
-  border: none;
+  border: 1px solid #475662;
   display: block;
-  transition: box-shadow 300ms ease-out;
+  transition-property: box-shadow, font-weight;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in;
 }
 button:hover {
   box-shadow: 0 3px 10px -5px #9da1ac;
-  transition: box-shadow 300ms ease-out;
+  transition-property: box-shadow, font-weight;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in;
 }
 button + section {
   margin-top: 0.5em;
@@ -731,14 +749,14 @@ button.profile-selected .name {
 button#print, button#download {
   width: 50%;
   float: left;
-  background: #ffe53a;
-  border-bottom: 2px solid #fff196;
+  margin-bottom: -1px;
 }
 button#print {
-  border-right: 2px solid #fff196;
+  border-right: 0;
 }
 button:hover {
   cursor: pointer;
+  font-weight: 700;
 }
 
 .footer {
@@ -746,7 +764,7 @@ button:hover {
 }
 
 a {
-  color: #fc7f7f;
+  color: #9da1ac;
 }
 
 canvas {
@@ -848,7 +866,7 @@ body .overlay #branding h2 {
 body .overlay .close {
   width: 100%;
   z-index: 999;
-  border-bottom: 6px double black;
+  border-bottom: 6px double #475662;
   display: block;
   overflow: hidden;
   text-align: right;
@@ -863,7 +881,7 @@ body .overlay .close {
 }
 body .overlay .close a {
   display: inline-block;
-  border-left: 2px solid black;
+  border-left: 2px solid #475662;
   padding: 0.3em 0.25em 0.25em;
   height: calc(2rem - 6px);
   line-height: 1;
@@ -877,7 +895,7 @@ body .overlay .close svg#X {
   display: inline-block;
 }
 body .overlay .close svg#X line {
-  stroke: black;
+  stroke: #475662;
   stroke-width: 10;
 }
 body .overlay .instructions {
@@ -889,7 +907,7 @@ body .overlay .instructions {
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #475662;
   line-height: 1;
   margin: 0;
   overflow-x: scroll;
@@ -919,7 +937,7 @@ body .overlay .instructions ul li a {
   padding: 0.5em 1em;
   text-decoration: none;
   background: #f7d700;
-  color: #000;
+  color: #475662;
   border-radius: 2em;
   transition: box-shadow 300ms ease-out;
 }
@@ -949,7 +967,7 @@ body .overlay .frame-selector {
   align-self: center;
   background: #FFF;
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 2px solid #475662;
 }
 @media screen and (max-width: 70em) {
   body .overlay .frame-selector {
@@ -971,7 +989,7 @@ body .overlay .frame-selector .buttons {
   text-align: center;
   padding: 1em 0;
   box-sizing: border-box;
-  border-top: 2px solid black;
+  border-top: 2px solid #475662;
   z-index: 9999;
   bottom: 0;
   left: 0;
@@ -990,13 +1008,13 @@ body .overlay .frame-selector .buttons button.button {
   padding: 0.5em 1em;
   display: inline-block;
   text-decoration: none;
-  background: black;
+  background: #475662;
   color: white;
   box-sizing: border-box;
 }
 body .overlay .frame-selector .buttons #clear {
   background: transparent;
-  color: black;
+  color: #475662;
   border: 2px solid;
   font-weight: bold;
 }
@@ -1012,7 +1030,7 @@ body .overlay form section {
   flex: 1;
   flex-direction: row;
   padding: 1em;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #475662;
 }
 body .overlay form section:before {
   display: none;
@@ -1032,7 +1050,7 @@ body .overlay form section h4 {
           backdrop-filter: blur(4px);
   padding: 0.5em 0;
   width: 100%;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #475662;
 }
 body .overlay form input[type=radio] {
   max-width: 1rem;
