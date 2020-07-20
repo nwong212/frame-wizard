@@ -324,17 +324,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<form name="framedepth" id="frameCalc">
 				<section class="frame">
 					<label for="rabbet">Rabbet Depth</label>
-					<input type="text" id="rabbet" value="1 1/2" class="values">
+					<input type="text" id="rabbet" value="1 1/2" class="values" pattern="(([1-9]\d*\/(2|4|8|16|32))|([1-9]* [1-9]\d*\/(2|4|8|16|32))|([1-9]\d*))">
 					</input>
+					<div class="helper">
+						Rabbet cannot be 0.
+						<br />
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="glazing">
 					<label for="glazing">Glazing</label>
-					<input type="text" id="glazing" value="1/8" class="values">
+					<input type="text" id="glazing" value="1/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))">
 					</input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+
+
+					</div>
 				</section>
 				<section class="spacer">
 					<label for="spacer">Spacer Depth</label>
-					<input type="text" id="spacer" value="5/8" class="values"></input>
+					<input type="text" id="spacer" value="5/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+
+
+					</div>
 				</section>
 				<section class="matting">
 					<div class="top">
@@ -358,19 +373,31 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				</section>
 				<section class="artwork">
 					<label for="artwork">Art Depth</label>
-					<input type="text" id="artwork" value="0" class="values"></input>
+					<input type="text" id="artwork" value="0" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="backing">
 					<label for="backing">Backing</label>
-					<input type="text" id="backing" value="1/8" class="values"></input>
+					<input type="text" id="backing" value="1/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="strainer">
 					<label for="strainer">Strainer</label>
-					<input type="text" id="strainer" value="1/2" class="values"></input>
+					<input type="text" id="strainer" value="1/2" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="additional">
 					<label for="additional">Additional Material</label>
-					<input type="text" id="additional" value="0" class="values"></input>
+					<input type="text" id="additional" value="0" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="recess">
 					<label for="remaining">Recess</label>

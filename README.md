@@ -1,5 +1,5 @@
-# Frame Depth Wizard
-A visual frame depth calculator for when you want to add up your frame package to make sure it will fit in your frame profile. Very useful and very specific to fine art framing.
+# Frame-depth.js
+This simple javascript-based website generates a frame cross-section based on measurements provided.
 
 Measurements are in inches.
 

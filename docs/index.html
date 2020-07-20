@@ -32,16 +32,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 	<!--Apple Tags -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="apple-touch-icon" href="favicon.png?ckcachebust=616973325">
+	<link rel="apple-touch-icon" href="favicon.png?ckcachebust=616975234">
 	<meta name="apple-mobile-web-app-title" content="Frame Depth">
 
-	<link rel="stylesheet" href="assets/styles/styles.css?ckcachebust=0339b5c367a6be2317d7224f0a37a552">
+	<link rel="stylesheet" href="assets/styles/styles.css?ckcachebust=3d5ab39657fe1ddfc6fdc9810b181402">
 
 	<!-- Primary Meta Tags -->
 	<title>Frame Depth Calculator</title>
 	<meta name="title" content="Frame Depth Calculator">
 	<meta name="description" content="A picture frame rabbet depth calculator with matching diagram. Helpful for fine art picture framers.">
-	<link rel="icon" type="image/png" href="assets/icons/favicon.png?ckcachebust=f9f2a6b550e3962098a960628a274c1e">
+	<link rel="icon" type="image/png" href="assets/icons/favicon.png?ckcachebust=f648fd5498bdfd733bb99fd26067fb2f">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
@@ -57,7 +57,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<meta property="twitter:description" content="A visual frame depth calculator for fine art framing. Subtract your frame package from your rabbet depth.">
 	<meta property="twitter:image" content="assets/icons/favicon.png">
 
-	<script type="text/javascript" src="assets/scripts/wizard.js?ckcachebust=863babcd93d08ef8dff58433083e45d5"></script>
+	<script type="text/javascript" src="assets/scripts/wizard.js?ckcachebust=0f836f1181a60e3ce120bcfe2561613e"></script>
 
 
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700" rel="stylesheet">
@@ -324,17 +324,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<form name="framedepth" id="frameCalc">
 				<section class="frame">
 					<label for="rabbet">Rabbet Depth</label>
-					<input type="text" id="rabbet" value="1 1/2" class="values">
+					<input type="text" id="rabbet" value="1 1/2" class="values" pattern="(([1-9]\d*\/(2|4|8|16|32))|([1-9]* [1-9]\d*\/(2|4|8|16|32))|([1-9]\d*))">
 					</input>
+					<div class="helper">
+						Rabbet cannot be 0.
+						<br />
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="glazing">
 					<label for="glazing">Glazing</label>
-					<input type="text" id="glazing" value="1/8" class="values">
+					<input type="text" id="glazing" value="1/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))">
 					</input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+
+
+					</div>
 				</section>
 				<section class="spacer">
 					<label for="spacer">Spacer Depth</label>
-					<input type="text" id="spacer" value="5/8" class="values"></input>
+					<input type="text" id="spacer" value="5/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+
+
+					</div>
 				</section>
 				<section class="matting">
 					<div class="top">
@@ -358,19 +373,31 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				</section>
 				<section class="artwork">
 					<label for="artwork">Art Depth</label>
-					<input type="text" id="artwork" value="0" class="values"></input>
+					<input type="text" id="artwork" value="0" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="backing">
 					<label for="backing">Backing</label>
-					<input type="text" id="backing" value="1/8" class="values"></input>
+					<input type="text" id="backing" value="1/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="strainer">
 					<label for="strainer">Strainer</label>
-					<input type="text" id="strainer" value="1/2" class="values"></input>
+					<input type="text" id="strainer" value="1/2" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="additional">
 					<label for="additional">Additional Material</label>
-					<input type="text" id="additional" value="0" class="values"></input>
+					<input type="text" id="additional" value="0" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
+					<div class="helper">
+						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
+					</div>
 				</section>
 				<section class="recess">
 					<label for="remaining">Recess</label>
