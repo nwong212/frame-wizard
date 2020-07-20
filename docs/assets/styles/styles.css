@@ -344,7 +344,7 @@ html {
   font-size: 18px;
   font-weight: 350;
 }
-@media screen and (max-width: 2100px) {
+@media screen and (max-width: 70em) {
   html {
     font-size: 16px;
   }
@@ -411,8 +411,9 @@ section {
   width: 75%;
   height: 100vh;
   overflow: hidden;
+  box-sizing: border-box;
 }
-@media screen and (max-width: 2100px) {
+@media screen and (max-width: 70em) {
   .diagram {
     width: 60%;
   }
@@ -436,7 +437,7 @@ section {
   width: 25%;
   border-left: 1px solid #9da1ac;
 }
-@media screen and (max-width: 2100px) {
+@media screen and (max-width: 70em) {
   .form {
     width: 40%;
   }
@@ -447,6 +448,16 @@ section {
     height: 50vh;
     border-left: none;
   }
+}
+
+form input:invalid:focus + .helper, form input:invalid:hover + .helper {
+  display: block;
+  z-index: 9;
+  opacity: 1;
+  transition-property: top, opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+  top: calc(100% + 0.5em);
 }
 
 form {
@@ -532,50 +543,6 @@ form section.url:before {
   display: none;
   visibility: hidden;
 }
-form #url-label {
-  width: 3rem;
-  text-align: center;
-  display: flex;
-  align-self: stretch;
-  align-items: center;
-  justify-content: center;
-  background: rgba(157, 161, 172, 0.2);
-}
-form #url {
-  width: auto;
-  flex: 1;
-  min-width: 0;
-  flex-basis: auto;
-  box-sizing: border-box;
-  transition: 300ms ease;
-  font-size: 0.9rem;
-}
-form #url:focus {
-  outline: 0;
-  background: rgba(216, 217, 222, 0.2);
-  transition: 300ms ease;
-}
-form #url-label span {
-  opacity: 1;
-  transition: opacity 300ms ease;
-}
-form #url-label:before {
-  content: "copied";
-  color: #32e77a;
-  text-transform: uppercase;
-  position: absolute;
-  opacity: 0;
-  transition: opacity 500ms ease;
-}
-form #url-label.copied span {
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-form #url-label.copied:before {
-  display: block;
-  opacity: 1;
-  transition: opacity 500ms ease;
-}
 form label {
   flex-basis: 50%;
   min-width: auto;
@@ -608,8 +575,74 @@ form input, form select {
   width: 100%;
   background: rgba(157, 161, 172, 0.2);
 }
-form input[type=text],
-form input[type=button] input[type=select] {
+form input {
+  transition-property: color, box-shadow, outline;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+form input:focus {
+  transition-property: color, box-shadow, outline;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+form input + .helper {
+  width: 75%;
+  z-index: -9999;
+  position: absolute;
+  font-size: 0.75em;
+  line-height: 1.2;
+  top: 0;
+  opacity: 0;
+  background: rgba(255, 221, 211, 0.75);
+  border-radius: 5px;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: left;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  color: #ff5621;
+  transition-delay: 0;
+  transition-property: top, opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 100ms;
+}
+form input.url {
+  width: auto;
+  flex: 1;
+  font-size: 0.7rem;
+  min-width: 0;
+  flex-basis: auto;
+  box-sizing: border-box;
+  transition: 300ms ease;
+  box-shadow: inset 10px 0 10px -10px rgba(157, 161, 172, 0.9), inset -10px 0 10px -10px rgba(157, 161, 172, 0.9);
+  padding-right: 0 !important;
+}
+form input.url:focus {
+  outline: 0;
+  background: rgba(216, 217, 222, 0.2);
+  transition: 300ms ease;
+}
+form input:invalid {
+  color: #ff5621;
+  box-shadow: 0 0 0 2px #ff5621, 0 0 8px 2px rgba(255, 86, 33, 0.5);
+  transition-property: color, box-shadow, outline;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+  transition-delay: 1s;
+}
+form input:invalid:hover {
+  z-index: 99;
+}
+form input:invalid:hover + .helper {
+  transition-delay: 0;
+}
+form input:invalid:focus {
+  outline: none;
+}
+form input:invalid:focus + .helper {
+  transition-delay: 1s;
+}
+form input[type=text], form input[type=button] form input[type=select] {
   word-spacing: 0.5em;
   -webkit-appearance: none;
   flex-basis: 50%;
@@ -638,6 +671,45 @@ form input[disabled] {
 }
 form input[disabled].negative {
   color: #ff5d5d;
+}
+form #url-label {
+  flex-basis: 4rem;
+  flex-shrink: 1;
+  flex-grow: 0;
+  text-align: center;
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  background: rgba(157, 161, 172, 0.2);
+  border-right: 1px solid #fafafb;
+}
+form #url-label:hover, form #url-label + input:hover {
+  cursor: pointer;
+}
+form #url-label span {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+form #url-label:before {
+  content: "copied";
+  color: #32e77a;
+  text-transform: uppercase;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+form #url-label.copied span {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+form #url-label.copied + input {
+  color: #32e77a;
+}
+form #url-label.copied:before {
+  display: block;
+  opacity: 1;
+  transition: opacity 500ms ease;
 }
 
 button {
@@ -737,7 +809,7 @@ body .overlay {
   z-index: 99;
   transition: opacity 200ms ease-in-out;
 }
-@media screen and (max-width: 2100px) {
+@media screen and (max-width: 70em) {
   body .overlay {
     width: 60%;
   }
@@ -884,7 +956,7 @@ body .overlay .frame-selector {
   box-sizing: border-box;
   border: 2px solid black;
 }
-@media screen and (max-width: 2100px) {
+@media screen and (max-width: 70em) {
   body .overlay .frame-selector {
     width: 90%;
     height: 90vh;
@@ -992,7 +1064,7 @@ body .overlay form label {
   box-shadow: 0 0 -10px 0 #9da1ac;
   transition: box-shadow 300ms ease-in, font-weight 300ms ease-out;
 }
-@media screen and (max-width: 2100px) {
+@media screen and (max-width: 70em) {
   body .overlay form label {
     flex-basis: calc(25% - 1em);
   }

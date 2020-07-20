@@ -6,6 +6,7 @@ $background: #FFF;
 $dark: rgb(246, 171, 25);
 $primary: rgb(247, 215, 0);
 $secondary: rgb(252, 127, 127);
+$wrong: rgb(255, 86, 33);
 
 //Color coding:
 
@@ -24,7 +25,7 @@ html {
 	font-size:100%;
 	font-size: 18px;
 	font-weight: 350;
-	@media screen and (max-width:2100px) {
+	@media screen and (max-width:70em) {
 		font-size: 16px;
 	}
 	@media screen and (max-width:45em) {
@@ -107,7 +108,8 @@ section {
 	width:75%;
 	height:100vh;
 	overflow:hidden;
-	@media screen and (max-width:2100px) {
+	box-sizing: border-box;
+	@media screen and (max-width:70em) {
 		width:60%;
 	}
 	@media screen and (max-width:45em) {
@@ -126,7 +128,7 @@ section {
 	overflow:auto;
 	width:25%;
 	border-left:1px solid $gray;
-	@media screen and (max-width:2100px) {
+	@media screen and (max-width:70em) {
 		width:40%;
 	}
 	@media screen and (max-width:45em) {
@@ -134,6 +136,17 @@ section {
 		height:50vh;
 		border-left:none;
 	}
+}
+
+
+%helper {
+	display:block;
+	z-index: 9;
+	opacity:1;
+	transition-property: top, opacity;
+	transition-timing-function: ease-in-out;
+	transition-duration: 300ms;
+	top: calc(100% + 0.5em);
 }
 
 form {
@@ -241,55 +254,6 @@ form {
 			}
 		}
 	}
-
-	#url-label {
-		width:3rem;
-		text-align:center;
-		display:flex;
-		align-self: stretch;
-		align-items: center;
-		justify-content: center;
-		background: color.scale($gray, $alpha: -80%);
-	}
-	#url {
-		width:auto;
-		flex:1;
-		min-width:0;
-		flex-basis:auto;
-		box-sizing:border-box;
-		transition:300ms ease;
-		font-size: 0.9rem;
-		&:focus {
-			outline:0;
-			background:color.scale($gray, $alpha:-80%, $lightness: 60%);
-			transition:300ms ease;
-		}
-	}
-	#url-label {
-		span {
-			opacity:1;
-			transition:opacity 300ms ease;
-		}
-		&:before {
-			content:'copied';
-			color: rgb(50, 231, 122);
-			text-transform:uppercase;
-			position:absolute;
-			opacity:0;
-			transition:opacity 500ms ease;
-		}
-	}
-	#url-label.copied {
-		span {
-			opacity:0;
-			transition:opacity 300ms ease;
-		}
-		&:before {
-			display:block;
-			opacity:1;
-			transition:opacity 500ms ease;
-		}
-	}
 	label {
 		flex-basis:50%;
 		min-width:auto;
@@ -323,13 +287,90 @@ form {
 		width: 100%;
 		background: color.scale($gray, $alpha: -80%);
 	}
-	input[type="text"],
-	input[type="button"]
-	input[type="select"] {
-		word-spacing: 0.5em;
-		-webkit-appearance: none;
-		flex-basis:50%;
-		padding-right: 10px;
+	input {
+		transition-property: color, box-shadow, outline;
+		transition-timing-function: ease-in-out;
+		transition-duration: 300ms;
+		// outline-color:transparent;
+		&:focus {
+			transition-property: color, box-shadow, outline;
+			transition-timing-function: ease-in-out;
+			transition-duration: 300ms;
+		}
+		& + .helper {
+			// display:none;
+			width:75%;
+			z-index:-9999;
+			position:absolute;
+			font-size: 0.75em;
+			line-height: 1.2;
+			top:0;
+			// left: 50%;
+			opacity:0;
+			background: color.scale($wrong, $lightness: 80%, $alpha: -25%);
+			border-radius: 5px;
+			padding: 0.5em;
+			box-sizing: border-box;
+			text-align:left;
+			backdrop-filter:blur(2px);
+			color: $wrong;
+			transition-delay: 0;
+			transition-property: top, opacity;
+			transition-timing-function: ease-in-out;
+			transition-duration: 100ms;
+		}
+
+		&.url {
+			width:auto;
+			flex:1;
+			font-size: 0.7rem;
+			min-width:0;
+			flex-basis:auto;
+			box-sizing:border-box;
+			transition:300ms ease;
+			box-shadow:inset 10px 0 10px -10px color.scale($gray, $alpha:-10%),
+			inset -10px 0 10px -10px color.scale($gray, $alpha:-10%);
+			padding-right:0!important;
+			&:focus {
+				outline:0;
+				background:color.scale($gray, $alpha:-80%, $lightness: 60%);
+				transition:300ms ease;
+			}
+		}
+
+		&:invalid {
+			color:$wrong;
+			box-shadow: 0 0 0 2px $wrong, 0 0 8px 2px color.scale($wrong, $alpha:-50%);
+			transition-property: color, box-shadow, outline;
+			transition-timing-function: ease-in-out;
+			transition-duration: 300ms;
+			transition-delay: 1s;
+
+			&:hover {
+				z-index: 99;
+			}
+
+			&:hover + .helper {
+				@extend %helper;
+				transition-delay: 0;
+			}
+
+			&:focus {
+				outline:none;
+				& + .helper {
+					@extend %helper;
+					transition-delay: 1s;
+				}
+			}
+		}
+		&[type="text"],
+		&[type="button"]
+		&[type="select"] {
+			word-spacing: 0.5em;
+			-webkit-appearance: none;
+			flex-basis:50%;
+			padding-right: 10px;
+		}
 	}
 	.top, .bottom {
 		text-align:left;
@@ -356,6 +397,53 @@ form {
 		box-sizing:border-box;
 		&.negative {
 			color: rgb(255, 93, 93);
+		}
+	}
+
+
+	#url-label {
+		flex-basis:4rem;
+		flex-shrink:1;
+		flex-grow:0;
+		text-align:center;
+		display:flex;
+		align-self: stretch;
+		align-items: center;
+		justify-content: center;
+		background: color.scale($gray, $alpha: -80%);
+		border-right:1px solid color.scale($gray, $lightness: 95%);
+	}
+
+	#url-label {
+		&:hover,
+		& + input:hover {
+			cursor:pointer;
+		}
+		span {
+			opacity:1;
+			transition:opacity 300ms ease;
+		}
+		&:before {
+			content:'copied';
+			color: rgb(50, 231, 122);
+			text-transform:uppercase;
+			position:absolute;
+			opacity:0;
+			transition:opacity 500ms ease;
+		}
+	}
+	#url-label.copied {
+		span {
+			opacity:0;
+			transition:opacity 300ms ease;
+		}
+		& + input {
+			color: rgb(50, 231, 122);
+		}
+		&:before {
+			display:block;
+			opacity:1;
+			transition:opacity 500ms ease;
 		}
 	}
 }
@@ -486,7 +574,7 @@ body {
 		z-index:99;
 		transition: opacity 200ms ease-in-out;
 
-		@media screen and (max-width:2100px) {
+		@media screen and (max-width:70em) {
 			width:60%;
 		}
 		@media screen and (max-width:45em) {
@@ -624,7 +712,7 @@ body {
 			box-sizing: border-box;
 			// box-shadow: 0 0 40px -10px rgba(156, 156, 156, 0.8);
 			border: 2px solid black;
-			@media screen and (max-width:2100px) {
+			@media screen and (max-width:70em) {
 				width:90%;
 				height:90vh;
 			}
@@ -727,7 +815,7 @@ body {
 				box-shadow: 0 0 -10px 0 $gray;
 				// border-radius:1rem;
 				transition: box-shadow 300ms ease-in, font-weight 300ms ease-out;
-				@media screen and (max-width:2100px) {
+				@media screen and (max-width:70em) {
 					flex-basis: calc(25% - 1em);
 				}
 				@media screen and (max-width:45em) {
