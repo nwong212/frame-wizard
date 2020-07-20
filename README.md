@@ -1,4 +1,4 @@
-# Frame-depth.js
+# Frame-depth.js v2.1
 This simple javascript-based website generates a frame cross-section based on measurements provided.
 
 Measurements are in inches.
