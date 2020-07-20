@@ -169,7 +169,8 @@ form {
 		align-items: center;
 		justify-content: center;
 		// padding-left: 1.5em;
-		border-bottom:1px solid $black;
+		border:1px solid $black;
+		margin-bottom:-1px;
 
 		// &:before {
 		// 	content:' ';
@@ -184,6 +185,12 @@ form {
 		// 	flex-grow:0;
 		// 	// top:50%;
 		// 	// left:0.25em;
+		// }
+
+		// &:first-of-type {
+		// 	input {
+		// 		border-top:1px solid;
+		// 	}
 		// }
 
 		&.frame {
@@ -231,14 +238,18 @@ form {
 		}
 		&.recess {
 			margin:0.5em 0;
-			border-bottom:0;
+			// border-bottom:0;
 			padding:0;
+			border:0;
 			label {
-				flex-basis: 40%;
+				// flex-basis: 40%;
 				text-align:center;
+					width:50%;
 			}
 			input {
-				flex-basis: 60%
+				width:50%;
+				// flex-basis: 60%;
+				border:3px solid currentColor;
 			}
 			&:before {
 				content:'';
@@ -248,7 +259,6 @@ form {
 		}
 		&.url {
 			padding:0;
-			border:0;
 			&:before {
 				content:'';
 				display:none;
@@ -257,8 +267,9 @@ form {
 		}
 	}
 	label {
-		flex-basis:50%;
-		min-width:auto;
+		width:50%;
+		box-sizing:border-box;
+		// min-width:auto;
 		font-size: 80%;
 		margin:0 0;
 		padding-right: 0.25em;
@@ -277,7 +288,9 @@ form {
 		text-align:left;
 	}
 	input, select {
+		color:$black;
 		border-radius:0;
+		box-sizing:border-box;
 		display:block;
 		font-size: 1em;
 		padding:10px 0;
@@ -287,12 +300,19 @@ form {
 		// border-bottom:2px solid $gray;
 		margin:auto;
 		width: 100%;
-		background: color.scale($gray, $alpha: -80%);
+		background: none;
+		border:0;
+		// border-bottom:0;
+	}
+	select {
+		border-top:1px solid $black;
 	}
 	input {
 		transition-property: color, box-shadow, outline;
 		transition-timing-function: ease-in-out;
 		transition-duration: 300ms;
+		border-top:0;
+		border-left:1px solid $black;
 		// outline-color:transparent;
 		&:focus {
 			transition-property: color, box-shadow, outline;
@@ -331,7 +351,7 @@ form {
 			box-sizing:border-box;
 			transition:300ms ease;
 			background:transparent;
-			border:1px solid $black;
+			border:0px;
 			box-shadow:inset 10px 0 10px -10px color.scale($gray, $alpha:-10%),
 			inset -10px 0 10px -10px color.scale($gray, $alpha:-10%);
 			padding-right:0!important;
@@ -372,8 +392,10 @@ form {
 		&[type="select"] {
 			word-spacing: 0.5em;
 			-webkit-appearance: none;
-			flex-basis:50%;
+			width:50%;
+			// flex:0;
 			padding-right: 10px;
+			box-sizing:border-box;
 		}
 	}
 	.top, .bottom {
@@ -381,13 +403,18 @@ form {
 		width:50%;
 		display:inline-block;
 		box-sizing:border-box;
+		label {
+			padding:0.5em;
+			width:100%;
+			display:block;
+		}
 	}
 	.top {
-		border-right:1px solid $black;
-		padding-right:0.25em;
+		// padding-right:0.25em;
 	}
 	.bottom {
-		padding-left: 0.25em;
+		border-left:1px solid $black;
+		// padding-left: 0.25em;
 	}
 	input[disabled] {
 		// border-bottom:none;
@@ -414,12 +441,12 @@ form {
 		align-self: stretch;
 		align-items: center;
 		justify-content: center;
-		border:1px solid $black;
-		border-right:0;
+		border-right:1px solid $black;
 	}
 	.url {
 		margin-top:0.5em;
 		margin-bottom:-1px;
+		border:1px solid $black;
 		font-weight:300;
 		transition: font-weight 150ms ease-in;
 		&:hover {

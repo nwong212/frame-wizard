@@ -477,7 +477,8 @@ form section {
   position: relative;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #475662;
+  border: 1px solid #475662;
+  margin-bottom: -1px;
 }
 form section.frame:before {
   background: #853d0f;
@@ -507,15 +508,16 @@ form section.artwork:before {
 }
 form section.recess {
   margin: 0.5em 0;
-  border-bottom: 0;
   padding: 0;
+  border: 0;
 }
 form section.recess label {
-  flex-basis: 40%;
   text-align: center;
+  width: 50%;
 }
 form section.recess input {
-  flex-basis: 60%;
+  width: 50%;
+  border: 3px solid currentColor;
 }
 form section.recess:before {
   content: "";
@@ -524,7 +526,6 @@ form section.recess:before {
 }
 form section.url {
   padding: 0;
-  border: 0;
 }
 form section.url:before {
   content: "";
@@ -532,8 +533,8 @@ form section.url:before {
   visibility: hidden;
 }
 form label {
-  flex-basis: 50%;
-  min-width: auto;
+  width: 50%;
+  box-sizing: border-box;
   font-size: 80%;
   margin: 0 0;
   padding-right: 0.25em;
@@ -552,7 +553,9 @@ form .helptext {
   text-align: left;
 }
 form input, form select {
+  color: #475662;
   border-radius: 0;
+  box-sizing: border-box;
   display: block;
   font-size: 1em;
   padding: 10px 0;
@@ -561,12 +564,18 @@ form input, form select {
   min-width: 4em;
   margin: auto;
   width: 100%;
-  background: rgba(157, 161, 172, 0.2);
+  background: none;
+  border: 0;
+}
+form select {
+  border-top: 1px solid #475662;
 }
 form input {
   transition-property: color, box-shadow, outline;
   transition-timing-function: ease-in-out;
   transition-duration: 300ms;
+  border-top: 0;
+  border-left: 1px solid #475662;
 }
 form input:focus {
   transition-property: color, box-shadow, outline;
@@ -603,7 +612,7 @@ form input#url {
   box-sizing: border-box;
   transition: 300ms ease;
   background: transparent;
-  border: 1px solid #475662;
+  border: 0px;
   box-shadow: inset 10px 0 10px -10px rgba(157, 161, 172, 0.9), inset -10px 0 10px -10px rgba(157, 161, 172, 0.9);
   padding-right: 0 !important;
 }
@@ -635,8 +644,9 @@ form input:invalid:focus + .helper {
 form input[type=text], form input[type=button] form input[type=select] {
   word-spacing: 0.5em;
   -webkit-appearance: none;
-  flex-basis: 50%;
+  width: 50%;
   padding-right: 10px;
+  box-sizing: border-box;
 }
 form .top, form .bottom {
   text-align: left;
@@ -644,12 +654,13 @@ form .top, form .bottom {
   display: inline-block;
   box-sizing: border-box;
 }
-form .top {
-  border-right: 1px solid #475662;
-  padding-right: 0.25em;
+form .top label, form .bottom label {
+  padding: 0.5em;
+  width: 100%;
+  display: block;
 }
 form .bottom {
-  padding-left: 0.25em;
+  border-left: 1px solid #475662;
 }
 form input[disabled] {
   -webkit-appearance: none;
@@ -671,12 +682,12 @@ form #url-label {
   align-self: stretch;
   align-items: center;
   justify-content: center;
-  border: 1px solid #475662;
-  border-right: 0;
+  border-right: 1px solid #475662;
 }
 form .url {
   margin-top: 0.5em;
   margin-bottom: -1px;
+  border: 1px solid #475662;
   font-weight: 300;
   transition: font-weight 150ms ease-in;
 }
