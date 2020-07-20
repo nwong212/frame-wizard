@@ -426,8 +426,15 @@ form {
 		font-size:1.5rem;
 		padding:10px;
 		box-sizing:border-box;
+		transition-property: font-weight, color;
+		transition-duration: 200ms;
+		transition-timing-function: ease-in;
 		&.negative {
 			color: rgb(255, 93, 93);
+			font-weight:640;
+			transition-property: font-weight, color;
+			transition-duration: 200ms;
+			transition-timing-function: ease-in;
 		}
 	}
 
