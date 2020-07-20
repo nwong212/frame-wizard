@@ -166,23 +166,23 @@ form {
 		position:relative;
 		align-items: center;
 		justify-content: center;
-		padding-left: 1.5em;
-		border-bottom:2px solid $gray;
+		// padding-left: 1.5em;
+		border-bottom:1px solid $gray;
 
-		&:before {
-			content:' ';
-			width:1rem;
-			height:1rem;
-			font-size:0;
-			border-radius:50%;
-			background-color:yellow;
-			position:absolute;
-			left:0;
-			flex-shrink:0;
-			flex-grow:0;
-			// top:50%;
-			// left:0.25em;
-		}
+		// &:before {
+		// 	content:' ';
+		// 	width:1rem;
+		// 	height:1rem;
+		// 	font-size:0;
+		// 	border-radius:50%;
+		// 	background-color:yellow;
+		// 	position:absolute;
+		// 	left:0;
+		// 	flex-shrink:0;
+		// 	flex-grow:0;
+		// 	// top:50%;
+		// 	// left:0.25em;
+		// }
 
 		&.frame {
 			&:before {
@@ -379,7 +379,7 @@ form {
 		box-sizing:border-box;
 	}
 	.top {
-		border-right:2px solid $gray;
+		border-right:1px solid $gray;
 		padding-right:0.25em;
 	}
 	.bottom {
@@ -535,6 +535,13 @@ canvas {
 	body {
 		background:none;
 	}
+
+.url {
+	display:none;
+}
+.footer {
+	display:none;
+}
 section {
 	&.form {
 		width:30%;

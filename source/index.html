@@ -60,185 +60,261 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<script type="text/javascript" src="assets/scripts/wizard.js"></script>
 
 
-		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700" rel="stylesheet">
 
 </head>
 
 <body>
 	<main class="main-content">
+
 		<section class="diagram">
 			<!-- <canvas id="diagramA" width="400" height="400"></canvas> -->
-			<svg version="1.1" id="frame-diagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 viewBox="-10 10 180 200" style="enable-background:new 0 0 150 150;" xml:space="preserve">
-				 <style type="text/css">
-				 	svg {
-					 font-family:  'Roboto Mono', monospace;
-					 font-size:100%;
-					 font-size: 18px;
+			<svg version="1.1" id="frame-diagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-10 10 180 200" style="enable-background:new 0 0 150 150;" xml:space="preserve">
+				<defs>
+					<pattern id="crosshatch" patternUnits="userSpaceOnUse" width="4" height="4">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg=="
+						  x="0" y="0" width="4" height="4">
+						</image>
+					</pattern>
+					<pattern id="verticalstripe" patternUnits="userSpaceOnUse" width="6" height="49">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2JyBoZWlnaHQ9JzQ5Jz4KICA8cmVjdCB3aWR0aD0nMycgaGVpZ2h0PSc1MCcgZmlsbD0nI2ZmZicvPgogIDxyZWN0IHg9JzMnIHdpZHRoPScxJyBoZWlnaHQ9JzUwJyBmaWxsPScjY2NjJy8+Cjwvc3ZnPgo="
+						  x="0" y="0" width="6" height="49"> </image>
+					</pattern>
+					<pattern id="dots-9" patternUnits="userSpaceOnUse" width="5" height="5">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8cmVjdCB4PScwJyB5PScwJyB3aWR0aD0nOScgaGVpZ2h0PSc5JyBmaWxsPSdibGFjaycgLz4KPC9zdmc+"
+						  x="0" y="0" width="5" height="5"> </image>
+					</pattern>
+					<pattern id="circles-4" patternUnits="userSpaceOnUse" width="1" height="1">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8Y2lyY2xlIGN4PScyLjUnIGN5PScyLjUnIHI9JzIuNScgZmlsbD0nYmxhY2snLz4KPC9zdmc+"
+						  x="0" y="0" width="1" height="1"> </image>
+					</pattern>
+					<pattern id="circles-6" patternUnits="userSpaceOnUse" width="1" height="1">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8Y2lyY2xlIGN4PSczLjUnIGN5PSczLjUnIHI9JzMuNScgZmlsbD0nYmxhY2snLz4KPC9zdmc+Cg=="
+						  x="0" y="0" width="1" height="1"> </image>
+					</pattern>
+					<pattern id="horizontal-stripe-2" patternUnits="userSpaceOnUse" width="2" height="2">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8cmVjdCB4PScwJyB5PScwJyB3aWR0aD0nMTAnIGhlaWdodD0nMicgZmlsbD0nYmxhY2snIC8+Cjwvc3ZnPg=="
+						  x="0" y="0" width="2" height="2"> </image>
+					</pattern>
+					<pattern id="diagonal-stripe-2" patternUnits="userSpaceOnUse" width="2" height="2">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzInLz4KPC9zdmc+"
+						  x="0" y="0" width="2" height="2"> </image>
+					</pattern>
+					<pattern id="diagonal-stripe-1" patternUnits="userSpaceOnUse" width="2" height="2">
+						<image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg=="
+						  x="0" y="0" width="2" height="2"> </image>
+					</pattern>
+					<pattern id="brick-dots" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="scale(0.5 0.5)">
+						<path d="M4,2c1.1,0,2-0.9,2-2H2C2,1.1,2.9,2,4,2z" />
+						<path d="M2,4c0-1.1-0.9-2-2-2v4C1.1,6,2,5.1,2,4z" />
+						<path d="M4,6C2.9,6,2,6.9,2,8h4C6,6.9,5.1,6,4,6z" />
+						<path d="M6,4c0,1.1,0.9,2,2,2V2C6.9,2,6,2.9,6,4z" />
+					</pattern>
+
+					<pattern id="wave" patternUnits="userSpaceOnUse" width="32" height="8">
+						<path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.25" class="st0" d="M32,7.5c-4,0-4-7-8-7c-4,0-4,7-8,7c-4,0-4-7-8-7s-4,7-8,7" />
+					</pattern>
+
+					<pattern id="thick-thin" patternUnits="userSpaceOnUse" width="8" height="8" >
+						<g>
+							<polygon points="0,8 0,7.6 0.4,8 	"/>
+							<polygon points="4.2,8 3.8,8 0,4.2 0,3.8 	"/>
+							<polygon points="3.8,0 4.2,0 8,3.8 8,4.2 	"/>
+							<polygon points="0,0 0.4,0 8,7.6 8,8 7.6,8 0,0.4 	"/>
+							<polygon points="8,0 8,0.4 7.6,0 	"/>
+						</g>
+					</pattern>
+				</defs>
+				<style type="text/css">
+					svg {
+						font-family: 'Roboto Mono', monospace;
+						font-size: 100%;
+						font-size: 18px;
 					}
-					 [id^=measurement-] {
-						 font-size: 3pt;
-						 word-spacing: 0.5em;
-					 }
-					 #remainder-title,
-					 #measurement-remainder {
-						 font-size: 3.5pt;
-					 }
-					 #diagram-note {
-						 font-size: 2.25pt;
-						 fill: #9da1ac;
-						 font-style: italic;
-					 }
-					 #measurement-rabbet {
-						 font-size: 5pt;
-					 }
-					 .x-marks-thespot {
-						 stroke-width: 0.5;
-						 stroke: #FFF;
-					 }
 
-					 #svg-glazing {
-						 fill: rgba(95, 224, 135, 0.25);
-					 }
+					rect,
+					line,
+					polygon {
+						stroke-width: 0.25;
+						stroke: rgb(65, 72, 102);
+						/* fill: none; */
+					}
 
-					 #svg-top {
-						 fill: #bebebe;
-					 }
-					 #svg-bottom {
-						 fill: #d1d1d1;
-					 }
-					 #svg-artwork {
-						 fill: rgb(36, 86, 122);
-					 }
+					[id^=measurement-] {
+						font-size: 3pt;
+						word-spacing: 0.5em;
+					}
 
-					 #svg-spacer {
-						 fill: #f6a654;
-					 }
+					#remainder-title,
+					#measurement-remainder {
+						font-size: 3.5pt;
+					}
 
-					 #svg-board {
-						 fill: #77D1F4;
-					 }
+					#diagram-note {
+						font-size: 2.25pt;
+						fill: #9da1ac;
+						font-style: italic;
+					}
 
-					 #svg-additional {
-						 fill: #fc7f7f;
-					 }
+					#measurement-rabbet {
+						font-size: 5pt;
+					}
 
-					 #svg-strainer {
-						 fill: #ffe34e;
-					 }
-					 .negative {
-					   color: #ff5d5d;
-					   fill: #ff5d5d;
-					 }
+					/*
+					.x-marks-thespot {
+						stroke-width: 0.5;
+						stroke: #FFF;
+					}
 
-				 </style>
-			<g id="frame-group">
-				<g id="not-glazing">
-					<g id="spacer-group">
-						<rect x="40.7" y="40.5" id="svg-spacer" class="st5" fill="#f6a654" width="8" height="40"/>
+					#svg-glazing {
+						fill: rgba(95, 224, 135, 0.25);
+						fill: url(#diagonal-stripe-4) rgb(65, 72, 102);
+					}
 
-						<text x="150" y="50" id="measurement-spacer" text-anchor="left" class="label">5/8"</text>
-					</g> <!-- Spacer Group -->
+					#svg-top {
+						fill: #bebebe;
+						fill: url(#crosshatch) rgb(65, 72, 102);
+					}
 
-					<g id="not-spacer">
-						<g id="top-group">
-							<rect x="40.7" y="80.5" id="svg-top" class="st2" width="100" height="4" fill="#d1d1d1"/>
-							<text x="150" y="83.7" id="measurement-top" text-anchor="left" class="label">1/16"</text>
-						</g><!-- Top Group -->
+					#svg-bottom {
+						fill: #d1d1d1;
+						fill: url(#crosshatch) rgb(65, 72, 102);
+					}
 
-						<g id="not-top">
-							<g id="artwork-group" style="display: none;" >
-								<rect x="40.7" y="84.5" id="svg-artwork" width="100" height="0"/>
-								<text x="150" y="88" id="measurement-artwork" text-anchor="left" class="label">1/32"</text>
-							</g> <!--- Artwork -->
+					#svg-artwork {
+						fill: rgb(36, 86, 122);
+					}
 
-							<g id="not-artwork">
-								<g id="bottom-group">
-									<rect x="40.7" y="84.5" id="svg-bottom" class="st2" width="100" height="4" fill="#d1d1d1"/>
-									<text x="150" y="88.2" id="measurement-bottom" text-anchor="left" class="label">1/16"</text>
+					#svg-spacer {
+						fill: #f6a654;
+					}
+
+					#svg-board {
+						fill: #77D1F4;
+					}
+
+					#svg-additional {
+						fill: #fc7f7f;
+					}
+
+					#svg-strainer {
+						fill: #ffe34e;
+					}
+
+					#frame-cap,
+					#svg-rabbet {
+						fill: rgb(133, 61, 15);
+					} */
+
+					.negative {
+						color: #ff5d5d;
+						fill: #ff5d5d;
+					}
+				</style>
+				<g id="frame-group">
+					<g id="not-glazing">
+						<g id="spacer-group">
+							<rect x="38" y="40" id="svg-spacer" class="st5" fill="url(#horizontal-stripe-2) rgb(65, 72, 102)" width="8" height="40" />
+
+							<text x="150" y="50" id="measurement-spacer" text-anchor="left" class="label">5/8"</text>
+						</g> <!-- Spacer Group -->
+
+						<g id="not-spacer">
+							<g id="top-group">
+								<rect x="38" y="80" id="svg-top" class="st2" width="100" height="4" fill="none" />
+								<text x="150" y="83.7" id="measurement-top" text-anchor="left" class="label">1/16"</text>
+							</g><!-- Top Group -->
+
+							<g id="not-top">
+								<g id="artwork-group" style="display: none;">
+									<rect x="38" y="84" id="svg-artwork" width="100" height="0" fill="url(#brick-dots) rgb(65, 72, 102)" />
+									<text x="150" y="88" id="measurement-artwork" text-anchor="left" class="label">1/32"</text>
 								</g>
+								<!--- Artwork -->
 
-								<g id="not-bottom">
-									<g id="backing-group">
-										<rect x="40.7" y="88.5" id="svg-backing" class="st1" width="100" height="8" fill="#77D1F4"/>
-										<text x="150" y="94.2" id="measurement-backing" text-anchor="left" class="label">1/8"</text>
+								<g id="not-artwork">
+									<g id="bottom-group">
+										<rect x="38" y="84" id="svg-bottom" class="st2" width="100" height="4" fill="none" />
+										<text x="150" y="88.2" id="measurement-bottom" text-anchor="left" class="label">1/16"</text>
 									</g>
 
-									<g id="not-backing">
-										<g id="additional-group" style="display:none;">
-											<rect x="40.7" y="96.5" fill="rgb(252, 127, 127)" width="100" height="0" id="svg-additional" />
-											<text x="150" y="102.2" id="measurement-additional" text-anchor="left" class="label">0"</text>
-										</g><!-- Additional Group -->
-										<g id="not-additional">
-											<g id="strainer-group">
-												<rect x="40.7" y="96.5" id="svg-strainer" class="st2" width="64" height="32" fill="#ffe34e" />
-												<text x="150" y="110" id="measurement-strainer" text-anchor="left" class="label">1/2"</text>
-												<line x1="40.7" y1="96.5" x2="104.7" y2="128.5" class="x-marks-thespot" id="svg-x" stroke="#FFF" stroke-width="0.25" data-y="128.5"/>
-											</g><!-- Strainer-->
-											<g id="not-strainer"></g>
-										</g><!-- Not Additional Group-->
-									</g><!-- Not backing Group -->
-								</g><!-- Not Bottom Group -->
-							</g><!-- Not Artwork Group -->
-						</g><!-- Not Top Group -->
-					</g> <!-- Not Spacer Group -->
-				</g><!-- not Glazing -->
-				<g id="glazing-group">
-					<rect x="40.7" y="32.5" width="100" height="8" id="svg-glazing" fill="rgba(95, 224, 135, 0.25)" />
-					<text x="150" y="38" id="measurement-glazing" text-anchor="left" class="label">1/8"</text>
-				</g>
-				<rect x="26.4" y="22.7" width="25" height="10" fill="rgb(133, 61, 15)" id="frame-cap" />
-			</g>
-			<g id="rabbet-group">
-				<rect x="26.4" y="32.6" width="14.5" height="96" fill="rgb(133, 61, 15)" id="svg-rabbet" />
-			</g>
-			<!-- <polygon id="svg-frame" class="st3" points="60.9,22.7 60.9,32.5 40.7,32.5 40.7,127.3 26.4,127.3 26.4,22.7 "/> -->
-			<g>
-				<!-- <line class="st4" x1="17.5" y1="32.5" x2="9.3" y2="32.5"/>
-				<line class="st4" x1="17.5" y1="137.7" x2="9.3" y2="137.7"/> -->
-				<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95" fill="none" stroke="#000000" stroke-width="0.25" />
-				<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52" fill="none" stroke="#000000" stroke-width="0.25"/>
+									<g id="not-bottom">
+										<g id="backing-group">
+											<rect x="38" y="88" id="svg-backing" class="st1" width="100" height="8" fill="url(#wave) rgb(65, 72, 102)" />
+											<text x="150" y="94.2" id="measurement-backing" text-anchor="left" class="label">1/8"</text>
+										</g>
 
-				<text x="13.4" y="84" id="measurement-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
-			</g>
-			<text x="145" y="90%" id="remainder-title" text-anchor="end">Recess:</text>
-			<text x="150" y="90%" id="measurement-remainder" text-anchor="left">0"</text>
+										<g id="not-backing">
+											<g id="additional-group" style="display:none;">
+												<rect x="38" y="96" fill="url(#crosshatch) rgb(65, 72, 102)" width="100" height="0" id="svg-additional" />
+												<text x="150" y="102.2" id="measurement-additional" text-anchor="left" class="label">0"</text>
+											</g><!-- Additional Group -->
+											<g id="not-additional">
+												<g id="strainer-group">
+													<rect x="38" y="96" id="svg-strainer" class="st2" width="64" height="32" fill="none" />
+													<text x="150" y="110" id="measurement-strainer" text-anchor="left" class="label">1/2"</text>
+													<line x1="38" y1="96" x2="102" y2="128" class="x-marks-thespot" id="svg-x" stroke="#FFF" stroke-width="0.25" data-y="128" />
+												</g><!-- Strainer-->
+												<g id="not-strainer"></g>
+											</g><!-- Not Additional Group-->
+										</g><!-- Not backing Group -->
+									</g><!-- Not Bottom Group -->
+								</g><!-- Not Artwork Group -->
+							</g><!-- Not Top Group -->
+						</g> <!-- Not Spacer Group -->
+					</g><!-- not Glazing -->
+					<g id="glazing-group">
+						<rect x="38" y="32" width="100" height="8" id="svg-glazing" fill="url(#thick-thin)" />
+						<text x="150" y="38" id="measurement-glazing" text-anchor="left" class="label">1/8"</text>
+					</g>
+				</g>
+				<g id="rabbet-group">
+					<polygon id="svg-rabbet" points="38,128 26,128 26,22 51,22 51,32 38,32" fill="url(#diagonal-stripe-1) rgb(65, 72, 102)" />
+				</g>
+				<g>
+					<line class="st4" x1="13.4" y1="117" x2="13.4" y2="95" fill="none" stroke="#000000" stroke-width="0.25" />
+					<line class="st4" x1="13.4" y1="73" x2="13.4" y2="52" fill="none" stroke="#000000" stroke-width="0.25" />
 
-			<text x="0" y="90%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
+					<text x="13.4" y="84" id="measurement-rabbet" text-anchor="middle" alignment-baseline="middle">1 1/2"</text>
+				</g>
+				<text x="145" y="90%" id="remainder-title" text-anchor="end">Recess:</text>
+				<text x="150" y="90%" id="measurement-remainder" text-anchor="left">0"</text>
 
-			<g id="key" transform="
-                translate(0 190)
-                scale(0.1)">
-				<g>
-					<circle cx="87.6" cy="100" r="27.4" fill="rgba(95, 224, 135, 0.25)"/>
-					<text transform="matrix(1 0 0 1 132.5023 105.7499)" class="st0 st1">Glazing</text>
-				</g>
-				<g>
-					<circle cx="271.2" cy="100" r="27.4" fill="#f6a654"/>
-					<text transform="matrix(1 0 0 1 316.1171 105.7499)" class="st0 st1">Spacer</text>
-				</g>
-				<g>
-					<path d="M470.4,100c0,15.1-12.3,27.4-27.4,27.4c-15.1,0-27.4-12.3-27.4-27.4H470.4z" fill="#d1d1d1"/>
-					<path d="M415.6,100c0-15.1,12.3-27.4,27.4-27.4c15.1,0,27.4,12.3,27.4,27.4H415.6z" fill="#bebebe"/>
-					<text transform="matrix(1 0 0 1 487.9762 105.7499)" class="st0 st1">Top/Bottom Mat</text>
-				</g>
-				<g>
-					<circle cx="892.6" cy="100" r="27.4" fill="#77D1F4"/>
-					<text transform="matrix(1 0 0 1 937.4925 105.7499)" class="st0 st1">Backing</text>
-				</g>
-				<g>
-					<circle cx="1400.8" cy="100" r="27.4" fill="#ffe34e"/>
-					<text transform="matrix(1 0 0 1 1445.7847 105.7499)" class="st0 st1">Strainer</text>
-				</g>
-				<g>
-					<circle cx="1076.2" cy="100" r="27.4" fill="rgb(252, 127, 127)"/>
-					<text transform="matrix(1 0 0 1 1121.1077 105.7499)" class="st0 st1">Additional Material</text>
-				</g>
-				<g>
-					<circle cx="708.9" cy="100" r="27.4" fill="rgb(36, 86, 122)"/>
-					<text transform="matrix(1 0 0 1 753.877 105.7499)" class="st0 st1">Artwork</text>
-				</g>
-			</g>
+				<text x="0" y="90%" id="diagram-note" text-anchor="start">Diagram is not to scale.</text>
+
+				<!-- <g id="key" transform="
+								translate(0 190)
+								scale(0.1)">
+					<g>
+						<circle cx="87.6" cy="100" r="27.4" fill="rgba(95, 224, 135, 0.25)" />
+						<text transform="matrix(1 0 0 1 132.5023 105.7499)" class="st0 st1">Glazing</text>
+					</g>
+					<g>
+						<circle cx="271.2" cy="100" r="27.4" fill="#f6a654" />
+						<text transform="matrix(1 0 0 1 316.1171 105.7499)" class="st0 st1">Spacer</text>
+					</g>
+					<g>
+						<path d="M470.4,100c0,15.1-12.3,27.4-27.4,27.4c-15.1,0-27.4-12.3-27.4-27.4H470.4z" fill="#d1d1d1" />
+						<path d="M415.6,100c0-15.1,12.3-27.4,27.4-27.4c15.1,0,27.4,12.3,27.4,27.4H415.6z" fill="#bebebe" />
+						<text transform="matrix(1 0 0 1 487.9762 105.7499)" class="st0 st1">Top/Bottom Mat</text>
+					</g>
+					<g>
+						<circle cx="892.6" cy="100" r="27.4" fill="#77D1F4" />
+						<text transform="matrix(1 0 0 1 937.4925 105.7499)" class="st0 st1">Backing</text>
+					</g>
+					<g>
+						<circle cx="1400.8" cy="100" r="27.4" fill="#ffe34e" />
+						<text transform="matrix(1 0 0 1 1445.7847 105.7499)" class="st0 st1">Strainer</text>
+					</g>
+					<g>
+						<circle cx="1076.2" cy="100" r="27.4" fill="rgb(252, 127, 127)" />
+						<text transform="matrix(1 0 0 1 1121.1077 105.7499)" class="st0 st1">Additional Material</text>
+					</g>
+					<g>
+						<circle cx="708.9" cy="100" r="27.4" fill="rgb(36, 86, 122)" />
+						<text transform="matrix(1 0 0 1 753.877 105.7499)" class="st0 st1">Artwork</text>
+					</g>
+				</g> -->
 
 			</svg>
 
@@ -268,8 +344,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
 						</select>
-					</div><!--
-					--><div class="bottom">
+					</div>
+					<!--
+					-->
+					<div class="bottom">
 						<label for="bottomMat">Bottom Mat</label>
 						<select name="bottomMat" id="bottom" class="values">
 							<option value="1/16">4-Ply</option>
@@ -312,7 +390,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				</p>
 			</form>
 
-			<canvas id="downloadable" width="1800" height = "2000"></canvas>
+			<canvas id="downloadable" width="1800" height="2000"></canvas>
 
 		</section>
 	</main>
@@ -327,9 +405,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 			this.blur();
 
-			setTimeout(function () {
+			setTimeout(function() {
 				document.getElementById('url-label').setAttribute('class', 'done');
-	    }, 4000);
+			}, 4000);
 		}
 	</script>
 </body>

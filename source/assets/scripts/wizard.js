@@ -54,7 +54,7 @@ function eventWindowLoaded() {
   calculator();
   downloadSVG();
   makeURL();
-	chooseProfile();
+	// chooseProfile();
 
 }
 
@@ -83,82 +83,82 @@ function makeURL() {
 
 }
 
-function chooseProfile() {
-	var proButton = document.getElementById('chooseProfile'),
-			picker = document.getElementById('overlay'),
-			xButton = document.getElementById('x-button'),
-			form = document.getElementById('frame-pick'),
-			rabbet = document.getElementById('rabbet'),
-			radios = document.getElementsByName('profile'),
-			label,
-			clear = document.getElementById('clear'),
-			select = document.getElementById('select'),
-			buttons = document.getElementById('buttons');
-
-			proButton.addEventListener('click', function() {
-				picker.classList.remove('hide');
-
-				setTimeout(function() {
-					picker.classList.add('show');
-				}, 50);
-			});
-			xButton.addEventListener('click', function() {
-				picker.classList.remove('show');
-
-				setTimeout(function() {
-					picker.classList.add('hide');
-				}, 100);
-			});
-			select.addEventListener('click', function () {
-				picker.classList.remove('show');
-
-				setTimeout(function() {
-					picker.classList.add('hide');
-				}, 100);
-			});
-			clear.addEventListener('click', function() {
-
-				buttons.classList.remove('show');
-				buttons.classList.add('hide');
-
-				proButton.innerHTML = "Find a Profile";
-
-				proButton.classList.remove('profile-selected');
-
-				for (var i = 0, length = radios.length; i < length; i++) {
-					if (radios[i].checked) {
-
-						radios[i].checked = false;
-
-						// only one radio can be logically checked, don't check the rest
-						break;
-					}
-				}
-			});
-
-			form.addEventListener('change', function() {
-				for (var i = 0, length = radios.length; i < length; i++) {
-					if (radios[i].checked) {
-						// do whatever you want with the checked radio
-
-						buttons.classList.remove('hide');
-						buttons.classList.add('show');
-
-						rabbet.value = radios[i].value;
-
-						label = radios[i].nextElementSibling.innerHTML;
-
-						proButton.innerHTML = label;
-
-						proButton.classList.add('profile-selected');
-
-						// only one radio can be logically checked, don't check the rest
-						break;
-					}
-				}
-			})
-
-}
+// function chooseProfile() {
+// 	var proButton = document.getElementById('chooseProfile'),
+// 			picker = document.getElementById('overlay'),
+// 			xButton = document.getElementById('x-button'),
+// 			form = document.getElementById('frame-pick'),
+// 			rabbet = document.getElementById('rabbet'),
+// 			radios = document.getElementsByName('profile'),
+// 			label,
+// 			clear = document.getElementById('clear'),
+// 			select = document.getElementById('select'),
+// 			buttons = document.getElementById('buttons');
+//
+// 			proButton.addEventListener('click', function() {
+// 				picker.classList.remove('hide');
+//
+// 				setTimeout(function() {
+// 					picker.classList.add('show');
+// 				}, 50);
+// 			});
+// 			xButton.addEventListener('click', function() {
+// 				picker.classList.remove('show');
+//
+// 				setTimeout(function() {
+// 					picker.classList.add('hide');
+// 				}, 100);
+// 			});
+// 			select.addEventListener('click', function () {
+// 				picker.classList.remove('show');
+//
+// 				setTimeout(function() {
+// 					picker.classList.add('hide');
+// 				}, 100);
+// 			});
+// 			clear.addEventListener('click', function() {
+//
+// 				buttons.classList.remove('show');
+// 				buttons.classList.add('hide');
+//
+// 				proButton.innerHTML = "Find a Profile";
+//
+// 				proButton.classList.remove('profile-selected');
+//
+// 				for (var i = 0, length = radios.length; i < length; i++) {
+// 					if (radios[i].checked) {
+//
+// 						radios[i].checked = false;
+//
+// 						// only one radio can be logically checked, don't check the rest
+// 						break;
+// 					}
+// 				}
+// 			});
+//
+// 			form.addEventListener('change', function() {
+// 				for (var i = 0, length = radios.length; i < length; i++) {
+// 					if (radios[i].checked) {
+// 						// do whatever you want with the checked radio
+//
+// 						buttons.classList.remove('hide');
+// 						buttons.classList.add('show');
+//
+// 						rabbet.value = radios[i].value;
+//
+// 						label = radios[i].nextElementSibling.innerHTML;
+//
+// 						proButton.innerHTML = label;
+//
+// 						proButton.classList.add('profile-selected');
+//
+// 						// only one radio can be logically checked, don't check the rest
+// 						break;
+// 					}
+// 				}
+// 			})
+//
+// }
 
 /** Calculator
  *** This function calculates the difference between the rabbet depth and the
@@ -259,14 +259,16 @@ function calculator() {
         svgEl = document.getElementById(svg),
         notEl = document.getElementById(not),
         groupEl = document.getElementById(group),
-        labelEl = document.getElementById(label),
-        svgDiff = value - parseFloat(svgEl.dataset.height),
-        y = parseFloat(svgEl.getAttribute('y')),
-        yPosition = value / 2 + y + 1;
+        labelEl = document.getElementById(label);
 
-    svgEl.setAttribute('height', value);
 
     if (key != 'rabbet') {
+			var svgDiff = value - parseFloat(svgEl.dataset.height),
+					y = parseFloat(svgEl.getAttribute('y')),
+					yPosition = value / 2 + y + 1;
+
+			svgEl.setAttribute('height', value);
+
       notEl.setAttribute('transform', 'translate(0 ' + svgDiff + ')');
 
       labelEl.setAttribute('y', yPosition);
@@ -277,6 +279,11 @@ function calculator() {
         groupEl.style.display = 'inline';
       }
     }
+		if (key == 'rabbet') {
+			var newRabbetY = (128 + (32 + value - 128));
+
+			svgEl.setAttribute('points', '38,' + newRabbetY + ' 26,' + newRabbetY + ' 26,22 51,22 51,32 38,32')
+		}
     if (key == 'strainer') {
       var y1 = parseFloat(document.getElementById('svg-x').getAttribute('y1')),
           y2 = y1 + value;

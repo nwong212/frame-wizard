@@ -476,20 +476,7 @@ form section {
   position: relative;
   align-items: center;
   justify-content: center;
-  padding-left: 1.5em;
-  border-bottom: 2px solid #9da1ac;
-}
-form section:before {
-  content: " ";
-  width: 1rem;
-  height: 1rem;
-  font-size: 0;
-  border-radius: 50%;
-  background-color: yellow;
-  position: absolute;
-  left: 0;
-  flex-shrink: 0;
-  flex-grow: 0;
+  border-bottom: 1px solid #9da1ac;
 }
 form section.frame:before {
   background: #853d0f;
@@ -655,7 +642,7 @@ form .top, form .bottom {
   box-sizing: border-box;
 }
 form .top {
-  border-right: 2px solid #9da1ac;
+  border-right: 1px solid #9da1ac;
   padding-right: 0.25em;
 }
 form .bottom {
@@ -773,6 +760,14 @@ canvas {
   }
   body {
     background: none;
+  }
+
+  .url {
+    display: none;
+  }
+
+  .footer {
+    display: none;
   }
 
   section.form {
