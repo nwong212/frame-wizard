@@ -730,6 +730,10 @@ form #url-label.copied:before {
   transition: opacity 500ms ease;
 }
 
+.buttonGroup {
+  margin-bottom: 0.5em;
+}
+
 button {
   background: none;
   text-align: center;
@@ -767,7 +771,6 @@ button.profile-selected .name {
 button#print, button#download {
   width: 50%;
   float: left;
-  margin-bottom: -1px;
 }
 button#print {
   border-right: 0;
