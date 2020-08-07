@@ -9,9 +9,9 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/assets/icons/favicon.png",
+      "src": "/assets/icons/apple-icon.png",
       "type": "image/png",
-      "sizes": "800x800"
+      "sizes": "500x500"
     }
   ]
 }
