@@ -9,7 +9,7 @@ if (workbox) {
 const {precacheAndRoute} = workbox.precaching;
 
 precacheAndRoute([
-  {url: '/index.html', revision: '1' },
+  {url: '/index.html', revision: '2' },
   {url: '/assets/styles/styles.css', revision: null},
   {url: '/assets/scripts/wizard.js', revision: null},
   // ... other entries ...
