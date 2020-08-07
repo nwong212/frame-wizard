@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
+<script type="text/javascript">
+// Check that service workers are supported
+if ('serviceWorker' in navigator) {
+  // Use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
+</script>
+
 <!--
 )                )       )
 ( /(   (  (      ( /(    ( /(   (
@@ -28,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <head>
 	<meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1">
 
 	<!--Apple Tags -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -353,8 +363,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				</section>
 				<section class="matting">
 					<div class="top">
-						<label for="topMat">Top Mat</label>
-						<select name="topMat" id="top" class="values">
+						<label for="top">Top Mat</label>
+						<select name="top" id="top" class="values">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
@@ -363,8 +373,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					<!--
 					-->
 					<div class="bottom">
-						<label for="bottomMat">Bottom Mat</label>
-						<select name="bottomMat" id="bottom" class="values">
+						<label for="bottom">Bottom Mat</label>
+						<select name="bottom" id="bottom" class="values">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
@@ -410,7 +420,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<span class="url-label">URL</span></label>
 						<input id="url" type="text" placeholder="url"></input>
 					</section>
-					
+
 					<button id="print" class="print" onClick="window.print(); return false">Print</button>
 					<button id="download" class="download" onClick="return false">Download</button>
 					<!-- <button id="resetButton" class="reset" onClick="return false">Reset</button> -->
@@ -438,7 +448,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			setTimeout(function() {
 				document.getElementById('url-label').setAttribute('class', 'done');
 			}, 4000);
-		}
+		};
 	</script>
 </body>
 

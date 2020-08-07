@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
+<script type="text/javascript">
+// Check that service workers are supported
+if ('serviceWorker' in navigator) {
+  // Use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
+</script>
+
 <!--
 )                )       )
 ( /(   (  (      ( /(    ( /(   (
@@ -28,20 +38,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <head>
 	<meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1">
 
 	<!--Apple Tags -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="apple-touch-icon" href="assets/icons/apple-icon.png?ckcachebust=b2ce09e3c0ab7cd455640c09e3033765">
+	<link rel="apple-touch-icon" href="assets/icons/apple-icon.png?ckcachebust=f3305dfae4162f24596d48ac87a2c836">
 	<meta name="apple-mobile-web-app-title" content="Frame Depth">
 
-	<link rel="stylesheet" href="assets/styles/styles.css?ckcachebust=f3d13930c23ecb7826c8640d37df4c93">
+	<link rel="stylesheet" href="assets/styles/styles.css?ckcachebust=664b43eb194e4b4ba81704fa7fd063bb">
 
 	<!-- Primary Meta Tags -->
 	<title>Frame Depth Calculator</title>
 	<meta name="title" content="Frame Depth Calculator">
 	<meta name="description" content="A picture frame rabbet depth calculator with matching diagram. Helpful for fine art picture framers.">
-	<link rel="icon" type="image/png" href="assets/icons/favicon.png?ckcachebust=c8577d8ed76d91610f0c7f7a6407d197">
+	<link rel="icon" type="image/png" href="assets/icons/favicon.png?ckcachebust=925ee7bec6b28ae93766969a384a42e8">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
@@ -57,7 +67,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<meta property="twitter:description" content="A visual frame depth calculator for fine art framing. Subtract your frame package from your rabbet depth.">
 	<meta property="twitter:image" content="assets/icons/social.png">
 
-	<script type="text/javascript" src="assets/scripts/wizard.js?ckcachebust=2f4fe812ba1e0e1daf4b64b535a561df"></script>
+	<script type="text/javascript" src="assets/scripts/wizard.js?ckcachebust=70e91f598134ec56e609c9590bdd03e8"></script>
 
 
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700" rel="stylesheet">
@@ -353,8 +363,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				</section>
 				<section class="matting">
 					<div class="top">
-						<label for="topMat">Top Mat</label>
-						<select name="topMat" id="top" class="values">
+						<label for="top">Top Mat</label>
+						<select name="top" id="top" class="values">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
@@ -363,8 +373,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					<!--
 					-->
 					<div class="bottom">
-						<label for="bottomMat">Bottom Mat</label>
-						<select name="bottomMat" id="bottom" class="values">
+						<label for="bottom">Bottom Mat</label>
+						<select name="bottom" id="bottom" class="values">
 							<option value="1/16">4-Ply</option>
 							<option value="1/8">8-Ply</option>
 							<option value="0">None</option>
@@ -410,7 +420,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							<span class="url-label">URL</span></label>
 						<input id="url" type="text" placeholder="url"></input>
 					</section>
-					
+
 					<button id="print" class="print" onClick="window.print(); return false">Print</button>
 					<button id="download" class="download" onClick="return false">Download</button>
 					<!-- <button id="resetButton" class="reset" onClick="return false">Reset</button> -->
@@ -438,7 +448,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			setTimeout(function() {
 				document.getElementById('url-label').setAttribute('class', 'done');
 			}, 4000);
-		}
+		};
 	</script>
 </body>
 
