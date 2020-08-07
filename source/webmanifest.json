@@ -3,13 +3,19 @@
   "short_name": "Frame Depth Calculator",
   "theme_color": "#5edfb1",
   "background_color": "#ffffff",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
   "icons": [
     {
       "src": "/assets/icons/apple-icon.png",
+      "type": "image/png",
+      "sizes": "800x800",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/favicon.png",
       "type": "image/png",
       "sizes": "800x800"
     }
