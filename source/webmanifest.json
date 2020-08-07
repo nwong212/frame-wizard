@@ -1,6 +1,6 @@
 {
-  "name": "Frame-Depth.js.org",
-  "short_name": "Frame Depth Calculator",
+  "name": "Frame Depth Calculator",
+  "short_name": "Frame Depth",
   "theme_color": "#5edfb1",
   "background_color": "#ffffff",
   "display": "standalone",
@@ -12,12 +12,13 @@
       "src": "/assets/icons/apple-icon.png",
       "type": "image/png",
       "sizes": "800x800",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "/assets/icons/favicon.png",
       "type": "image/png",
-      "sizes": "800x800"
+      "sizes": "800x800",
+      "purpose": "any"
     }
   ]
 }
