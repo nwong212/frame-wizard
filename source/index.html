@@ -338,7 +338,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</section>
 		<section class="form">
 			<form name="framedepth" id="frameCalc">
-				<section class="frame">
+				<section class="inputs frame">
 					<label for="rabbet">Rabbet Depth</label>
 					<input type="text" id="rabbet" value="1 1/2" class="values" pattern="(([1-9]\d*\/(2|4|8|16|32))|([1-9]* [1-9]\d*\/(2|4|8|16|32))|([1-9]\d*))">
 					</input>
@@ -348,7 +348,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
 					</div>
 				</section>
-				<section class="glazing">
+				<section class="inputs glazing">
 					<label for="glazing">Glazing</label>
 					<input type="text" id="glazing" value="1/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))">
 					</input>
@@ -358,7 +358,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 					</div>
 				</section>
-				<section class="spacer">
+				<section class="inputs spacer">
 					<label for="spacer">Spacer Depth</label>
 					<input type="text" id="spacer" value="5/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
 					<div class="helper">
@@ -367,7 +367,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 					</div>
 				</section>
-				<section class="matting">
+				<section class="inputs matting">
 					<div class="top">
 						<label for="top">Top Mat</label>
 						<select name="top" id="top" class="values">
@@ -387,45 +387,45 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						</select>
 					</div>
 				</section>
-				<section class="artwork">
+				<section class="inputs artwork">
 					<label for="artwork">Art Depth</label>
 					<input type="text" id="artwork" value="0" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
 					<div class="helper">
 						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
 					</div>
 				</section>
-				<section class="backing">
+				<section class="inputs backing">
 					<label for="backing">Backing</label>
 					<input type="text" id="backing" value="1/8" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
 					<div class="helper">
 						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
 					</div>
 				</section>
-				<section class="strainer">
+				<section class="inputs strainer">
 					<label for="strainer">Strainer</label>
 					<input type="text" id="strainer" value="1/2" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
 					<div class="helper">
 						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
 					</div>
 				</section>
-				<section class="additional">
+				<section class="inputs additional">
 					<label for="additional">Additional Material</label>
 					<input type="text" id="additional" value="0" class="values" pattern="((\d\d*\/(2|4|8|16|32))|(\d* \d\d*\/(2|4|8|16|32))|(\d\d*))"></input>
 					<div class="helper">
 						Number must be input as a whole number, a fraction, or a mixed fraction separated by a single space.
 					</div>
 				</section>
-				<section class="recess">
+				<div class="recess">
 					<label for="remaining">Recess</label>
 					<input type="text" id="remaining" disabled value=""></input>
-				</section>
+				</div>
 
 				<div class="buttonGroup">
-					<section class="url">
+					<div class="url">
 						<label for="url" id="url-label" class="">
 							<span class="url-label">URL</span></label>
 						<input id="url" type="text" placeholder="url"></input>
-					</section>
+					</div>
 
 					<button id="print" class="print" onClick="window.print(); return false">Print</button>
 					<button id="download" class="download" onClick="return false">Download</button>

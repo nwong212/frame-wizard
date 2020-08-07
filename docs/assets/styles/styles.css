@@ -373,14 +373,17 @@ h1, h2, h3, h4, h5, h6 {
 
 main {
   width: 100%;
-  display: flex;
-  align-items: stretch;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(50ch, 75%) minmax(40ch, 25%);
+}
+@media screen and (max-width: 70em) {
+  main {
+    grid-template-columns: 60% 40%;
+  }
 }
 @media screen and (max-width: 45em) {
   main {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 100%;
   }
 }
 
@@ -398,7 +401,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   box-sizing: border-box;
 }
 @media screen and (max-width: 45em) {
@@ -409,15 +412,9 @@ section {
 }
 
 .diagram {
-  width: 75%;
   height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
-}
-@media screen and (max-width: 70em) {
-  .diagram {
-    width: 60%;
-  }
 }
 @media screen and (max-width: 45em) {
   .diagram {
@@ -433,15 +430,7 @@ section {
 }
 
 .form {
-  height: 100vh;
-  overflow: auto;
-  width: 25%;
   border-left: 1px solid #9da1ac;
-}
-@media screen and (max-width: 70em) {
-  .form {
-    width: 40%;
-  }
 }
 @media screen and (max-width: 45em) {
   .form {
@@ -453,95 +442,99 @@ section {
 
 form input:invalid:focus + .helper, form input:invalid:hover + .helper {
   display: block;
-  z-index: 9;
+  z-index: 9999;
   opacity: 1;
   transition-property: top, opacity;
   transition-timing-function: ease-in-out;
   transition-duration: 300ms;
-  top: calc(100% + 0.5em);
+  top: 0;
 }
 
 form {
   text-align: right;
-  padding: 1.5em;
+  margin: 1.5em;
   box-sizing: border-box;
-  width: 100%;
   max-height: 100vh;
-  overflow: auto;
 }
-form section {
+form section.inputs {
   width: 100%;
   padding: 0;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  overflow: visible;
   position: relative;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #475662;
-  margin-bottom: -1px;
 }
-form section.frame:before {
+form section.inputs:not(:last-of-type) {
+  border-bottom: 0px solid #475662;
+}
+form section.inputs.frame:before {
   background: #853d0f;
 }
-form section.glazing:before {
+form section.inputs.glazing:before {
   background: rgba(95, 224, 135, 0.25);
   box-sizing: border-box;
 }
-form section.spacer:before {
+form section.inputs.spacer:before {
   background: #f6a654;
 }
-form section.matting:before {
+form section.inputs.matting:before {
   background: #bebebe;
   background: linear-gradient(180deg, #bebebe 50%, #d1d1d1 50%);
 }
-form section.backing:before {
+form section.inputs.backing:before {
   background: #77D1F4;
 }
-form section.additional:before {
+form section.inputs.additional:before {
   background: #fc7f7f;
 }
-form section.strainer:before {
+form section.inputs.strainer:before {
   background: #ffe34e;
 }
-form section.artwork:before {
+form section.inputs.artwork:before {
   background: #24567a;
 }
-form section.recess {
+form .url {
+  display: grid;
+  grid-template-columns: minmax(5ch, 10%) 1fr;
+  padding: 0;
+}
+form .url:before {
+  content: "";
+  display: none;
+  visibility: hidden;
+}
+form .recess {
+  display: grid;
+  grid-template-columns: 50% 50%;
   margin: 0.5em 0;
   padding: 0;
   border: 0;
 }
-form section.recess label {
+form .recess label {
   text-align: center;
-  width: 50%;
+  place-self: center;
 }
-form section.recess input {
-  width: 50%;
+form .recess input {
   border: 3px solid currentColor;
 }
-form section.recess:before {
+form .recess:before {
   content: "";
   display: none;
   visibility: hidden;
 }
-form section.url {
-  padding: 0;
+form .top, form .bottom {
+  text-align: left;
 }
-form section.url:before {
-  content: "";
-  display: none;
-  visibility: hidden;
+form .top label, form .bottom label {
+  padding-left: 0.25em;
 }
 form label {
-  width: 50%;
   box-sizing: border-box;
   font-size: 80%;
   margin: 0 0;
   padding-right: 0.25em;
   color: #475662;
-}
-form label:first-child {
-  margin-top: 0;
 }
 form .helptext {
   color: #9da1ac;
@@ -562,13 +555,12 @@ form input, form select {
   text-align: right;
   border: none;
   min-width: 4em;
-  margin: auto;
-  width: 100%;
   background: none;
   border: 0;
 }
 form select {
   border-top: 1px solid #475662;
+  width: 100%;
 }
 form input {
   transition-property: color, box-shadow, outline;
@@ -584,10 +576,11 @@ form input:focus {
 }
 form input + .helper {
   width: 75%;
-  z-index: -9999;
+  z-index: 9999;
   position: absolute;
   line-height: 1.2;
-  top: 0;
+  top: -200%;
+  right: 105%;
   opacity: 0;
   background: rgba(255, 221, 211, 0.75);
   border-radius: 5px;
@@ -646,17 +639,6 @@ form input[type=text], form input[type=button] form input[type=select] {
   width: 50%;
   padding-right: 10px;
   box-sizing: border-box;
-}
-form .top, form .bottom {
-  text-align: left;
-  width: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-}
-form .top label, form .bottom label {
-  padding: 0.5em;
-  width: 100%;
-  display: block;
 }
 form .bottom {
   border-left: 1px solid #475662;
@@ -732,7 +714,7 @@ form #url-label.copied:before {
 .buttonGroup {
   margin-bottom: 0.5em;
   display: block;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 button {
@@ -1041,7 +1023,6 @@ body .overlay .frame-selector .buttons #clear {
   font-weight: bold;
 }
 body .overlay form {
-  overflow: visible;
   padding: 0;
   height: auto;
   max-height: none;
